@@ -267,7 +267,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/07/29/java%E5%9F%BA%E7%A1%80-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" itemprop="url">java基础-面向对象</a></h1>
+                <a class="post-title-link" href="/2020/07/29/java%E5%9F%BA%E7%A1%80-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" itemprop="url">java基础</a></h1>
         
 
         <div class="post-meta">
@@ -289,6 +289,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index">
+                    <span itemprop="name">java基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -319,7 +341,29 @@
       
         
           
-            
+            <p> java是一门面向对象的编程语言,在java的世界里一切皆可以成为对象，接下来我们就来了解了解什么是面向对象。</p>
+<p>   – 面向过程和面向对象<br>   &ensp;&ensp;举一个例子很好的诠释了面向过程和面向对象的区别。把大象装进冰箱分几步。以面向过程的思想来看分三步.第一步把冰箱门打开,第二步把大象装进冰箱,第三步把冰箱们关起来。而以面向对象的思想来看首先我们需要创建大象这么一个对象，然后告诉大象进冰箱，至于他怎么进冰箱我们就不需要管了。<br>   面向对象:<br>   优点:扩展性高 维护成本低  缺点:上手难度比较高<br>   面向过程:<br>   优点：简单  缺点:如果代码量大维护性很差。</p>
+<ol>
+<li>类与对象<br>我们如果需要造汽车，我们首先得画个图纸，图纸里需要有汽车的属性信息,颜色啊,座位啊等属性还有车的动作,然后我们需要拿着图纸去工厂造汽车。在面向对象的世界里，类就是图纸，汽车就是对象。属性就是这一类事物拥有的共同属性，动作就是这一类事物的功能。<br>总结:类描述了一类对象的行为和状态，而对象就是一个类的具体实例。</li>
+</ol>
+<p>面向对象有三大特征</p>
+<ul>
+<li><h4 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h4>&ensp;&ensp;封装是面向对象的核心思想，将描述某种实体的数据和这些数据的操作放在一起，形成一个封装体。他保证了类内部结构的完整性，是其他用户无法直接操作内部数据，提高了安全性。我们常见的就是定义一个类，把属性修改为private不让外界访问，然后通过自己定义的getter/setter方法去访问。如下图:</li>
+</ul>
+<img src="../images/user.jpg" width=200 height=200 align=center  alt="案例">
+
+<ol>
+<li>封装的好处: 只能通过内部规定的方法访问数据</li>
+<li>隐藏内部实现细节</li>
+</ol>
+<ul>
+<li><h4 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h4>&ensp;&ensp;继承就是子类继承父类的特征和行为，使得子类具有父类的方法和属性。或子类继承父类方法，使得子类具有父类相同的行为。<br>特征:1.父类更通用一些，子类更具体一些。子类除了具有父类的特征和行为还有自己特殊的特征和行为。2.继承可以实现代码复用。3.继承使用关键子extends来实现。  </li>
+<li><h4 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h4>&ensp;&ensp;多态就是一种事物的多种表现形式。多态的前提是有继承或者实现，通过父类new一个子类的方式可以使用子类的方法。<br>&ensp;&ensp;多态的前提是必须有继承或者实现.例如定义一个Person类,写一个student类继承person类，我们就可以使用Person p=new Student();<br>&ensp;&ensp;这就是典型的多态，可以通过父类直接new子类的方式使用子类中的属性和方法。</li>
+</ul>
+<h4 id="抽象类和接口"><a href="#抽象类和接口" class="headerlink" title="抽象类和接口"></a>抽象类和接口</h4><p>相同点:<br>1.都不能直接实例化,需要继承或者实现才可以重写父类的方法<br>2.派生类必须实现未实现的方法<br>不同点:<br>1.抽象类用abstract关键字修饰,接口使用interface关键字修饰<br>2.抽象类里都是抽象方法，而接口有抽象方法也有普通方法<br>3.抽象类不可以多继承，接口可以多实现<br>4.抽象类和接口的设计理念不同,抽象类体现的是‘is-a’的关系,而接口体现的‘like-a’的关系</p>
+<p>异常<br>throw和throws关键字的区别<br>throw用来抛出异常,他是在方法体内使用.语法格式throw 异常对象 throw只能抛出一种异常<br>throws用来声明方法可能会抛出异常,在方法声明上 throws可以抛出多个异常。</p>
+<p>final，finalize，finally<br>final是java中的一种修饰符,如果他修饰类，表示该类不能被继承或者实现,所以如果一个类被abstract修饰，他就不能被final修饰。<br>如果final修饰的是变量，表示该变量不可以被修改。<br>finally是java异常处理中的,用来无论是否发生异常都会执行的一个操作,如果抛出异常，进入try-catch代码块中，最终都会执行finally里面的语句，所以一般都是用来进行数据库关闭，流关闭等操作。<br>finalize是Object类定义的一个方法，他是在垃圾回收前调用的</p>
+
           
         
       
@@ -460,8 +504,8 @@
       
         
           
-            <h1 id="这是我的第一篇基于hexo搭建博客"><a href="#这是我的第一篇基于hexo搭建博客" class="headerlink" title="这是我的第一篇基于hexo搭建博客"></a>这是我的第一篇基于hexo搭建博客</h1><h3 id="ensp-搭建博客的目的主要就是为了记录自己的日常和工作中或者学习上遇到的问题，便于日后再次遇到的时候不用再去网上寻找。博客也可以用来分享，广泛交友。"><a href="#ensp-搭建博客的目的主要就是为了记录自己的日常和工作中或者学习上遇到的问题，便于日后再次遇到的时候不用再去网上寻找。博客也可以用来分享，广泛交友。" class="headerlink" title="&ensp;搭建博客的目的主要就是为了记录自己的日常和工作中或者学习上遇到的问题，便于日后再次遇到的时候不用再去网上寻找。博客也可以用来分享，广泛交友。"></a>&ensp;搭建博客的目的主要就是为了记录自己的日常和工作中或者学习上遇到的问题，便于日后再次遇到的时候不用再去网上寻找。博客也可以用来分享，广泛交友。</h3><h3 id="ensp-最近公司事情不是很多-最近正好也在回顾之前的基础知识-一方面提升自己另一方面查漏补缺-就想用hexo搭建一个博客来记录自己学习的过程。不断的充实和完善自己。"><a href="#ensp-最近公司事情不是很多-最近正好也在回顾之前的基础知识-一方面提升自己另一方面查漏补缺-就想用hexo搭建一个博客来记录自己学习的过程。不断的充实和完善自己。" class="headerlink" title="&ensp;最近公司事情不是很多,最近正好也在回顾之前的基础知识,一方面提升自己另一方面查漏补缺.就想用hexo搭建一个博客来记录自己学习的过程。不断的充实和完善自己。"></a>&ensp;最近公司事情不是很多,最近正好也在回顾之前的基础知识,一方面提升自己另一方面查漏补缺.就想用hexo搭建一个博客来记录自己学习的过程。不断的充实和完善自己。</h3><!--![a](../images/aa.jpg)-->
-<!--<img src="../images/aa.jpg" width=200 height=200 align=center  alt="毛毛">-->
+            <h3 id="ensp-搭建博客的目的主要就是为了记录自己的日常和工作中或者学习上遇到的问题，便于日后再次遇到的时候不用再去网上寻找。博客也可以用来分享，广泛交友。"><a href="#ensp-搭建博客的目的主要就是为了记录自己的日常和工作中或者学习上遇到的问题，便于日后再次遇到的时候不用再去网上寻找。博客也可以用来分享，广泛交友。" class="headerlink" title="&ensp;搭建博客的目的主要就是为了记录自己的日常和工作中或者学习上遇到的问题，便于日后再次遇到的时候不用再去网上寻找。博客也可以用来分享，广泛交友。"></a>&ensp;搭建博客的目的主要就是为了记录自己的日常和工作中或者学习上遇到的问题，便于日后再次遇到的时候不用再去网上寻找。博客也可以用来分享，广泛交友。</h3><h3 id="ensp-最近公司事情不是很多-最近正好也在回顾之前的基础知识-一方面提升自己另一方面查漏补缺-就想用hexo搭建一个博客来记录自己学习的过程。不断的充实和完善自己。"><a href="#ensp-最近公司事情不是很多-最近正好也在回顾之前的基础知识-一方面提升自己另一方面查漏补缺-就想用hexo搭建一个博客来记录自己学习的过程。不断的充实和完善自己。" class="headerlink" title="&ensp;最近公司事情不是很多,最近正好也在回顾之前的基础知识,一方面提升自己另一方面查漏补缺.就想用hexo搭建一个博客来记录自己学习的过程。不断的充实和完善自己。"></a>&ensp;最近公司事情不是很多,最近正好也在回顾之前的基础知识,一方面提升自己另一方面查漏补缺.就想用hexo搭建一个博客来记录自己学习的过程。不断的充实和完善自己。</h3><!--![a](../images/aa.jpg)-->
+<img src="../images/user.jpg" width=200 height=200 align=center  alt="毛毛">
 
           
         
@@ -558,7 +602,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
