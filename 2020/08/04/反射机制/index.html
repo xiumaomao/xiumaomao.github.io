@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="java," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="什么是反射机制?Java的反射是指在程序运行状态中,可以任意了解一个类的成员变量和方法,对于任意一个对象可以调用他的属性和方法.这种动态获取程序信息以及动态调用对象的功能称为Java语言的反射机制。以上就是百度的原话,在我看来什么是反射呢，它其实就是将类的各个组成部分封装成了其他对象。比如说将类中的成员变量封装成了field对象,构造方法封装成constructor对象,成员方法封装成method">
+<meta property="og:type" content="article">
+<meta property="og:title" content="反射机制">
+<meta property="og:url" content="http://yoursite.com/2020/08/04/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/index.html">
+<meta property="og:site_name" content="毛毛的博客">
+<meta property="og:description" content="什么是反射机制?Java的反射是指在程序运行状态中,可以任意了解一个类的成员变量和方法,对于任意一个对象可以调用他的属性和方法.这种动态获取程序信息以及动态调用对象的功能称为Java语言的反射机制。以上就是百度的原话,在我看来什么是反射呢，它其实就是将类的各个组成部分封装成了其他对象。比如说将类中的成员变量封装成了field对象,构造方法封装成constructor对象,成员方法封装成method">
+<meta property="article:published_time" content="2020-08-04T07:16:14.000Z">
+<meta property="article:modified_time" content="2020-08-05T08:00:46.098Z">
+<meta property="article:author" content="毛毛">
+<meta property="article:tag" content="java">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/08/04/反射机制/"/>
+
+
+
+
+
+  <title>反射机制 | 毛毛的博客</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">毛毛的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/04/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="毛毛">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/maomao.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="毛毛的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">反射机制</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-04T15:16:14+08:00">
+                2020-08-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="什么是反射机制"><a href="#什么是反射机制" class="headerlink" title="什么是反射机制?"></a>什么是反射机制?</h3><p>Java的反射是指在程序运行状态中,可以任意了解一个类的成员变量和方法,对于任意一个对象可以调用他的属性和方法.这种动态获取程序信息以及动态调用对象的功能称为Java语言的反射机制。以上就是百度的原话,在我看来什么是反射呢，它其实就是将类的各个组成部分封装成了其他对象。比如说将类中的成员变量封装成了field对象,构造方法封装成constructor对象,成员方法封装成method.接下来我们往下看。</p>
+<h3 id="对于反射的理解"><a href="#对于反射的理解" class="headerlink" title="对于反射的理解"></a>对于反射的理解</h3><p>既然有了反射,那’正’的是什么呢？一般来说,使用某个类的时候,我们一般都会去看看类中有哪些变量,有哪些方法,他是用来做什么的,方法参数是什么.以便与我们今后调用它。就例如:Person p=new Person(); p.run();我们线new一个类的实例,再去调用里面的方法。这就是‘正’<br>那反射就是一开始我们并不知道初始化的类对象是什么样子的,自然我们也不可以new对象实例去操作他,这时我们可以使用反射去操作这个类.<br>举一个代码例子<br>public class Phone {<br>    private int price;<br>    public int getPrice() {<br>        return price;<br>    }<br>    public void setPrice(int price) {<br>        this.price = price;<br>    }</p>
+<pre><code>public static void main(String[] args) throws Exception{
+    //正常的调用
+    Phone phone = new Phone();
+    phone.setPrice(5000);
+    System.out.println(&quot;Phone Price:&quot; + phone.getPrice());
+    //使用反射调用
+    Class clz = Class.forName(&quot;com.xxp.api.Phone&quot;);
+    Method setPriceMethod = clz.getMethod(&quot;setPrice&quot;, int.class);
+    Constructor phoneConstructor = clz.getConstructor();
+    Object phoneObj = phoneConstructor.newInstance();
+    setPriceMethod.invoke(phoneObj, 6000);
+    Method getPriceMethod = clz.getMethod(&quot;getPrice&quot;);
+    System.out.println(&quot;Phone Price:&quot; + getPriceMethod.invoke(phoneObj));
+}</code></pre><p>}<br>这个例子很好的诠释了‘正’和’反’,正就是操作之前确定类对象的结构通过new的方式去获取类对象,反射是在操作前不知道类对象是什么样子的.我们可以在程序运行过程中对类对象操作。</p>
+<h3 id="我们先来了解一下java程序在计算机中经历的阶段"><a href="#我们先来了解一下java程序在计算机中经历的阶段" class="headerlink" title="我们先来了解一下java程序在计算机中经历的阶段"></a>我们先来了解一下java程序在计算机中经历的阶段</h3><p>1.首先我们定一个类文件，例如Person.java,如下面代码<br>public class Person {</p>
+<pre><code>private int id;
+private String name;
+
+//空参构造器
+public Person() {
+}
+
+public void run(){
+    System.out.println(&quot;人会跑步&quot;);
+}</code></pre><p>}<br>以上代码可以直接运行吗,很显然不可以,我们需要通过一个命令javac编译,在编译的过程中会检查,如果代码语法没有问题,会在硬盘上形成一个字节码文件Person.class,字节码文件里放的就是这个类的一些信息,主要有成员变量,构造方法,成员方法。这个阶段我们称之为源代码阶段。(这个阶段代码还存在硬盘上)<br>2.在硬盘上形成一个字节码文件后,java中通过类加载器ClassLoader将字节码文件加载到内存中,在内存中表述这个字节码文件称之为类对象,类对象中放的是字节码中共同属性,例如成员变量,构造方法,成员方法。这三个部分java把它封装成不同的对象。成员变量封装为field对象,构造方法封装为constructor对象,成员方法封装为method对象.这个阶段我们称之为类对象阶段。<br>3.创建对象Person p=new Person(); 这个阶段new出来的对象都放在内存的堆中,这个阶段成为运行时阶段。</p>
+<h3 id="封装的好处"><a href="#封装的好处" class="headerlink" title="封装的好处"></a>封装的好处</h3><p>1.在运行过程中可以操作这些对象(例如我们平时操作字符串的时候,通过字符串.的方式会出来很多方法,这其实就用到了反射机制)<br>2.可以解藕。</p>
+<h3 id="class类对象获取方式"><a href="#class类对象获取方式" class="headerlink" title="class类对象获取方式"></a>class类对象获取方式</h3><p>1.class.forName(“类的全限定类名”)<br>2.类.class,通过类名的属性获取<br>3.对象.getClass,通过对象的getClass方法<br>   Class clazz=Class.forName(“com.company.entity.Person”);<br>      System.out.println(clazz);</p>
+<pre><code>Class clazz1= Person.class;
+System.out.println(clazz1);
+
+Person p=new Person();
+Class clazz2=p.getClass();
+System.out.println(clazz2);
+
+System.out.println(clazz==clazz1);
+System.out.println(clazz==clazz2);</code></pre><p>运行结果:<br>class com.company.entity.Person<br>class com.company.entity.Person<br>class com.company.entity.Person<br>true<br>true<br>因此我们可以知道一个字节码文件在一次运行程序过程中只会加载一次,不管你通过哪种方式。</p>
+<h3 id="class类对象的功能"><a href="#class类对象的功能" class="headerlink" title="class类对象的功能"></a>class类对象的功能</h3><p>1.获取成员变量<br>(1).Field []  getFields 获取所有public修饰的成员变量</p>
+<pre><code>private int id;
+private String name;
+
+
+  Class clazz= Person.class;
+  Field[] f=clazz.getFields();
+  for(Field field:f){
+      System.out.println(field);
+  }
+}</code></pre><p>打印结果没空.getFields()方法得到的成员变量都是public修饰的<br>(2).Field getField(String name)：得到指定名称的public修饰的变量</p>
+<p>(3).Field [] getDeclaredFirlds() 获取所有的成员变量(不考虑修饰符的限制)<br>(4).Field getDeclaredField() 获取指定名称的成员变量<br>当我们获取单个private修饰的变量时,程序会报错。这时我们只要加一行代码<br> Field o1= (Field) f2.get(“id”);<br>      o1.setAccessible(true);就可以了</p>
+<p>2.获取成员方法<br>(1)Method getMethod(String 方法名称) 空参方法<br>        Class clazz= Person.class;<br>        Method m=clazz.getMethod(“run”);<br>        Person p=new Person();<br>        m.invoke(p);<br>        结果如下:<br>        人会跑步<br>Method getMethod(String 方法名称) 有参方法<br>Person:<br>   public void run(int id){<br>        System.out.println(id+”在跑步”);<br>    }</p>
+<pre><code>Class clazz= Person.class;
+Method m=clazz.getMethod(&quot;run&quot;,int.class);
+Person p=new Person();
+m.invoke(p,1);</code></pre><p>其他方法类似</p>
+<p>3.获取构造方法<br>(1).Constructor getConstructor(.class)<br>        Class clazz= Person.class;<br>        Constructor constructor=clazz.getConstructor(int.class,String.class);<br>      System.out.println(constructor);<br>      结果如下<br>      public com.company.entity.Person(int,java.lang.String)<br>      构造方法主要用来创建对象,里面又一个newInstance方法,如下图<br>       Class clazz= Person.class;<br>       Constructor constructor=clazz.getConstructor(int.class,String.class);<br>       Object person= constructor.newInstance(23,”maomao”);<br>       System.out.println(person);<br>       结果如下:<br>       Person{id=23, name=’maomao’}<br>       注意:如果是空参构造,可以直接使用class中的newInstance方法更简便。<br>(2).Constructor getDeclaredConstructor()使用方法和上述一样</p>
+<h3 id="反射的应用"><a href="#反射的应用" class="headerlink" title="反射的应用"></a>反射的应用</h3><p>JDBC操作数据库第一步加载数据库驱动,Class.forName(“com.mysql.jdbc.Driver”);这里是 MySQL 数据库，假如某一天我们想换成 Oracle数据库,你可能会修改forName()方法中的参数为 Oracle 数据库驱动名。但其实我们还可以在不修改代码的情况下实现修改，就像大多数框架那样，我们可以使用个写个配置文件,forName()方法中的参数在配置文件中动态读取，编译好的代码完全不用动，这里其实就是反射的一个应用。另外在我们写代码时，在对象后面敲一个 . ，IDE（如 Eclipse） 就会自动帮我们列出该对象有的方法，这里其实就是IDE使用了反射，通过对象找到该类对应的 Class 对象，从而就可以找到类中的属性和方法。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>反射可以是我们的代码更具灵活性,但是反射会更消耗资源,如果不需要动态创建对象,那么就不需要用到反射。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag"># java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/08/03/HashMap/" rel="next" title="HashMap">
+                <i class="fa fa-chevron-left"></i> HashMap
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/maomao.jpg"
+                alt="毛毛" />
+            
+              <p class="site-author-name" itemprop="name">毛毛</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是反射机制"><span class="nav-number">1.</span> <span class="nav-text">什么是反射机制?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对于反射的理解"><span class="nav-number">2.</span> <span class="nav-text">对于反射的理解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#我们先来了解一下java程序在计算机中经历的阶段"><span class="nav-number">3.</span> <span class="nav-text">我们先来了解一下java程序在计算机中经历的阶段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#封装的好处"><span class="nav-number">4.</span> <span class="nav-text">封装的好处</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#class类对象获取方式"><span class="nav-number">5.</span> <span class="nav-text">class类对象获取方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#class类对象的功能"><span class="nav-number">6.</span> <span class="nav-text">class类对象的功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#反射的应用"><span class="nav-number">7.</span> <span class="nav-text">反射的应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">8.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">毛毛</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
