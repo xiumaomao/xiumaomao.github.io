@@ -79,14 +79,14 @@
 
 
 
-<meta name="description" content="HashMap是我们日常开发中使用频率最高,用于存储key-value键值对的数据结构。在jdk1.8中对HashMap进行了优化，本文结合1.7和1.8的区别,探讨HashMap。 说到HashMap，我们就必须说一下hash函数。 HashMap的hash函数设计hash函数是先拿到key的HashCode,是一个32位的int值,然后让hashcode的高16位和低16位进行异或运算,如下代">
+<meta name="description" content="线程和进程进程是执行程序的一次过程,它是一个动态的概念。是系统资源分配的单位。线程是依赖进程的,线程是cpu执行的最小单位.一个进程可以包括多个线程。两者的关系举个例子我们在看电影的时候,你qq也是开着的,电影和qq就是两个进程.电影里的声音和图像就是两个线程分别控制。 创建线程的方式1.继承Thread,重写run方法,然后在调用start方法开启线程。public class Main ext">
 <meta property="og:type" content="article">
-<meta property="og:title" content="HashMap">
-<meta property="og:url" content="http://yoursite.com/2020/08/03/HashMap/index.html">
+<meta property="og:title" content="多线程">
+<meta property="og:url" content="http://yoursite.com/2020/08/06/%E5%A4%9A%E7%BA%BF%E7%A8%8B/index.html">
 <meta property="og:site_name" content="毛毛的博客">
-<meta property="og:description" content="HashMap是我们日常开发中使用频率最高,用于存储key-value键值对的数据结构。在jdk1.8中对HashMap进行了优化，本文结合1.7和1.8的区别,探讨HashMap。 说到HashMap，我们就必须说一下hash函数。 HashMap的hash函数设计hash函数是先拿到key的HashCode,是一个32位的int值,然后让hashcode的高16位和低16位进行异或运算,如下代">
-<meta property="article:published_time" content="2020-08-03T06:15:35.000Z">
-<meta property="article:modified_time" content="2020-08-06T06:29:41.324Z">
+<meta property="og:description" content="线程和进程进程是执行程序的一次过程,它是一个动态的概念。是系统资源分配的单位。线程是依赖进程的,线程是cpu执行的最小单位.一个进程可以包括多个线程。两者的关系举个例子我们在看电影的时候,你qq也是开着的,电影和qq就是两个进程.电影里的声音和图像就是两个线程分别控制。 创建线程的方式1.继承Thread,重写run方法,然后在调用start方法开启线程。public class Main ext">
+<meta property="article:published_time" content="2020-08-06T01:25:50.000Z">
+<meta property="article:modified_time" content="2020-08-06T06:29:46.709Z">
 <meta property="article:author" content="毛毛">
 <meta property="article:tag" content="后端">
 <meta name="twitter:card" content="summary">
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/08/03/HashMap/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/08/06/多线程/"/>
 
 
 
 
 
-  <title>HashMap | 毛毛的博客</title>
+  <title>多线程 | 毛毛的博客</title>
   
 
 
@@ -252,7 +252,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/03/HashMap/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/06/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="毛毛">
@@ -269,7 +269,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">HashMap</h1>
+          <h1 class="post-title" itemprop="name headline">多线程</h1>
         
 
         <div class="post-meta">
@@ -281,8 +281,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-03T14:15:35+08:00">
-                2020-08-03
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-06T09:25:50+08:00">
+                2020-08-06
               </time>
             
 
@@ -304,8 +304,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%9B%86%E5%90%88/" itemprop="url" rel="index">
-                    <span itemprop="name">集合</span>
+                  <a href="/categories/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" itemprop="url" rel="index">
+                    <span itemprop="name">多线程</span>
                   </a>
                 </span>
 
@@ -341,21 +341,52 @@
       
 
       
-        <p>HashMap是我们日常开发中使用频率最高,用于存储key-value键值对的数据结构。在jdk1.8中对HashMap进行了优化，本文结合1.7和1.8的区别,探讨HashMap。</p>
-<p>说到HashMap，我们就必须说一下hash函数。</p>
-<h3 id="HashMap的hash函数设计"><a href="#HashMap的hash函数设计" class="headerlink" title="HashMap的hash函数设计"></a>HashMap的hash函数设计</h3><p>hash函数是先拿到key的HashCode,是一个32位的int值,然后让hashcode的高16位和低16位进行异或运算,如下代码:<br>static final int hash(Object key) {<br>        int h;<br>        return (key == null) ? 0 : (h = key.hashCode()) ^ (h &gt;&gt;&gt; 16);<br>    }</p>
-<h3 id="HashMap是什么？"><a href="#HashMap是什么？" class="headerlink" title="HashMap是什么？"></a>HashMap是什么？</h3><p>HashMap是一个存储key-value键值对的集合,实现了Map接口。HashMap最多只允许一条记录的key为null，允许多条记录的值为null。HashMap不是线程安全的,因此在同一时刻如果有多个线程对HashMap进行写入操作,会引起数据的不一致。</p>
-<h3 id="HashMap的数据结构"><a href="#HashMap的数据结构" class="headerlink" title="HashMap的数据结构"></a>HashMap的数据结构</h3><p>HashMap在1.7的时候使用数组+链表,1.8对其优化,使用数组+链表+红黑树</p>
-<h3 id="HashMap原理"><a href="#HashMap原理" class="headerlink" title="HashMap原理"></a>HashMap原理</h3><p>HashMap是一个entry数组,用来存储key-value键值对,1.7之前他的底层是数组+链表实现的,1.8之后 数组+链表+红黑树.我们使用put(key-value)存储对象到hashmap中,首先会根据key算出数组下标,然后将数据存储到对象的桶中,我们使用get方法从hashmap中取出数据.</p>
-<h3 id="HashMap容量"><a href="#HashMap容量" class="headerlink" title="HashMap容量"></a>HashMap容量</h3><p>HashMap的默认容量是16,也可以在初始化的时候指定容量,但必须是2的幂次方.其实你就算初始化的时候传入的容量不是2的幂次方,HashMap的内部也会通过tableSizeFor这个方法把传入的容量转变成最小2的幂次方数,假如你传的数是7,它内部会把它变成8.下面代码是tableSizeFor源代码:<br> static final int tableSizeFor(int cap) {<br>        int n = cap - 1;<br>        n |= n &gt;&gt;&gt; 1;<br>        n |= n &gt;&gt;&gt; 2;<br>        n |= n &gt;&gt;&gt; 4;<br>        n |= n &gt;&gt;&gt; 8;<br>        n |= n &gt;&gt;&gt; 16;<br>        return (n &lt; 0) ? 1 : (n &gt;= MAXIMUM_CAPACITY) ? MAXIMUM_CAPACITY : n + 1;<br>    为什么-1呢？如果不-1,得到的数是原来的两倍</p>
-<h3 id="为什么HashMap的容量必须是2的幂次方数。"><a href="#为什么HashMap的容量必须是2的幂次方数。" class="headerlink" title="为什么HashMap的容量必须是2的幂次方数。"></a>为什么HashMap的容量必须是2的幂次方数。</h3><p>避免hash碰撞<br>首先HashMap底层有数组,我们都知道在数组中存数据的时候,必须要计算数组的索引,在HashMap中数组下表是通过HashCode算出来的hash值与数组长度-1 进行与运算。(hash&amp;length-1),在计算机中位运算是最快的。如果我们传的是8,他的2进制数是0000 1000 -1之后 他的二进制数的0000 0111 这样的话无论存储的对象的key算出来的hash值是多少,与之进行与计算,得到的低位永远都是1。<br>例如我们指定容量是8 -1之后是7 0000 0111 并且key的hash值是1111 0011 两者进行与运算得到的值是<br>0000 0111<br>1111 1111<br>0000 0011  得到的结果低位都是1,这样就保证了每个hash桶都有可能存储数据.<br>假如我们传入的数据不是2的幂次方数10  -1是9 二进制数是0000 1001<br>0000 1001<br>1111 1111<br>0000 1001  得到的结果低位中就有0的存在,这样就导致了这个桶永远存储不到数据,这样就增大了hash碰撞。</p>
-<h3 id="HashMap默认容量为什么是16？"><a href="#HashMap默认容量为什么是16？" class="headerlink" title="HashMap默认容量为什么是16？"></a>HashMap默认容量为什么是16？</h3><p>HashMap他的扩容条件是阈值=容量*负载因子(默认0.75),我们指定默认容量是16一方面是为了给定大容量但是每次存储的数据不是很多,就会导致浪费大量的存储空间,另一方面如果给定的值太小,数据存储的太多需要我们频繁的进行扩容操作.所以相对来说16是一个合适的数字。</p>
-<h3 id="HashMap-put过程"><a href="#HashMap-put过程" class="headerlink" title="HashMap put过程"></a>HashMap put过程</h3><p>首先我们需要对key进行hashcode运算,算出hash值,再通过hashcode&amp;length-1计算出下标.然后去数组中找到数组下标对应的位置是否已经存在值,如果没有,划出一个节点将数据存储进去；如果有数据的话，调用equals方法判断内容是否相等,如果不相等就在链表上一个个去找,如果没找到就划出节点存储数据;如果找到了就代替原来的值,把新值存进去,把旧值返回。</p>
-<h3 id="HashMap扩容"><a href="#HashMap扩容" class="headerlink" title="HashMap扩容"></a>HashMap扩容</h3><p>1.扩容条件<br>当数组长度达到阈值的时候,并且你下次put数据你算出来的数组下标有数据的时候才需要扩容。<br>2.扩容步骤<br>jdk1.7中:<br>1.需要new一个新的数组,长度是原来的两倍<br>2.将原来的数组重新rehash到新数组中(因为数组长度不一样,算出来的数组下标也不一样)<br>在jdk1.8中:<br>new一个新的数组(长度为2倍)<br>扩容不需要重新rehash,只需要看高bit位是1还是0,如果是1就是原来的位置+新数组的容量;<br>如果是0,就是原来的数组索引<br>例如<br>0001 1111<br>0000 0101<br>0000 0101 得到的结果是5 这高bit位是0的情况</p>
-<p>0001 1111<br>0001 0101  得到的结果是5+16 这是高bit位是1的情况。</p>
-<h3 id="在jkd1-8中HashMap什么时候转换为红黑树？"><a href="#在jkd1-8中HashMap什么时候转换为红黑树？" class="headerlink" title="在jkd1.8中HashMap什么时候转换为红黑树？"></a>在jkd1.8中HashMap什么时候转换为红黑树？</h3><p>我们知道在jdk1.8中HashMap的数据结构进行了优化,采用数组+链表+红黑树。那么什么时候转化为红黑树呢,什么时候有转化为链表呢？<br>当链表长度&gt;8的时候,并且数组长度&gt;8的时候,会转化为红黑树;如果链表长度大于8,但数组长度小于64,会进行扩容。当我们删除红黑树的数据,使得长度小于6的时候会重新转化为链表。</p>
-<h3 id="为什么当链表长度8的时候转化为红黑树？"><a href="#为什么当链表长度8的时候转化为红黑树？" class="headerlink" title="为什么当链表长度8的时候转化为红黑树？"></a>为什么当链表长度8的时候转化为红黑树？</h3><p>链表的时间复杂度的O(n),红黑树的时间复杂度是O(logn),红黑树的查找效率高,但是红黑树的占用节点的空间是链表的两倍。因此只有链表足够多的时候我们才使用红黑树,并且链表中的节点符合泊松分布,泊松分布是一种统计学,当链表长度大于8的概率非常低,性能也很差。</p>
+        <h3 id="线程和进程"><a href="#线程和进程" class="headerlink" title="线程和进程"></a>线程和进程</h3><p>进程是执行程序的一次过程,它是一个动态的概念。是系统资源分配的单位。<br>线程是依赖进程的,线程是cpu执行的最小单位.一个进程可以包括多个线程。两者的关系举个例子<br>我们在看电影的时候,你qq也是开着的,电影和qq就是两个进程.电影里的声音和图像就是两个线程分别控制。</p>
+<h3 id="创建线程的方式"><a href="#创建线程的方式" class="headerlink" title="创建线程的方式"></a>创建线程的方式</h3><p>1.继承Thread,重写run方法,然后在调用start方法开启线程。<br>public class Main extends Thread{</p>
+<pre><code>public void run(){
+    for(int i=0;i&lt;10;i++){
+        System.out.print(i);
+    }
+}
 
+public static void main(String[] args) {
+    Main main=new Main();
+    main.start();
+}</code></pre><p>}<br>代码结果0123456789  </p>
+<h4 id="注意-start方法是用来开启现成的方法-run方法只是一个普通调用的方法"><a href="#注意-start方法是用来开启现成的方法-run方法只是一个普通调用的方法" class="headerlink" title="注意:start方法是用来开启现成的方法,run方法只是一个普通调用的方法"></a>注意:start方法是用来开启现成的方法,run方法只是一个普通调用的方法</h4><p>例如:<br>  public void run(){<br>        for(int i=0;i&lt;10;i++){<br>            System.out.print(i);<br>        }<br>    }</p>
+<pre><code>public static void main(String[] args) {
+    Main main=new Main();
+    main.start();
+
+
+    for(int i=0;i&lt;10;i++){
+        System.out.print(&quot;我是主线程&quot;+i);
+    }
+}
+我在主线程执行一段代码,这里程序会先执行主线程中的代码,然后在执行子线程。结果如下：
+我是主线程0我是主线程1我是主线程2我是主线程3我是主线程4我是主线程5我是主线程6我是主线程70123456789我是主线程8我是主线程9
+当我们把start方法换成run方法,结果
+0123456789我是主线程0我是主线程1我是主线程2我是主线程3我是主线程4我是主线程5我是主线程6我是主线程7我是主线程8我是主线程9
+他会先去执行run方法中的代码,然后在执行主线程中的代码,说明run方法只是简单的方法调用。</code></pre><p>2.实现Runnable接口,重写run方法,将线程作为参数传递<br>public class Main implements Runnable{</p>
+<pre><code>public void run(){
+    for(int i=0;i&lt;10;i++){
+        System.out.print(i);
+    }
+}
+public static void main(String[] args) {
+    Main main=new Main();
+    new Thread(main).start();
+    for(int i=0;i&lt;10;i++){
+        System.out.print(&quot;我是主线程&quot;+i);
+    }
+}</code></pre><p>}<br>3.实现callable接口，重写call方法(了解)</p>
+<h3 id="线程的状态"><a href="#线程的状态" class="headerlink" title="线程的状态"></a>线程的状态</h3><p>1.新建状态(new) 创建后未启动的线程的状态 未调用start方法<br>2.运行状态runnable：调用start方法之后 包含两个子状态(running和ready) 这两个线程都是在等待cpu的执行权<br>3.无限期等待waiting：不会被cpu分配时间，需要显示唤醒<br>4.调用了wait和join都会使线程进入无限期等待状态<br>5.限期等待(timed waitiong) 在一定时间内会被系统唤醒 notify或notifyall<br>w6.ait方法和join方法设置睡眠时间<br>7.阻塞状态：等待获取锁<br>8.终止状态：线程已经结束运行</p>
+<h3 id="sleep方法和wait方法"><a href="#sleep方法和wait方法" class="headerlink" title="sleep方法和wait方法"></a>sleep方法和wait方法</h3><p>相同点:都可以暂停线程的执行,使线程进入等待状态。<br>不同点:1.sleep没有释放锁,wait会释放锁。2.sleep是Threa类的静态方法,wait是Object对象的实例方法 3.sleep可以在任何方法中使用,wait只能在synchronized方法中使用。</p>
+<h3 id="实现runnable接口和实现callable接口创建线程的区别？"><a href="#实现runnable接口和实现callable接口创建线程的区别？" class="headerlink" title="实现runnable接口和实现callable接口创建线程的区别？"></a>实现runnable接口和实现callable接口创建线程的区别？</h3><p>创建线程的方式大家都知道继承Thread类,重写run方法;实现runnable接口,重写run方法;实现callable接口,重写call方法。用的最多的就是前两种,那么继承Threa类和实现runnable方法哪个好呢?以我个人而言,我觉得实现runable接口更好一些,因为接口可以多实现,抽象类不能多继承,扩展性好一些.实现runable接口和实现callable接口区别？<br>1.实现runnable方法没有返回值,实现callable接口有返回值<br>2.实现runnable方法不会抛出异常,实现callable接口会抛异常。</p>
+<h3 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h3><p>线程池其实和我们之间学过的jdbc连接池差不多是一个概念。线程池中存放了一些创建好的线程,等系统需要的时候直接调用即可</p>
+<h3 id="线程池优点？"><a href="#线程池优点？" class="headerlink" title="线程池优点？"></a>线程池优点？</h3><p>有时候系统需要在短时间内处理很多请求,如果每次请求都需要创建一个线程池的话,系统就需要不断的进行线程的创建和销毁,消耗时间和性能,使用线程池可以重用线程池中的线程。</p>
+<h3 id="线程池创建？"><a href="#线程池创建？" class="headerlink" title="线程池创建？"></a>线程池创建？</h3><p>4种常见的线程池:<br>1.Exectors.newCacheThreadPool() 可缓存线程池。 先查看线程池中有没有以前建立的线程,如果有,就直接使用。如果没有就创建一个新的线程加入到线程池中。<br>示例代码:<br>ExecutorService cachedThreadPool = Executors.newCachedThreadPool();<br>2.Exectors.newFixedThreadPool() 可重用固定个数的线程池<br>示例代码:<br>ExecutorService fixedThreadPool = Executors.newFixedThreadPool(3);<br>3.Exectors.newScheduledThreadPool() 定长线程池 支持定时及周期性任务执行。<br>ScheduledExecutorService scheduledThreadPool = Executors.newScheduledThreadPool(5);<br>4.Exectors.newSingledThreadPool() 创建一个单线程的线程池,只会创建一个线程来执行任务,如果这个线程异常结束，那么会在重新创建一个线程，他会始终保持线程池里只有一个线程。这样可以保持任务在队列中是按顺序执行的。</p>
+<h3 id="线程池的流程"><a href="#线程池的流程" class="headerlink" title="线程池的流程"></a>线程池的流程</h3>
       
     </div>
     
@@ -385,8 +416,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/07/31/java%E5%9F%BA%E7%A1%80/" rel="next" title="java基础">
-                <i class="fa fa-chevron-left"></i> java基础
+              <a href="/2020/08/04/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/" rel="next" title="反射机制">
+                <i class="fa fa-chevron-left"></i> 反射机制
               </a>
             
           </div>
@@ -394,10 +425,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/08/04/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/" rel="prev" title="反射机制">
-                反射机制 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -533,7 +560,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap的hash函数设计"><span class="nav-number">1.</span> <span class="nav-text">HashMap的hash函数设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap是什么？"><span class="nav-number">2.</span> <span class="nav-text">HashMap是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap的数据结构"><span class="nav-number">3.</span> <span class="nav-text">HashMap的数据结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap原理"><span class="nav-number">4.</span> <span class="nav-text">HashMap原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap容量"><span class="nav-number">5.</span> <span class="nav-text">HashMap容量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么HashMap的容量必须是2的幂次方数。"><span class="nav-number">6.</span> <span class="nav-text">为什么HashMap的容量必须是2的幂次方数。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap默认容量为什么是16？"><span class="nav-number">7.</span> <span class="nav-text">HashMap默认容量为什么是16？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap-put过程"><span class="nav-number">8.</span> <span class="nav-text">HashMap put过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap扩容"><span class="nav-number">9.</span> <span class="nav-text">HashMap扩容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在jkd1-8中HashMap什么时候转换为红黑树？"><span class="nav-number">10.</span> <span class="nav-text">在jkd1.8中HashMap什么时候转换为红黑树？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么当链表长度8的时候转化为红黑树？"><span class="nav-number">11.</span> <span class="nav-text">为什么当链表长度8的时候转化为红黑树？</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#线程和进程"><span class="nav-number">1.</span> <span class="nav-text">线程和进程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建线程的方式"><span class="nav-number">2.</span> <span class="nav-text">创建线程的方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#注意-start方法是用来开启现成的方法-run方法只是一个普通调用的方法"><span class="nav-number">2.1.</span> <span class="nav-text">注意:start方法是用来开启现成的方法,run方法只是一个普通调用的方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程的状态"><span class="nav-number">3.</span> <span class="nav-text">线程的状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sleep方法和wait方法"><span class="nav-number">4.</span> <span class="nav-text">sleep方法和wait方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现runnable接口和实现callable接口创建线程的区别？"><span class="nav-number">5.</span> <span class="nav-text">实现runnable接口和实现callable接口创建线程的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程池"><span class="nav-number">6.</span> <span class="nav-text">线程池</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程池优点？"><span class="nav-number">7.</span> <span class="nav-text">线程池优点？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程池创建？"><span class="nav-number">8.</span> <span class="nav-text">线程池创建？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程池的流程"><span class="nav-number">9.</span> <span class="nav-text">线程池的流程</span></a></li></ol></div>
             
 
           </div>
