@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="毛毛的博客">
 <meta property="og:description" content="线程和进程进程是执行程序的一次过程,它是一个动态的概念。是系统资源分配的单位。线程是依赖进程的,线程是cpu执行的最小单位.一个进程可以包括多个线程。两者的关系举个例子我们在看电影的时候,你qq也是开着的,电影和qq就是两个进程.电影里的声音和图像就是两个线程分别控制。 创建线程的方式1.继承Thread,重写run方法,然后在调用start方法开启线程。public class Main ext">
 <meta property="article:published_time" content="2020-08-06T01:25:50.000Z">
-<meta property="article:modified_time" content="2020-08-06T06:29:46.709Z">
+<meta property="article:modified_time" content="2020-08-10T08:02:07.817Z">
 <meta property="article:author" content="毛毛">
 <meta property="article:tag" content="后端">
 <meta name="twitter:card" content="summary">
@@ -342,51 +342,18 @@
 
       
         <h3 id="线程和进程"><a href="#线程和进程" class="headerlink" title="线程和进程"></a>线程和进程</h3><p>进程是执行程序的一次过程,它是一个动态的概念。是系统资源分配的单位。<br>线程是依赖进程的,线程是cpu执行的最小单位.一个进程可以包括多个线程。两者的关系举个例子<br>我们在看电影的时候,你qq也是开着的,电影和qq就是两个进程.电影里的声音和图像就是两个线程分别控制。</p>
-<h3 id="创建线程的方式"><a href="#创建线程的方式" class="headerlink" title="创建线程的方式"></a>创建线程的方式</h3><p>1.继承Thread,重写run方法,然后在调用start方法开启线程。<br>public class Main extends Thread{</p>
-<pre><code>public void run(){
-    for(int i=0;i&lt;10;i++){
-        System.out.print(i);
-    }
-}
-
-public static void main(String[] args) {
-    Main main=new Main();
-    main.start();
-}</code></pre><p>}<br>代码结果0123456789  </p>
-<h4 id="注意-start方法是用来开启现成的方法-run方法只是一个普通调用的方法"><a href="#注意-start方法是用来开启现成的方法-run方法只是一个普通调用的方法" class="headerlink" title="注意:start方法是用来开启现成的方法,run方法只是一个普通调用的方法"></a>注意:start方法是用来开启现成的方法,run方法只是一个普通调用的方法</h4><p>例如:<br>  public void run(){<br>        for(int i=0;i&lt;10;i++){<br>            System.out.print(i);<br>        }<br>    }</p>
-<pre><code>public static void main(String[] args) {
-    Main main=new Main();
-    main.start();
-
-
-    for(int i=0;i&lt;10;i++){
-        System.out.print(&quot;我是主线程&quot;+i);
-    }
-}
-我在主线程执行一段代码,这里程序会先执行主线程中的代码,然后在执行子线程。结果如下：
-我是主线程0我是主线程1我是主线程2我是主线程3我是主线程4我是主线程5我是主线程6我是主线程70123456789我是主线程8我是主线程9
-当我们把start方法换成run方法,结果
-0123456789我是主线程0我是主线程1我是主线程2我是主线程3我是主线程4我是主线程5我是主线程6我是主线程7我是主线程8我是主线程9
-他会先去执行run方法中的代码,然后在执行主线程中的代码,说明run方法只是简单的方法调用。</code></pre><p>2.实现Runnable接口,重写run方法,将线程作为参数传递<br>public class Main implements Runnable{</p>
-<pre><code>public void run(){
-    for(int i=0;i&lt;10;i++){
-        System.out.print(i);
-    }
-}
-public static void main(String[] args) {
-    Main main=new Main();
-    new Thread(main).start();
-    for(int i=0;i&lt;10;i++){
-        System.out.print(&quot;我是主线程&quot;+i);
-    }
-}</code></pre><p>}<br>3.实现callable接口，重写call方法(了解)</p>
-<h3 id="线程的状态"><a href="#线程的状态" class="headerlink" title="线程的状态"></a>线程的状态</h3><p>1.新建状态(new) 创建后未启动的线程的状态 未调用start方法<br>2.运行状态runnable：调用start方法之后 包含两个子状态(running和ready) 这两个线程都是在等待cpu的执行权<br>3.无限期等待waiting：不会被cpu分配时间，需要显示唤醒<br>4.调用了wait和join都会使线程进入无限期等待状态<br>5.限期等待(timed waitiong) 在一定时间内会被系统唤醒 notify或notifyall<br>w6.ait方法和join方法设置睡眠时间<br>7.阻塞状态：等待获取锁<br>8.终止状态：线程已经结束运行</p>
+<h3 id="创建线程的方式"><a href="#创建线程的方式" class="headerlink" title="创建线程的方式"></a>创建线程的方式</h3><p>1.继承Thread,重写run方法,然后在调用start方法开启线程。<br>public class Main extends Thread{<br>    public void run(){<br>        for(int i=0;i&lt;10;i++){<br>            System.out.print(i);<br>        }<br>    }<br>    public static void main(String[] args) {<br>        Main main=new Main();<br>        main.start();<br>    }<br>}<br>代码结果0123456789  </p>
+<h4 id="注意-start方法是用来开启现成的方法-run方法只是一个普通调用的方法"><a href="#注意-start方法是用来开启现成的方法-run方法只是一个普通调用的方法" class="headerlink" title="注意:start方法是用来开启现成的方法,run方法只是一个普通调用的方法"></a>注意:start方法是用来开启现成的方法,run方法只是一个普通调用的方法</h4><p>例如:<br>  public void run(){<br>        for(int i=0;i&lt;10;i++){<br>            System.out.print(i);<br>        }<br>    }<br>    public static void main(String[] args) {<br>        Main main=new Main();<br>        main.start();<br>        for(int i=0;i&lt;10;i++){<br>            System.out.print(“我是主线程”+i);<br>        }<br>    }<br>    我在主线程执行一段代码,这里程序会先执行主线程中的代码,然后在执行子线程。结果如下：<br>    我是主线程0我是主线程1我是主线程2我是主线程3我是主线程4我是主线程5我是主线程6我是主线程70123456789我是主线程8我是主线程9<br>    当我们把start方法换成run方法,结果<br>    0123456789我是主线程0我是主线程1我是主线程2我是主线程3我是主线程4我是主线程5我是主线程6我是主线程7我是主线程8我是主线程9<br>    他会先去执行run方法中的代码,然后在执行主线程中的代码,说明run方法只是简单的方法调用。<br>2.实现Runnable接口,重写run方法,将线程作为参数传递<br>public class Main implements Runnable{<br>    public void run(){<br>        for(int i=0;i&lt;10;i++){<br>            System.out.print(i);<br>        }<br>    }<br>    public static void main(String[] args) {<br>        Main main=new Main();<br>        new Thread(main).start();<br>        for(int i=0;i&lt;10;i++){<br>            System.out.print(“我是主线程”+i);<br>        }<br>    }<br>}<br>3.实现callable接口，重写call方法(了解)</p>
+<h3 id="线程的状态"><a href="#线程的状态" class="headerlink" title="线程的状态"></a>线程的状态</h3><p>1.新建状态(new) 创建后未启动的线程的状态 new一个线程,未调用start方法<br>2.就绪状态:当调用start()方法之后,线程立即进入就绪状态<br>3.运行状态:cpu调度线程.<br>4.阻塞状态:当调用sleep,wait同步方法时,线程进入阻塞状态,阻塞结束后,继续等待cpu调度。<br>5.终止状态:线程已经结束运行</p>
+<h3 id="如何让线程终止"><a href="#如何让线程终止" class="headerlink" title="如何让线程终止?"></a>如何让线程终止?</h3><p>其实jdk提供了stop()和destory()方法终止线程,但是已经被废弃,现在不推荐使用。我们可以给自己设置一个标识位,如下面代码:<br>public class Main {<br>    public static void main(String[] args) {<br>        Thread1 thread1=new Thread1();<br>        Thread thread=new Thread(thread1);<br>        thread.start();<br>        for(int i=0;i&lt;10;i++){<br>            if(i==8){<br>                thread1.stop();<br>            }<br>        }<br>    }<br>}<br>class Thread1 implements Runnable{<br>    private Boolean flag=true;<br>    @Override<br>    public void run() {<br>        while (flag){<br>            for(int i=0;i&lt;10;i++){<br>                System.out.println(i);<br>            }<br>        }<br>    }<br>    public void stop(){<br>        this.flag=false;<br>    }<br>}</p>
 <h3 id="sleep方法和wait方法"><a href="#sleep方法和wait方法" class="headerlink" title="sleep方法和wait方法"></a>sleep方法和wait方法</h3><p>相同点:都可以暂停线程的执行,使线程进入等待状态。<br>不同点:1.sleep没有释放锁,wait会释放锁。2.sleep是Threa类的静态方法,wait是Object对象的实例方法 3.sleep可以在任何方法中使用,wait只能在synchronized方法中使用。</p>
 <h3 id="实现runnable接口和实现callable接口创建线程的区别？"><a href="#实现runnable接口和实现callable接口创建线程的区别？" class="headerlink" title="实现runnable接口和实现callable接口创建线程的区别？"></a>实现runnable接口和实现callable接口创建线程的区别？</h3><p>创建线程的方式大家都知道继承Thread类,重写run方法;实现runnable接口,重写run方法;实现callable接口,重写call方法。用的最多的就是前两种,那么继承Threa类和实现runnable方法哪个好呢?以我个人而言,我觉得实现runable接口更好一些,因为接口可以多实现,抽象类不能多继承,扩展性好一些.实现runable接口和实现callable接口区别？<br>1.实现runnable方法没有返回值,实现callable接口有返回值<br>2.实现runnable方法不会抛出异常,实现callable接口会抛异常。</p>
 <h3 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h3><p>线程池其实和我们之间学过的jdbc连接池差不多是一个概念。线程池中存放了一些创建好的线程,等系统需要的时候直接调用即可</p>
-<h3 id="线程池优点？"><a href="#线程池优点？" class="headerlink" title="线程池优点？"></a>线程池优点？</h3><p>有时候系统需要在短时间内处理很多请求,如果每次请求都需要创建一个线程池的话,系统就需要不断的进行线程的创建和销毁,消耗时间和性能,使用线程池可以重用线程池中的线程。</p>
-<h3 id="线程池创建？"><a href="#线程池创建？" class="headerlink" title="线程池创建？"></a>线程池创建？</h3><p>4种常见的线程池:<br>1.Exectors.newCacheThreadPool() 可缓存线程池。 先查看线程池中有没有以前建立的线程,如果有,就直接使用。如果没有就创建一个新的线程加入到线程池中。<br>示例代码:<br>ExecutorService cachedThreadPool = Executors.newCachedThreadPool();<br>2.Exectors.newFixedThreadPool() 可重用固定个数的线程池<br>示例代码:<br>ExecutorService fixedThreadPool = Executors.newFixedThreadPool(3);<br>3.Exectors.newScheduledThreadPool() 定长线程池 支持定时及周期性任务执行。<br>ScheduledExecutorService scheduledThreadPool = Executors.newScheduledThreadPool(5);<br>4.Exectors.newSingledThreadPool() 创建一个单线程的线程池,只会创建一个线程来执行任务,如果这个线程异常结束，那么会在重新创建一个线程，他会始终保持线程池里只有一个线程。这样可以保持任务在队列中是按顺序执行的。</p>
-<h3 id="线程池的流程"><a href="#线程池的流程" class="headerlink" title="线程池的流程"></a>线程池的流程</h3>
+<h3 id="线程池优点？"><a href="#线程池优点？" class="headerlink" title="线程池优点？"></a>线程池优点？</h3><p>有时候系统需要在短时间内处理很多请求,如果每次请求都需要创建一个线程池的话,系统就需要不断的进行线程的创建和销毁,消耗时间和性能,使用线程池可以重用线程池中的线程,减少系统开销,节省时间和性能。</p>
+<h3 id="线程池创建？"><a href="#线程池创建？" class="headerlink" title="线程池创建？"></a>线程池创建？</h3><p>在java中创建线程池常用的类是ThreadPoolExecutor,该类的全参构造如下:<br>public ThreadPoolExecutor(int corePoolSize,<br>                          int maximumPoolSize,<br>                          long keepAliveTime,<br>                          TimeUnit unit,<br>                          BlockingQueue<Runnable> workQueue,<br>                          ThreadFactory threadFactory,<br>                          RejectdExecutionHandlle handle)<br>参数介绍:<br>1.corePoolSize:线程池中核心线程池的数量<br>2.maximumPoolSize:线程池中能拥有的最大线程数<br>3.workQueue:阻塞队列<br>4.keepAliveTime:表示空闲线程的存活时间<br>5.handle:表示当workQueue已满的时候,且线程中的数量最大值的时候,线程池拒绝新任务时采取的策略。一般有四种<br>(1).ThreadPoolExecutor.AbortPolicy():抛出RejectdExecutionException异常<br>(2).ThreadPoolExecutor.CallerRunsPolicy:由向线程中提交任务的线程来执行该任务<br>(3).ThreadPoolExecutor.DiscardOldestPolicy:抛弃最旧的任务<br>(4).ThreadPoolExecutor.DiscadPolicy:抛弃当前任务<br>6.threadFactory:指定创建线程的工厂</Runnable></p>
+<p>4种常见的线程池:<br>1.Exectors.newCacheThreadPool() 可缓存线程池。 先查看线程池中有没有以前建立的线程,如果有,就直接使用。如果没有就创建一个新的线程加入到线程池中。<br>示例代码:<br>ExecutorService cachedThreadPool = Executors.newCachedThreadPool();<br>2.Exectors.newFixedThreadPool() 可重用固定个数的线程池<br>示例代码:<br>ExecutorService fixedThreadPool = Executors.newFixedThreadPool(3);<br>3.Exectors.newScheduledThreadPool() 定长线程池 支持定时及周期性任务执行。<br>ScheduledExecutorService scheduledThreadPool = Executors.newScheduledThreadPool(5);<br>4.Exectors.newSingledThreadPool() 创建一个单线程的线程池,只会创建一个线程来执行任务,如果这个线程异常结束，那么会在重新创建一个线程，他会始终保持线程池里只有一个线程。这样可以保持任务在队列中是按顺序执行的。</p>
+<h3 id="线程池的流程"><a href="#线程池的流程" class="headerlink" title="线程池的流程"></a>线程池的流程</h3><p>1.当线程池中线程数小于corePoolSize时,新增任务将创建一个新线程池中存在空闲线程。<br>2.当线程池中线程数达到corePoolSize时,新增任务将放入到workQueue队列中,等待线程中任务调度。<br>3.当workQueue已满,并且maximumPoolSize &gt; corePoolSize时,新提交任务会创建新线程执行任务。<br>4.当workQueue已满,且提交任务数超过maximumPoolSize,任务由RejextExecutionHandler处理。</p>
+
       
     </div>
     
@@ -560,7 +527,7 @@ public static void main(String[] args) {
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#线程和进程"><span class="nav-number">1.</span> <span class="nav-text">线程和进程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建线程的方式"><span class="nav-number">2.</span> <span class="nav-text">创建线程的方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#注意-start方法是用来开启现成的方法-run方法只是一个普通调用的方法"><span class="nav-number">2.1.</span> <span class="nav-text">注意:start方法是用来开启现成的方法,run方法只是一个普通调用的方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程的状态"><span class="nav-number">3.</span> <span class="nav-text">线程的状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sleep方法和wait方法"><span class="nav-number">4.</span> <span class="nav-text">sleep方法和wait方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现runnable接口和实现callable接口创建线程的区别？"><span class="nav-number">5.</span> <span class="nav-text">实现runnable接口和实现callable接口创建线程的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程池"><span class="nav-number">6.</span> <span class="nav-text">线程池</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程池优点？"><span class="nav-number">7.</span> <span class="nav-text">线程池优点？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程池创建？"><span class="nav-number">8.</span> <span class="nav-text">线程池创建？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程池的流程"><span class="nav-number">9.</span> <span class="nav-text">线程池的流程</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#线程和进程"><span class="nav-number">1.</span> <span class="nav-text">线程和进程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建线程的方式"><span class="nav-number">2.</span> <span class="nav-text">创建线程的方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#注意-start方法是用来开启现成的方法-run方法只是一个普通调用的方法"><span class="nav-number">2.1.</span> <span class="nav-text">注意:start方法是用来开启现成的方法,run方法只是一个普通调用的方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程的状态"><span class="nav-number">3.</span> <span class="nav-text">线程的状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何让线程终止"><span class="nav-number">4.</span> <span class="nav-text">如何让线程终止?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sleep方法和wait方法"><span class="nav-number">5.</span> <span class="nav-text">sleep方法和wait方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现runnable接口和实现callable接口创建线程的区别？"><span class="nav-number">6.</span> <span class="nav-text">实现runnable接口和实现callable接口创建线程的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程池"><span class="nav-number">7.</span> <span class="nav-text">线程池</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程池优点？"><span class="nav-number">8.</span> <span class="nav-text">线程池优点？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程池创建？"><span class="nav-number">9.</span> <span class="nav-text">线程池创建？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程池的流程"><span class="nav-number">10.</span> <span class="nav-text">线程池的流程</span></a></li></ol></div>
             
 
           </div>
