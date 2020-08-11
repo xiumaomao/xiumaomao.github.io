@@ -86,9 +86,9 @@
 <meta property="og:site_name" content="毛毛的博客">
 <meta property="og:description" content="java是一门面向对象的编程语言,在java的世界里一切皆可以成为对象，接下来我们就来了解了解什么是面向对象。    – 面向过程和面向对象   &amp;ensp;&amp;ensp;举一个例子很好的诠释了面向过程和面向对象的区别。把大象装进冰箱分几步。以面向过程的思想来看分三步.第一步把冰箱门打开,第二步把大象装进冰箱,第三步把冰箱们关起来。而以面向对象的思想来看首先我们需要创建大象这么一个对象，然后告诉大">
 <meta property="og:image" content="http://yoursite.com/2020/07/31/java%E5%9F%BA%E7%A1%80/user.jpg">
-<meta property="og:image" content="http://yoursite.com/2020/07/31/images/collection.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/31/java%E5%9F%BA%E7%A1%80/collection.png">
 <meta property="article:published_time" content="2020-07-31T05:43:06.000Z">
-<meta property="article:modified_time" content="2020-08-11T06:41:42.458Z">
+<meta property="article:modified_time" content="2020-08-11T07:07:27.798Z">
 <meta property="article:author" content="毛毛">
 <meta property="article:tag" content="后端">
 <meta name="twitter:card" content="summary">
@@ -353,7 +353,7 @@
 <ul>
 <li><h4 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h4>&ensp;&ensp;封装是面向对象的核心思想，将描述某种实体的数据和这些数据的操作放在一起，形成一个封装体。他保证了类内部结构的完整性，是其他用户无法直接操作内部数据，提高了安全性。我们常见的就是定义一个类，把属性修改为private不让外界访问，然后通过自己定义的getter/setter方法去访问。如下图:</li>
 </ul>
-<img src="/2020/07/31/java%E5%9F%BA%E7%A1%80/user.jpg" width="200" height="200" align="center" alt="案例">
+<img src="/2020/07/31/java%E5%9F%BA%E7%A1%80/user.jpg" width="800" height="800" align="center" alt="案例">
 
 <ol>
 <li>封装的好处: 只能通过内部规定的方法访问数据</li>
@@ -375,7 +375,7 @@
 <p>那么问题来了,java既然有了基本数据类型为什么还需要包装类呢？<br>众所周知，java是面向对象的,但并不是”纯面向对象的”，例如我们经常使用的基本数据类型就不是对象，在世纪开发中我们需要将基本数据<br>类型转换成对象，例如:将基本数据类型存储到数组或者集合中。为了解决这个问题，java在每个基本数据类型的基础上又引入了包装类。</p>
 <h4 id="装箱与拆箱"><a href="#装箱与拆箱" class="headerlink" title="装箱与拆箱"></a>装箱与拆箱</h4><p>装箱简单来说就是自动将基本数据类型转换为包装类型；拆箱就是将包装类型转换为基本数据类型。<br>我们来看看下面代码:<br>Integer a=10; int b=a;<br>当执行Integer a=10的时候,系统为我们执行了Integer a=Integer.valueOf(10);<br>当执行int b=a的时候，系统为我们自动执行了a.intValue();<br>这是个典型的装箱与拆箱的过程,首先将a基本数据类型包装成Integer包装类,最后再将包装类转换成基本数据类型。</p>
 <p>– 集合Collection   </p>
-<p>下面这张大图诠释了集合之间的关系<br><img src="../images/collection.png" width="200" height="200" align="center" alt="集合"></p>
+<p>下面这张大图诠释了集合之间的关系<br><img src="/2020/07/31/java%E5%9F%BA%E7%A1%80/collection.png" width="800" height="800" align="center" alt="集合"></p>
 <p>除了map系列的集合，所有集合都实现Iterator接口，iterator是用来遍历集合的一个接口,主要有hasNext(), next(), remove()三种方法。如下<br> list list = new ArrayList();<br> list.add(“aa”);<br> list.add(“bb”);<br> list.add(“cc”);<br> for (Iterator iter = list.iterator(); iter.hasNext();) {<br>     String str = (String)iter.next();<br>     System.out.println(str);<br> }<br>首先通过iterator()方法得到iterator,通过hasNext()方法判断是否有下一个元素,最后通过next()方法取出元素</p>
 <p>1.集合主要分为Collection和Map两个接口<br>2.Collection又分为List和Set<br>3.List分为AraayList,LinkList和Vector三个子类<br>4.Set分为HashSet,TreeSet和linkerHashSet</p>
 <p>list和set接口的同异:<br>不同点:<br>1.list集合是有序的，set是无序的<br>2.list集合允许存储重复元素，set集合重的元素不允许重复<br>3.list集合有索引，可以通过for遍历,set集合每有索引,不能for遍历(一般使用迭代器)</p>
