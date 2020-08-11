@@ -79,14 +79,14 @@
 
 
 
-<meta name="description" content="Srping Mvc概述">
+<meta name="description" content="Srping MVC概述说起Spring MVC,我们先来了解一下传统的MVC设计模式开发。用户发送请求—–&gt;controller控制器—-&gt;java bean——&gt;DB——&gt;返回给用户M代表的是model也就是java bean;V代表的是view视图,也就是传统的jsp,展示给用户的;C代表的是controller控制器,接收用户请求.SpringMvc是当前最主流的基">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Spring Mvc">
+<meta property="og:title" content="Spring MVC">
 <meta property="og:url" content="http://yoursite.com/2020/08/11/Spring-Mvc/index.html">
 <meta property="og:site_name" content="毛毛的博客">
-<meta property="og:description" content="Srping Mvc概述">
+<meta property="og:description" content="Srping MVC概述说起Spring MVC,我们先来了解一下传统的MVC设计模式开发。用户发送请求—–&gt;controller控制器—-&gt;java bean——&gt;DB——&gt;返回给用户M代表的是model也就是java bean;V代表的是view视图,也就是传统的jsp,展示给用户的;C代表的是controller控制器,接收用户请求.SpringMvc是当前最主流的基">
 <meta property="article:published_time" content="2020-08-11T05:22:06.000Z">
-<meta property="article:modified_time" content="2020-08-11T05:24:56.948Z">
+<meta property="article:modified_time" content="2020-08-11T06:27:43.062Z">
 <meta property="article:author" content="毛毛">
 <meta property="article:tag" content="后端">
 <meta name="twitter:card" content="summary">
@@ -125,7 +125,7 @@
 
 
 
-  <title>Spring Mvc | 毛毛的博客</title>
+  <title>Spring MVC | 毛毛的博客</title>
   
 
 
@@ -269,7 +269,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Spring Mvc</h1>
+          <h1 class="post-title" itemprop="name headline">Spring MVC</h1>
         
 
         <div class="post-meta">
@@ -341,7 +341,12 @@
       
 
       
-        <h3 id="Srping-Mvc概述"><a href="#Srping-Mvc概述" class="headerlink" title="Srping Mvc概述"></a>Srping Mvc概述</h3>
+        <h3 id="Srping-MVC概述"><a href="#Srping-MVC概述" class="headerlink" title="Srping MVC概述"></a>Srping MVC概述</h3><p>说起Spring MVC,我们先来了解一下传统的MVC设计模式开发。用户发送请求—–&gt;controller控制器—-&gt;java bean——&gt;DB——&gt;返回给用户<br>M代表的是model也就是java bean;V代表的是view视图,也就是传统的jsp,展示给用户的;C代表的是controller控制器,接收用户请求.SpringMvc是当前最主流的基于MVC设计模式开发的框架,是Spring框架的一个分支。他以Spring Ioc容器为基础,并利用容器的特性来简化它的配置。SpringMvc可以和Spring很好的结合起来开发,是java web开发者必须要掌握的框架。</p>
+<h3 id="核心组件"><a href="#核心组件" class="headerlink" title="核心组件"></a>核心组件</h3><p>1.DispatcherServlet:前置控制器,是整个流程控制的核心,控制其他组件的执行,进行统一调度,降低组件之间的耦合性,相当于总指挥。<br>2.Handler:处理器,完成具体的业务逻辑,相当于Servlet或者Action<br>3.HandlerMapping: 处理器映射器 DispatcherServlet接收到请求后,通过HandlerMappinging将不同的请求映射到不同的Handler<br>4.HandlerInterceptor: 处理器拦截器 是一个接口,如果需要完成拦截处理需要实现这个接口<br>5.HandlerExecutionChain: 处理器执行链<br>6.HandlerAdapter: 处理器适配器 Handler执行业务方法之前,需要一系列的操作,包括表单的校验，数据类型转换等。<br>7.ModelAndView: 装载了模型数据和视图信息,作为Handler的处理结果,返回给Dispatcher。<br>8.ViewResolver: 视图解析器 Dispatcher通过它将逻辑视图解析为物理视图,最终将渲染结果返回给客户端。</p>
+<h3 id="Spring-MVC工作流程"><a href="#Spring-MVC工作流程" class="headerlink" title="Spring MVC工作流程"></a>Spring MVC工作流程</h3><p>1.用户向客户端发送请求,这个请求会先被前端控制器拦截。<br>2.前端控制器接收到用户请求后会调用HandlerMapping处理器映射器,可以知道该请求由哪个controller处理<br>3.DispatcherServlet调用HandlerAdapter处理器适配器，告诉处理器适配器应该要去执行哪个Controller<br>4.HandlerAdapter处理器适配器去执行Controller并得到ModelAndView(数据和视图)，并层层返回给DispatcherServlet<br>5.DispatcherServlet将ModelAndView交给ViewReslover视图解析器解析，然后返回真正的视图。<br>6.DispatcherServlet将模型数据填充到视图中<br>7.DispatcherServlet将结果响应给用户</p>
+<h3 id="Spring-MVC特点"><a href="#Spring-MVC特点" class="headerlink" title="Spring MVC特点"></a>Spring MVC特点</h3><p>1.清晰的角色分配:控制器(controller),前端控制器(DispatcherServlet),处理器映射器(HandlerMapping)等,每一个角色都由一个专门的对象来实现。<br>2.可定制的HandlerMapping和ViewResolver:SpringMVC提供更简单的URL映射<br>3.可以支持各种视图技术,而不仅仅是jsp<br>4.有大量的接口,面向接口编程。</p>
+<h3 id="入门程序"><a href="#入门程序" class="headerlink" title="入门程序"></a>入门程序</h3><p>创建Maven工程,pom.xml添加依赖。</p>
+
       
     </div>
     
@@ -519,7 +524,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Srping-Mvc概述"><span class="nav-number">1.</span> <span class="nav-text">Srping Mvc概述</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Srping-MVC概述"><span class="nav-number">1.</span> <span class="nav-text">Srping MVC概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#核心组件"><span class="nav-number">2.</span> <span class="nav-text">核心组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring-MVC工作流程"><span class="nav-number">3.</span> <span class="nav-text">Spring MVC工作流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring-MVC特点"><span class="nav-number">4.</span> <span class="nav-text">Spring MVC特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#入门程序"><span class="nav-number">5.</span> <span class="nav-text">入门程序</span></a></li></ol></div>
             
 
           </div>
