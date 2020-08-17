@@ -103,8 +103,26 @@
 <meta property="og:image" content="http://yoursite.com/2020/08/13/mybatis/10.jpg">
 <meta property="og:image" content="http://yoursite.com/2020/08/13/mybatis/11.jpg">
 <meta property="og:image" content="http://yoursite.com/2020/08/13/mybatis/12.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/13/mybatis/13.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/13/mybatis/15.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/13/mybatis/16.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/13/mybatis/17.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/13/mybatis/18.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/13/mybatis/19.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/13/mybatis/20.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/13/mybatis/21.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/13/mybatis/22.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/13/mybatis/23.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/13/mybatis/24.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/13/mybatis/20.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/13/mybatis/25.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/13/mybatis/26.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/13/mybatis/27.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/13/mybatis/22.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/13/mybatis/28.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/13/mybatis/29.jpg">
 <meta property="article:published_time" content="2020-08-13T02:08:39.000Z">
-<meta property="article:modified_time" content="2020-08-13T08:29:45.905Z">
+<meta property="article:modified_time" content="2020-08-17T09:06:13.917Z">
 <meta property="article:author" content="毛毛">
 <meta property="article:tag" content="后端">
 <meta name="twitter:card" content="summary">
@@ -392,6 +410,74 @@
 <li>resultType:结果类型</li>
 </ul>
 <p>1.基本数据类型<br><img src="/2020/08/13/mybatis/10.jpg" width="800" height="800" align="center"><br>2.String<br><img src="/2020/08/13/mybatis/11.jpg" width="800" height="800" align="center"><br>3.java bean<br><img src="/2020/08/13/mybatis/12.jpg" width="800" height="800" align="center"></p>
+<h3 id="mybatis逆向工程"><a href="#mybatis逆向工程" class="headerlink" title="mybatis逆向工程"></a>mybatis逆向工程</h3><p>MyBatis框架需要:实体类,自定义Mapper接口,Mapper.xml;传统的开发中上述的组件需要开发者自己手动创建,逆向工程可以帮助开发者来自动创建组件,减轻开发者的工作量,提高开发效率。</p>
+<h3 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h3><p>MyBatis Generator是一个专门为MyBatis框架开发者定制的代码生成器,可自动生成MyBatis框架所需的实体类,Mapper接口,Mapper.xml,支持基本的CRUD操作,但是一些相对复杂的SQL还需要开发者自己开发。</p>
+<ul>
+<li>新建Maven工程,pom.xml<img src="/2020/08/13/mybatis/13.jpg" width="800" height="800" align="center"></li>
+<li>创建MyBatis Generator配置文件generatorConfig.xml</li>
+</ul>
+<p>1.jdbcConnection配置数据库连接信息。<br>2.javaModelGenerator配置JavaBean的生成策略。<br>3.sqlMapGenerator配置SQL映射文件生成策略。<br>4.javaClientGenerator配置Mapper接口的生成策略。<br>5.table配置目标数据表(tableName:表名,domainObjectName:JavaBean类名)<br>generatorConfig.xml<br><img src="/2020/08/13/mybatis/15.jpg" width="800" height="800" align="center"></p>
+<ul>
+<li>创建Generator执行类<img src="/2020/08/13/mybatis/16.jpg" width="800" height="800" align="center">
+结果:
+<img src="/2020/08/13/mybatis/17.jpg" width="800" height="800" align="center">
+
+</li>
+</ul>
+<h3 id="MyBatis缓存"><a href="#MyBatis缓存" class="headerlink" title="MyBatis缓存"></a>MyBatis缓存</h3><p>使用缓存可以减少java应用与数据库交互的次数,从而提升程序的运行效率。比如查询id=1的对象,第一次查询出后会自动将该对象保存到缓存中,当下一次查询时,直接从缓存中取出即可,无需再访问数据库。</p>
+<ul>
+<li>MyBatis缓存分类</li>
+</ul>
+<p>1.一级缓存:SqlSession级别,默认开启,并且不能关闭。<br>操作数据库时需要创建SqlSession对象,在对象中有一个HashMap用于存储数据,不同的SqlSession之间缓存数据的区域是独立的,不会相互影响。<br>一级缓存作用域是SqlSession范围的,当在同一个SqlSession中执行两次相同的SQL语句时,第一次执行完会将结果保存到缓存中,第二次查询时直接从缓存中取数据。</p>
+<img src="/2020/08/13/mybatis/18.jpg" width="800" height="800" align="center">
+<img src="/2020/08/13/mybatis/19.jpg" width="800" height="800" align="center">
+使用同一个SqlSession查询同一条sql语句,控制台只打印出一条SQL,说明此次虽然是两次查询,但是第一次查询出来的结果放到了一级缓存中,第二次在查询并没有再去查询数据库,而去以及缓存中直接拿。
+
+<img src="/2020/08/13/mybatis/20.jpg" width="800" height="800" align="center">
+<img src="/2020/08/13/mybatis/21.jpg" width="800" height="800" align="center">
+这次执行完查询语句后,关闭之前创建的SqlSession,重新创建SqlSession,通过SqlSession创建Mapper,这次执行两次一样的SQL,控制台打印两次SQL,说明这次没有走缓存.因为两次的SqlSession不一样。
+
+<h4 id="需要注意的是-如果SqlSession执行了DML操作-insert-update-delete-MyBatis必须将缓存清空以保证数据的准确性。"><a href="#需要注意的是-如果SqlSession执行了DML操作-insert-update-delete-MyBatis必须将缓存清空以保证数据的准确性。" class="headerlink" title="需要注意的是,如果SqlSession执行了DML操作(insert,update,delete),MyBatis必须将缓存清空以保证数据的准确性。"></a>需要注意的是,如果SqlSession执行了DML操作(insert,update,delete),MyBatis必须将缓存清空以保证数据的准确性。</h4><p>2.二级缓存:Mapper级别,默认关闭,可以开启<br>使用二级缓存时,多个SqlSession使用同一个Mapper的SQL语句操作数据库,得到的数据会存在二级缓存区,同样是使用HashMap存储数据.相比较于一级缓存,二级缓存作用域更大,多个SqlSession可以共用同一个二级缓存,二级缓存是跨SqlSession的。</p>
+<p>二级缓存是多个SqlSession共享的,其作用域是Mapper的同一个namespace,不同的SqlSession两次执行相同的namespace下的sql语句,参数也相等,则第一次执行成功,会将数据保存到二级缓存中,第二次可直接从二级缓存中取出数据。</p>
+<p>自带的二级缓存</p>
+<ul>
+<li><p>在SqlMapCconfig.xml中配置开启二级缓存</p>
+<img src="/2020/08/13/mybatis/22.jpg" width="800" height="800" align="center">
+</li>
+<li><p>Mapper.xml中配置二级缓存</p>
+<img src="/2020/08/13/mybatis/23.jpg" width="800" height="800" align="center">
+
+<ul>
+<li>实体类需要实现序列化接口<img src="/2020/08/13/mybatis/24.jpg" width="800" height="800" align="center">
+
+</li>
+</ul>
+<img src="/2020/08/13/mybatis/20.jpg" width="800" height="800" align="center">
+之前我们没开启二级缓存时,由于两次都创建了不同的SqlSession,关闭了一级缓存,导致查询两次一样的SQL却执行了两次。当我们开启二级缓存之后,二级缓存是Mapper级别的,虽然我们两次的SqlSession是不一样的,但是两次的Mapper都是一样的,这时候第一次执行把结果保存在二级缓存里,再次执行相同的SQL语句时,直接从二级缓存里拿。
+<img src="/2020/08/13/mybatis/25.jpg" width="800" height="800" align="center">
+
+</li>
+</ul>
+<h4 id="使用ehcache二级缓存"><a href="#使用ehcache二级缓存" class="headerlink" title="使用ehcache二级缓存"></a>使用ehcache二级缓存</h4><ul>
+<li><p>pom.xml</p>
+<img src="/2020/08/13/mybatis/26.jpg" width="800" height="800" align="center">
+</li>
+<li><p>添加ehcache.xml</p>
+<img src="/2020/08/13/mybatis/27.jpg" width="800" height="800" align="center">
+</li>
+<li><p>在SqlMapCconfig.xml中配置开启二级缓存</p>
+<img src="/2020/08/13/mybatis/22.jpg" width="800" height="800" align="center"> 
+</li>
+<li><p>Mapper.xml中配置二级缓存</p>
+<img src="/2020/08/13/mybatis/28.jpg" width="800" height="800" align="center">
+
+<ul>
+<li>实体类不需要实现序列化接口</li>
+</ul>
+<p>执行结果依旧是一次查询</p>
+<img src="/2020/08/13/mybatis/29.jpg" width="800" height="800" align="center">
+</li>
+</ul>
 
       
     </div>
@@ -566,7 +652,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是mybatis？"><span class="nav-number">1.</span> <span class="nav-text">什么是mybatis？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优点"><span class="nav-number">2.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#核心接口和类"><span class="nav-number">3.</span> <span class="nav-text">核心接口和类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#入门程序"><span class="nav-number">4.</span> <span class="nav-text">入门程序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Mapper-xml需要在全局配置文件中注册"><span class="nav-number">4.1.</span> <span class="nav-text">Mapper.xml需要在全局配置文件中注册</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mapper-xml"><span class="nav-number">5.</span> <span class="nav-text">Mapper.xml</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是mybatis？"><span class="nav-number">1.</span> <span class="nav-text">什么是mybatis？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优点"><span class="nav-number">2.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#核心接口和类"><span class="nav-number">3.</span> <span class="nav-text">核心接口和类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#入门程序"><span class="nav-number">4.</span> <span class="nav-text">入门程序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Mapper-xml需要在全局配置文件中注册"><span class="nav-number">4.1.</span> <span class="nav-text">Mapper.xml需要在全局配置文件中注册</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mapper-xml"><span class="nav-number">5.</span> <span class="nav-text">Mapper.xml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mybatis逆向工程"><span class="nav-number">6.</span> <span class="nav-text">mybatis逆向工程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何使用"><span class="nav-number">7.</span> <span class="nav-text">如何使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MyBatis缓存"><span class="nav-number">8.</span> <span class="nav-text">MyBatis缓存</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#需要注意的是-如果SqlSession执行了DML操作-insert-update-delete-MyBatis必须将缓存清空以保证数据的准确性。"><span class="nav-number">8.1.</span> <span class="nav-text">需要注意的是,如果SqlSession执行了DML操作(insert,update,delete),MyBatis必须将缓存清空以保证数据的准确性。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用ehcache二级缓存"><span class="nav-number">8.2.</span> <span class="nav-text">使用ehcache二级缓存</span></a></li></ol></li></ol></div>
             
 
           </div>
