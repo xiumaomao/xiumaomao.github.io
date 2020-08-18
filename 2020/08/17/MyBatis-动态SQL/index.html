@@ -108,7 +108,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/08/17/MyBatis-%E5%8A%A8%E6%80%81SQL/21.jpg">
 <meta property="og:image" content="http://yoursite.com/2020/08/17/MyBatis-%E5%8A%A8%E6%80%81SQL/22.jpg">
 <meta property="article:published_time" content="2020-08-17T09:17:12.000Z">
-<meta property="article:modified_time" content="2020-08-18T02:58:06.954Z">
+<meta property="article:modified_time" content="2020-08-18T03:01:34.057Z">
 <meta property="article:author" content="毛毛">
 <meta property="article:tag" content="后端">
 <meta name="twitter:card" content="summary">
@@ -371,7 +371,7 @@
 <h3 id="choose-when标签"><a href="#choose-when标签" class="headerlink" title="choose when标签"></a>choose when标签</h3><p>有时候我们并不想应用所有的条件,而只是想从多个选项中选择一个.MyBatis提供了choose元素,按顺序判断when中的条件出否成立,如果有一个成立,则 choose结束.当choose中所有when的条件都不满则时,则执行otherwise中的sql.类似于Java的switch语句,choose为switch,when为case，otherwise则为default。<br><img src="/2020/08/17/MyBatis-%E5%8A%A8%E6%80%81SQL/13.jpg" width="800" height="800" align="center"><br><img src="/2020/08/17/MyBatis-%E5%8A%A8%E6%80%81SQL/11.jpg" width="800" height="800" align="center"><br><img src="/2020/08/17/MyBatis-%E5%8A%A8%E6%80%81SQL/12.jpg" width="800" height="800" align="center"><br>由此可见,当第一个username不为空,即命中,后面的就不执行了,因此sql语句就变成了where后面就username一个字段。<br>if 是与(and)的关系，而 choose 是或（or）的关系。</p>
 <h3 id="set标签"><a href="#set标签" class="headerlink" title="set标签"></a>set标签</h3><p>set标签主要用于update操作,会自动根据参数生成SQL语句。<br><img src="/2020/08/17/MyBatis-%E5%8A%A8%E6%80%81SQL/14.jpg" width="800" height="800" align="center"><br>当我们想要修改account对象一个参数时,用原来的SQL需要改变四个字段,但是我们的需求是改变其中一个字段,另外三个就重复了,如图<br><img src="/2020/08/17/MyBatis-%E5%8A%A8%E6%80%81SQL/15.jpg" width="800" height="800" align="center"><br>我们明明就改变了age一个字段,但是username等字段都重复修改,这时候我们就需要使用set标签<br><img src="/2020/08/17/MyBatis-%E5%8A%A8%E6%80%81SQL/16.jpg" width="800" height="800" align="center"></p>
 <h3 id="foreach标签"><a href="#foreach标签" class="headerlink" title="foreach标签"></a>foreach标签</h3><p>foreach标签可以迭代生成一系列值,这个标签主要用于SQL的in语句<br><img src="/2020/08/17/MyBatis-%E5%8A%A8%E6%80%81SQL/17.jpg" width="800" height="800" align="center"><br><img src="/2020/08/17/MyBatis-%E5%8A%A8%E6%80%81SQL/18.jpg" width="800" height="800" align="center"><br><img src="/2020/08/17/MyBatis-%E5%8A%A8%E6%80%81SQL/19.jpg" width="800" height="800" align="center"></p>
-<h3 id="sql标签"><a href="#sql标签" class="headerlink" title="sql标签"></a>sql标签</h3><p>当多种类型的查询语句的查询字段或者查询条件相同时,可以将其定义为常量,方便调用.为求<select>结构清晰也可将sql语句分解。可以通过sql中的id,使用include进行调用。<br><img src="/2020/08/17/MyBatis-%E5%8A%A8%E6%80%81SQL/20.jpg" width="800" height="800" align="center"></select></p>
+<h3 id="sql标签"><a href="#sql标签" class="headerlink" title="sql标签"></a>sql标签</h3><p>当多种类型的查询语句的查询字段或者查询条件相同时,可以将其定义为常量,可以通过sql中的id,使用include进行调用。<br><img src="/2020/08/17/MyBatis-%E5%8A%A8%E6%80%81SQL/20.jpg" width="800" height="800" align="center"></p>
 <h3 id="include标签"><a href="#include标签" class="headerlink" title="include标签"></a>include标签</h3><p>用于引用定义的常量<br><img src="/2020/08/17/MyBatis-%E5%8A%A8%E6%80%81SQL/21.jpg" width="800" height="800" align="center"><br><img src="/2020/08/17/MyBatis-%E5%8A%A8%E6%80%81SQL/22.jpg" width="800" height="800" align="center"></p>
 
       
