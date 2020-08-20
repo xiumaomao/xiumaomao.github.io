@@ -110,8 +110,25 @@
 <meta property="og:image" content="http://yoursite.com/2020/08/19/SpringBoot/23.jpg">
 <meta property="og:image" content="http://yoursite.com/2020/08/19/SpringBoot/24.jpg">
 <meta property="og:image" content="http://yoursite.com/2020/08/19/SpringBoot/25.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/19/SpringBoot/26.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/19/SpringBoot/27.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/19/SpringBoot/28.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/19/SpringBoot/29.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/19/SpringBoot/30.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/19/SpringBoot/31.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/19/SpringBoot/32.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/19/SpringBoot/33.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/19/SpringBoot/33.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/19/SpringBoot/35.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/19/SpringBoot/36.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/19/SpringBoot/37.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/19/SpringBoot/38.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/19/SpringBoot/39.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/19/SpringBoot/40.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/19/SpringBoot/41.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/19/SpringBoot/42.jpg">
 <meta property="article:published_time" content="2020-08-19T01:50:53.000Z">
-<meta property="article:modified_time" content="2020-08-19T09:14:43.721Z">
+<meta property="article:modified_time" content="2020-08-20T05:38:58.666Z">
 <meta property="article:author" content="毛毛">
 <meta property="article:tag" content="后端">
 <meta name="twitter:card" content="summary">
@@ -413,6 +430,13 @@
 list是传过来的集合,student是这个集合的指代,stat是状态变量,属性:</li>
 </ul>
 <p>1.index 集合中元素的index(从0开始)<br>2.count 集合中元素的countcount(从1开始)<br>3.size 集合的大小<br>4.current 当前迭代变量<br>5.even/odd 当前迭代是否为偶数/奇数<br>6.first 当前元素是否是第一个<br>7.last 当前元素是否是最后一个</p>
+<h3 id="Spring-Boot数据校验"><a href="#Spring-Boot数据校验" class="headerlink" title="Spring Boot数据校验"></a>Spring Boot数据校验</h3><img src="/2020/08/19/SpringBoot/26.jpg" width="800" height="800" align="center">
+<img src="/2020/08/19/SpringBoot/27.jpg" width="800" height="800" align="center">
+BindingResult这个对象是用来接收错误信息的
+<img src="/2020/08/19/SpringBoot/28.jpg" width="800" height="800" align="center">
+
+<h3 id="Spring-Boot整合MyBatis"><a href="#Spring-Boot整合MyBatis" class="headerlink" title="Spring Boot整合MyBatis"></a>Spring Boot整合MyBatis</h3><p>pom.xml<br><img src="/2020/08/19/SpringBoot/29.jpg" width="800" height="800" align="center"><br>实体类:<br><img src="/2020/08/19/SpringBoot/30.jpg" width="800" height="800" align="center"><br>创建Mapper接口<br><img src="/2020/08/19/SpringBoot/31.jpg" width="800" height="800" align="center"><br>创建Mapper.xml<br><img src="/2020/08/19/SpringBoot/32.jpg" width="800" height="800" align="center"><br>创建Controller,注入Mapper<br><img src="/2020/08/19/SpringBoot/33.jpg" width="800" height="800" align="center"><br>result<br><img src="/2020/08/19/SpringBoot/33.jpg" width="800" height="800" align="center"></p>
+<h3 id="Spring-Boot整合Spring-Data-JPA"><a href="#Spring-Boot整合Spring-Data-JPA" class="headerlink" title="Spring Boot整合Spring Data JPA"></a>Spring Boot整合Spring Data JPA</h3><p>Spring Data JPA是spring data项目下的一个模块.提供了一套基于JPA标准操作数据库的简化方案.底层默认的是依赖Hibernate JPA来实现的。<br>pom.xml<br><img src="/2020/08/19/SpringBoot/35.jpg" width="800" height="800" align="center"><br>实体类<br><img src="/2020/08/19/SpringBoot/36.jpg" width="800" height="800" align="center"><br>创建Repository<br><img src="/2020/08/19/SpringBoot/37.jpg" width="800" height="800" align="center"><br>我们看看JpaRepository这个抽象类里的抽象方法<br><img src="/2020/08/19/SpringBoot/38.jpg" width="800" height="800" align="center"><br>我们可以根据自己的业务需求直接调用里面的方法<br><img src="/2020/08/19/SpringBoot/39.jpg" width="800" height="800" align="center"><br>我们可以除了调用它自带的方法之外,我们还可以自定义方法在接口里面<br><img src="/2020/08/19/SpringBoot/40.jpg" width="800" height="800" align="center"><br><img src="/2020/08/19/SpringBoot/41.jpg" width="800" height="800" align="center"><br>application.yml<br><img src="/2020/08/19/SpringBoot/42.jpg" width="800" height="800" align="center"></p>
 
       
     </div>
@@ -587,7 +611,7 @@ list是传过来的集合,student是这个集合的指代,stat是状态变量,�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是Spring-Boot"><span class="nav-number">1.</span> <span class="nav-text">什么是Spring Boot?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特点"><span class="nav-number">2.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring-Boot快速入门"><span class="nav-number">3.</span> <span class="nav-text">Spring Boot快速入门</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#注意-所有包一定包含在启动类里-这样启动类才能扫描到。"><span class="nav-number">3.1.</span> <span class="nav-text">注意:所有包一定包含在启动类里,这样启动类才能扫描到。</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结-通过一个简单的demo可以看出其实Spring-Boot和我们之前开发的Spring-MVC差不多-只是Spring-Boot简化了我们开发的方式-不需要Springmvc-xml和web-xml-Spring-Boot通过starter启动依赖-把许多默认配置装配到项目中-有了Spring-Boot-程序员开发的放肆越来越舒服。"><span class="nav-number">4.</span> <span class="nav-text">总结:通过一个简单的demo可以看出其实Spring Boot和我们之前开发的Spring MVC差不多,只是Spring Boot简化了我们开发的方式,不需要Springmvc.xml和web.xml,Spring Boot通过starter启动依赖,把许多默认配置装配到项目中.有了Spring Boot,程序员开发的放肆越来越舒服。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过Spring-Initializr创建Spring-Boot项目"><span class="nav-number">5.</span> <span class="nav-text">通过Spring Initializr创建Spring Boot项目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#通过Spring-Initializr创建项目的好处就是我们可以在创建项目的时候可以根据需求自动添加项目依赖-例如MyBatis-MySql-Redis-并且自动帮我们把Spring-Boot的默认配置装配好-包括启动类-更简化了我们的开发。"><span class="nav-number">5.1.</span> <span class="nav-text">通过Spring Initializr创建项目的好处就是我们可以在创建项目的时候可以根据需求自动添加项目依赖,例如MyBatis,MySql,Redis,并且自动帮我们把Spring Boot的默认配置装配好,包括启动类,更简化了我们的开发。</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#YAML"><span class="nav-number">6.</span> <span class="nav-text">YAML</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring-Boot整合Thymeleaf"><span class="nav-number">7.</span> <span class="nav-text">Spring Boot整合Thymeleaf</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Thymeleaf常用语法"><span class="nav-number">8.</span> <span class="nav-text">Thymeleaf常用语法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是Spring-Boot"><span class="nav-number">1.</span> <span class="nav-text">什么是Spring Boot?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特点"><span class="nav-number">2.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring-Boot快速入门"><span class="nav-number">3.</span> <span class="nav-text">Spring Boot快速入门</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#注意-所有包一定包含在启动类里-这样启动类才能扫描到。"><span class="nav-number">3.1.</span> <span class="nav-text">注意:所有包一定包含在启动类里,这样启动类才能扫描到。</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结-通过一个简单的demo可以看出其实Spring-Boot和我们之前开发的Spring-MVC差不多-只是Spring-Boot简化了我们开发的方式-不需要Springmvc-xml和web-xml-Spring-Boot通过starter启动依赖-把许多默认配置装配到项目中-有了Spring-Boot-程序员开发的放肆越来越舒服。"><span class="nav-number">4.</span> <span class="nav-text">总结:通过一个简单的demo可以看出其实Spring Boot和我们之前开发的Spring MVC差不多,只是Spring Boot简化了我们开发的方式,不需要Springmvc.xml和web.xml,Spring Boot通过starter启动依赖,把许多默认配置装配到项目中.有了Spring Boot,程序员开发的放肆越来越舒服。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过Spring-Initializr创建Spring-Boot项目"><span class="nav-number">5.</span> <span class="nav-text">通过Spring Initializr创建Spring Boot项目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#通过Spring-Initializr创建项目的好处就是我们可以在创建项目的时候可以根据需求自动添加项目依赖-例如MyBatis-MySql-Redis-并且自动帮我们把Spring-Boot的默认配置装配好-包括启动类-更简化了我们的开发。"><span class="nav-number">5.1.</span> <span class="nav-text">通过Spring Initializr创建项目的好处就是我们可以在创建项目的时候可以根据需求自动添加项目依赖,例如MyBatis,MySql,Redis,并且自动帮我们把Spring Boot的默认配置装配好,包括启动类,更简化了我们的开发。</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#YAML"><span class="nav-number">6.</span> <span class="nav-text">YAML</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring-Boot整合Thymeleaf"><span class="nav-number">7.</span> <span class="nav-text">Spring Boot整合Thymeleaf</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Thymeleaf常用语法"><span class="nav-number">8.</span> <span class="nav-text">Thymeleaf常用语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring-Boot数据校验"><span class="nav-number">9.</span> <span class="nav-text">Spring Boot数据校验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring-Boot整合MyBatis"><span class="nav-number">10.</span> <span class="nav-text">Spring Boot整合MyBatis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring-Boot整合Spring-Data-JPA"><span class="nav-number">11.</span> <span class="nav-text">Spring Boot整合Spring Data JPA</span></a></li></ol></div>
             
 
           </div>
