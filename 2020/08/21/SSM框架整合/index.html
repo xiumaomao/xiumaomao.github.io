@@ -79,40 +79,32 @@
 
 
 
-<meta name="description" content="动态SQL图解  if标签接下来我们做一个多条件查询的例子,根据account中的id,username,password,age查询account结果是正常的但是假如我们把其中的一个条件给删除,他就查不出来结果,其实我们用三个数据应该也是可以查出来的,但是你没赋值,int类型的自动用0,包装类用null来填值,SQL语句就会变成select * from t_account where id&#x3D;?">
+<meta name="description" content="Spring+MyBatis+Spring MVC Spring MVC负责实现MVC模式,MyBatis负责数据持久层,Spring负责管理Spring MVC和MyBatis相关的对象创建和依赖注入。  整合1.pom.xml2.web.xml配置Spring MVC,Spring,字符编码过滤器,加载静态资源3.spring.xml4.config.xml中配置一些MyBatis辅助信息,比">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MyBatis-动态SQL">
-<meta property="og:url" content="http://yoursite.com/2020/08/17/MyBatis-%E5%8A%A8%E6%80%81SQL/index.html">
+<meta property="og:title" content="SSM框架整合">
+<meta property="og:url" content="http://yoursite.com/2020/08/21/SSM%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88/index.html">
 <meta property="og:site_name" content="毛毛的博客">
-<meta property="og:description" content="动态SQL图解  if标签接下来我们做一个多条件查询的例子,根据account中的id,username,password,age查询account结果是正常的但是假如我们把其中的一个条件给删除,他就查不出来结果,其实我们用三个数据应该也是可以查出来的,但是你没赋值,int类型的自动用0,包装类用null来填值,SQL语句就会变成select * from t_account where id&#x3D;?">
-<meta property="og:image" content="http://yoursite.com/2020/08/17/MyBatis-%E5%8A%A8%E6%80%81SQL/1.jpg">
-<meta property="og:image" content="http://yoursite.com/2020/08/17/MyBatis-%E5%8A%A8%E6%80%81SQL/2.jpg">
-<meta property="og:image" content="http://yoursite.com/2020/08/17/MyBatis-%E5%8A%A8%E6%80%81SQL/3.jpg">
-<meta property="og:image" content="http://yoursite.com/2020/08/17/MyBatis-%E5%8A%A8%E6%80%81SQL/4.jpg">
-<meta property="og:image" content="http://yoursite.com/2020/08/17/MyBatis-%E5%8A%A8%E6%80%81SQL/5.jpg">
-<meta property="og:image" content="http://yoursite.com/2020/08/17/MyBatis-%E5%8A%A8%E6%80%81SQL/6.jpg">
-<meta property="og:image" content="http://yoursite.com/2020/08/17/MyBatis-%E5%8A%A8%E6%80%81SQL/7.jpg">
-<meta property="og:image" content="http://yoursite.com/2020/08/17/MyBatis-%E5%8A%A8%E6%80%81SQL/8.jpg">
-<meta property="og:image" content="http://yoursite.com/2020/08/17/MyBatis-%E5%8A%A8%E6%80%81SQL/9.jpg">
-<meta property="og:image" content="http://yoursite.com/2020/08/17/MyBatis-%E5%8A%A8%E6%80%81SQL/10.jpg">
-<meta property="og:image" content="http://yoursite.com/2020/08/17/MyBatis-%E5%8A%A8%E6%80%81SQL/13.jpg">
-<meta property="og:image" content="http://yoursite.com/2020/08/17/MyBatis-%E5%8A%A8%E6%80%81SQL/11.jpg">
-<meta property="og:image" content="http://yoursite.com/2020/08/17/MyBatis-%E5%8A%A8%E6%80%81SQL/12.jpg">
-<meta property="og:image" content="http://yoursite.com/2020/08/17/MyBatis-%E5%8A%A8%E6%80%81SQL/14.jpg">
-<meta property="og:image" content="http://yoursite.com/2020/08/17/MyBatis-%E5%8A%A8%E6%80%81SQL/15.jpg">
-<meta property="og:image" content="http://yoursite.com/2020/08/17/MyBatis-%E5%8A%A8%E6%80%81SQL/16.jpg">
-<meta property="og:image" content="http://yoursite.com/2020/08/17/MyBatis-%E5%8A%A8%E6%80%81SQL/17.jpg">
-<meta property="og:image" content="http://yoursite.com/2020/08/17/MyBatis-%E5%8A%A8%E6%80%81SQL/18.jpg">
-<meta property="og:image" content="http://yoursite.com/2020/08/17/MyBatis-%E5%8A%A8%E6%80%81SQL/19.jpg">
-<meta property="og:image" content="http://yoursite.com/2020/08/17/MyBatis-%E5%8A%A8%E6%80%81SQL/20.jpg">
-<meta property="og:image" content="http://yoursite.com/2020/08/17/MyBatis-%E5%8A%A8%E6%80%81SQL/21.jpg">
-<meta property="og:image" content="http://yoursite.com/2020/08/17/MyBatis-%E5%8A%A8%E6%80%81SQL/22.jpg">
-<meta property="article:published_time" content="2020-08-17T09:17:12.000Z">
-<meta property="article:modified_time" content="2020-08-18T03:01:34.057Z">
+<meta property="og:description" content="Spring+MyBatis+Spring MVC Spring MVC负责实现MVC模式,MyBatis负责数据持久层,Spring负责管理Spring MVC和MyBatis相关的对象创建和依赖注入。  整合1.pom.xml2.web.xml配置Spring MVC,Spring,字符编码过滤器,加载静态资源3.spring.xml4.config.xml中配置一些MyBatis辅助信息,比">
+<meta property="og:image" content="http://yoursite.com/2020/08/21/SSM%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88/1.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/21/SSM%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88/2.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/21/SSM%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88/3.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/21/SSM%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88/4.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/21/SSM%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88/5.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/21/SSM%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88/6.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/21/SSM%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88/7.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/21/SSM%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88/8.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/21/SSM%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88/9.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/21/SSM%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88/10.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/21/SSM%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88/11.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/21/SSM%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88/12.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/21/SSM%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88/13.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/21/SSM%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88/14.jpg">
+<meta property="article:published_time" content="2020-08-21T07:34:35.000Z">
+<meta property="article:modified_time" content="2020-08-21T09:33:03.493Z">
 <meta property="article:author" content="毛毛">
 <meta property="article:tag" content="后端">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2020/08/17/MyBatis-%E5%8A%A8%E6%80%81SQL/1.jpg">
+<meta name="twitter:image" content="http://yoursite.com/2020/08/21/SSM%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88/1.jpg">
 
 
 
@@ -142,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/08/17/MyBatis-动态SQL/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/08/21/SSM框架整合/"/>
 
 
 
 
 
-  <title>MyBatis-动态SQL | 毛毛的博客</title>
+  <title>SSM框架整合 | 毛毛的博客</title>
   
 
 
@@ -275,7 +267,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/17/MyBatis-%E5%8A%A8%E6%80%81SQL/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/21/SSM%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="毛毛">
@@ -292,7 +284,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">MyBatis-动态SQL</h1>
+          <h1 class="post-title" itemprop="name headline">SSM框架整合</h1>
         
 
         <div class="post-meta">
@@ -304,8 +296,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-17T17:17:12+08:00">
-                2020-08-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-21T15:34:35+08:00">
+                2020-08-21
               </time>
             
 
@@ -327,8 +319,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/mybatis%E6%A1%86%E6%9E%B6/" itemprop="url" rel="index">
-                    <span itemprop="name">mybatis框架</span>
+                  <a href="/categories/Spring/" itemprop="url" rel="index">
+                    <span itemprop="name">Spring</span>
                   </a>
                 </span>
 
@@ -364,15 +356,10 @@
       
 
       
-        <h3 id="动态SQL图解"><a href="#动态SQL图解" class="headerlink" title="动态SQL图解"></a>动态SQL图解</h3><img src="/2020/08/17/MyBatis-%E5%8A%A8%E6%80%81SQL/1.jpg" width="800" height="800" align="center">
+        <h3 id="Spring-MyBatis-Spring-MVC"><a href="#Spring-MyBatis-Spring-MVC" class="headerlink" title="Spring+MyBatis+Spring MVC"></a>Spring+MyBatis+Spring MVC</h3><img src="/2020/08/21/SSM%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88/1.jpg" width="800" height="800" align="center">
+Spring MVC负责实现MVC模式,MyBatis负责数据持久层,Spring负责管理Spring MVC和MyBatis相关的对象创建和依赖注入。
 
-<h4 id="if标签"><a href="#if标签" class="headerlink" title="if标签"></a>if标签</h4><p>接下来我们做一个多条件查询的例子,根据account中的id,username,password,age查询account<br><img src="/2020/08/17/MyBatis-%E5%8A%A8%E6%80%81SQL/2.jpg" width="800" height="800" align="center"><br><img src="/2020/08/17/MyBatis-%E5%8A%A8%E6%80%81SQL/3.jpg" width="800" height="800" align="center"><br>结果是正常的<br><img src="/2020/08/17/MyBatis-%E5%8A%A8%E6%80%81SQL/4.jpg" width="800" height="800" align="center"><br>但是假如我们把其中的一个条件给删除,他就查不出来结果,其实我们用三个数据应该也是可以查出来的,但是你没赋值,int类型的自动用0,包装类用null来填值,SQL语句就会变成select * from t_account where id=? and username=? and password =null and age=?这样数据库是没这条数据的,这样很显然不合理,我们可以想到的是当某个字段为null的时候就自动删掉,这时候就会用到IF标签。<br>我们使用if标签优化一下查询<br><img src="/2020/08/17/MyBatis-%E5%8A%A8%E6%80%81SQL/5.jpg" width="800" height="800" align="center"><br>我们把其中一个字段给删除<br><img src="/2020/08/17/MyBatis-%E5%8A%A8%E6%80%81SQL/6.jpg" width="800" height="800" align="center"><br>得到的结果<br><img src="/2020/08/17/MyBatis-%E5%8A%A8%E6%80%81SQL/7.jpg" width="800" height="800" align="center"><br>他会自动将你注释的字段动态删掉</p>
-<h3 id="where标签"><a href="#where标签" class="headerlink" title="where标签"></a>where标签</h3><p>格式化输出,当IF标签较多时,这样的组合可能会导致错误,如下<br><img src="/2020/08/17/MyBatis-%E5%8A%A8%E6%80%81SQL/8.jpg" width="800" height="800" align="center"><br>当id值为0的时候,select * from t_account where and username=? and password=? and age=? 他就会where and连接,导致SQL出错,解决这种情况除了将WHERE改为WHERE 1=1之外还可以利用WHERE标签。<br>WHERE标签会知道如果它包含的标签中有返回值的话,他就插入一个’WHERE’,此外,如果标签返回的内容是以AND或者OR开头的,则会被剔除。<br><img src="/2020/08/17/MyBatis-%E5%8A%A8%E6%80%81SQL/9.jpg" width="800" height="800" align="center"><br>使用WHERE标签,会自动剔除where后面的and<br><img src="/2020/08/17/MyBatis-%E5%8A%A8%E6%80%81SQL/10.jpg" width="800" height="800" align="center"></p>
-<h3 id="choose-when标签"><a href="#choose-when标签" class="headerlink" title="choose when标签"></a>choose when标签</h3><p>有时候我们并不想应用所有的条件,而只是想从多个选项中选择一个.MyBatis提供了choose元素,按顺序判断when中的条件出否成立,如果有一个成立,则 choose结束.当choose中所有when的条件都不满则时,则执行otherwise中的sql.类似于Java的switch语句,choose为switch,when为case，otherwise则为default。<br><img src="/2020/08/17/MyBatis-%E5%8A%A8%E6%80%81SQL/13.jpg" width="800" height="800" align="center"><br><img src="/2020/08/17/MyBatis-%E5%8A%A8%E6%80%81SQL/11.jpg" width="800" height="800" align="center"><br><img src="/2020/08/17/MyBatis-%E5%8A%A8%E6%80%81SQL/12.jpg" width="800" height="800" align="center"><br>由此可见,当第一个username不为空,即命中,后面的就不执行了,因此sql语句就变成了where后面就username一个字段。<br>if 是与(and)的关系，而 choose 是或（or）的关系。</p>
-<h3 id="set标签"><a href="#set标签" class="headerlink" title="set标签"></a>set标签</h3><p>set标签主要用于update操作,会自动根据参数生成SQL语句。<br><img src="/2020/08/17/MyBatis-%E5%8A%A8%E6%80%81SQL/14.jpg" width="800" height="800" align="center"><br>当我们想要修改account对象一个参数时,用原来的SQL需要改变四个字段,但是我们的需求是改变其中一个字段,另外三个就重复了,如图<br><img src="/2020/08/17/MyBatis-%E5%8A%A8%E6%80%81SQL/15.jpg" width="800" height="800" align="center"><br>我们明明就改变了age一个字段,但是username等字段都重复修改,这时候我们就需要使用set标签<br><img src="/2020/08/17/MyBatis-%E5%8A%A8%E6%80%81SQL/16.jpg" width="800" height="800" align="center"></p>
-<h3 id="foreach标签"><a href="#foreach标签" class="headerlink" title="foreach标签"></a>foreach标签</h3><p>foreach标签可以迭代生成一系列值,这个标签主要用于SQL的in语句<br><img src="/2020/08/17/MyBatis-%E5%8A%A8%E6%80%81SQL/17.jpg" width="800" height="800" align="center"><br><img src="/2020/08/17/MyBatis-%E5%8A%A8%E6%80%81SQL/18.jpg" width="800" height="800" align="center"><br><img src="/2020/08/17/MyBatis-%E5%8A%A8%E6%80%81SQL/19.jpg" width="800" height="800" align="center"></p>
-<h3 id="sql标签"><a href="#sql标签" class="headerlink" title="sql标签"></a>sql标签</h3><p>当多种类型的查询语句的查询字段或者查询条件相同时,可以将其定义为常量,可以通过sql中的id,使用include进行调用。<br><img src="/2020/08/17/MyBatis-%E5%8A%A8%E6%80%81SQL/20.jpg" width="800" height="800" align="center"></p>
-<h3 id="include标签"><a href="#include标签" class="headerlink" title="include标签"></a>include标签</h3><p>用于引用定义的常量<br><img src="/2020/08/17/MyBatis-%E5%8A%A8%E6%80%81SQL/21.jpg" width="800" height="800" align="center"><br><img src="/2020/08/17/MyBatis-%E5%8A%A8%E6%80%81SQL/22.jpg" width="800" height="800" align="center"></p>
+<h3 id="整合"><a href="#整合" class="headerlink" title="整合"></a>整合</h3><p>1.pom.xml<br><img src="/2020/08/21/SSM%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88/2.jpg" width="800" height="800" align="center"><br><img src="/2020/08/21/SSM%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88/3.jpg" width="800" height="800" align="center"><br>2.web.xml配置Spring MVC,Spring,字符编码过滤器,加载静态资源<br><img src="/2020/08/21/SSM%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88/4.jpg" width="800" height="800" align="center"><br>3.spring.xml<br><img src="/2020/08/21/SSM%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88/5.jpg" width="800" height="800" align="center"><br>4.config.xml中配置一些MyBatis辅助信息,比如打印SQL等<br><img src="/2020/08/21/SSM%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88/6.jpg" width="800" height="800" align="center"><br>5.配置springmvc.xml<br><img src="/2020/08/21/SSM%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88/7.jpg" width="800" height="800" align="center"><br>6.实体类<br><img src="/2020/08/21/SSM%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88/8.jpg" width="800" height="800" align="center"><br>7.controller<br><img src="/2020/08/21/SSM%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88/9.jpg" width="800" height="800" align="center"><br>8.service,serviceImpl<br><img src="/2020/08/21/SSM%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88/10.jpg" width="800" height="800" align="center"><br><img src="/2020/08/21/SSM%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88/11.jpg" width="800" height="800" align="center"><br>9.mapper<br><img src="/2020/08/21/SSM%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88/12.jpg" width="800" height="800" align="center"><br><img src="/2020/08/21/SSM%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88/13.jpg" width="800" height="800" align="center"><br>10.index.jsp<br><img src="/2020/08/21/SSM%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88/14.jpg" width="800" height="800" align="center"></p>
 
       
     </div>
@@ -403,8 +390,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/08/13/mybatis/" rel="next" title="mybatis">
-                <i class="fa fa-chevron-left"></i> mybatis
+              <a href="/2020/08/19/SpringBoot/" rel="next" title="SpringBoot">
+                <i class="fa fa-chevron-left"></i> SpringBoot
               </a>
             
           </div>
@@ -412,10 +399,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/08/18/MyBatis-%E7%BA%A7%E8%81%94%E6%93%8D%E4%BD%9C/" rel="prev" title="MyBatis-级联操作">
-                MyBatis-级联操作 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -551,7 +534,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#动态SQL图解"><span class="nav-number">1.</span> <span class="nav-text">动态SQL图解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#if标签"><span class="nav-number">1.1.</span> <span class="nav-text">if标签</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#where标签"><span class="nav-number">2.</span> <span class="nav-text">where标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#choose-when标签"><span class="nav-number">3.</span> <span class="nav-text">choose when标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#set标签"><span class="nav-number">4.</span> <span class="nav-text">set标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#foreach标签"><span class="nav-number">5.</span> <span class="nav-text">foreach标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sql标签"><span class="nav-number">6.</span> <span class="nav-text">sql标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#include标签"><span class="nav-number">7.</span> <span class="nav-text">include标签</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring-MyBatis-Spring-MVC"><span class="nav-number">1.</span> <span class="nav-text">Spring+MyBatis+Spring MVC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#整合"><span class="nav-number">2.</span> <span class="nav-text">整合</span></a></li></ol></div>
             
 
           </div>
