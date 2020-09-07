@@ -132,8 +132,16 @@
 <meta property="og:image" content="http://yoursite.com/2020/09/07/Java%E9%9B%86%E5%90%88/46.jpg">
 <meta property="og:image" content="http://yoursite.com/2020/09/07/Java%E9%9B%86%E5%90%88/47.jpg">
 <meta property="og:image" content="http://yoursite.com/2020/09/07/Java%E9%9B%86%E5%90%88/48.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/07/Java%E9%9B%86%E5%90%88/49.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/07/Java%E9%9B%86%E5%90%88/50.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/07/Java%E9%9B%86%E5%90%88/51.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/07/Java%E9%9B%86%E5%90%88/52.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/07/Java%E9%9B%86%E5%90%88/53.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/07/Java%E9%9B%86%E5%90%88/54.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/07/Java%E9%9B%86%E5%90%88/55.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/07/Java%E9%9B%86%E5%90%88/56.jpg">
 <meta property="article:published_time" content="2020-09-07T01:45:45.000Z">
-<meta property="article:modified_time" content="2020-09-07T05:23:14.105Z">
+<meta property="article:modified_time" content="2020-09-07T05:59:27.187Z">
 <meta property="article:author" content="毛毛">
 <meta property="article:tag" content="后端">
 <meta name="twitter:card" content="summary">
@@ -577,6 +585,31 @@ Collection下又分为List和Set,我们先来说一下list.
 <h3 id="List和Set区别"><a href="#List和Set区别" class="headerlink" title="List和Set区别"></a>List和Set区别</h3><p>1.list是有序的,允许元素重复;set是无序的,不允许元素重复<br>2.list有索引,可以使用普通for循环遍历;set没有索引</p>
 <h3 id="ArrayList-Vector-LinkedList"><a href="#ArrayList-Vector-LinkedList" class="headerlink" title="ArrayList,Vector,LinkedList"></a>ArrayList,Vector,LinkedList</h3><p>1.ArrayList是基于数组实现的,不是线程安全的,查询快,增删慢<br>2.LinkedList是基于链表实现的,不是线程安全额,增删快,查询慢<br>3.Vector是基于数组实现的,是线程安全的,效率很低</p>
 <h3 id="HashSet-TreeSet-LinkedHashSet"><a href="#HashSet-TreeSet-LinkedHashSet" class="headerlink" title="HashSet,TreeSet,LinkedHashSet"></a>HashSet,TreeSet,LinkedHashSet</h3><p>1.HashSet它的底层是hash表实现的,主要功能是存储数据<br>2.TreeSet它的底层是红黑树,主要功能用于排序<br>3.LinkedHashSet它的底层是链表和hash表,主要功能用于保证FIFO即有序的集合(先进先出)</p>
+<h3 id="Collections"><a href="#Collections" class="headerlink" title="Collections"></a>Collections</h3><p>Collections是一个包装类,它包含了各种有关集合操作的的静态方法,此类不能被实例化,就像一个工具类,服务于Java的Collection框架。</p>
+<h4 id="Collections的常用方法"><a href="#Collections的常用方法" class="headerlink" title="Collections的常用方法"></a>Collections的常用方法</h4><ul>
+<li><p>Shuffle(eleemnt集合):洗牌方法,将集合内的数据进行随机排序</p>
+<img src="/2020/09/07/Java%E9%9B%86%E5%90%88/49.jpg" width="800" height="800" align="center">
+控制台输出:
+<img src="/2020/09/07/Java%E9%9B%86%E5%90%88/50.jpg" width="800" height="800" align="center">
+</li>
+<li><p>Reverse(element集合):逆序排序,对当前集合的元素按照相反的顺序进行排序</p>
+<img src="/2020/09/07/Java%E9%9B%86%E5%90%88/51.jpg" width="800" height="800" align="center">
+控制台输出:
+<img src="/2020/09/07/Java%E9%9B%86%E5%90%88/52.jpg" width="800" height="800" align="center">
+</li>
+<li><p>Sort(element集合):对当前集合进行升序排序,实现Comparable接口的类，只能使用一种排序方案，这种方案叫作“自然比较”方案</p>
+<img src="/2020/09/07/Java%E9%9B%86%E5%90%88/53.jpg" width="800" height="800" align="center">
+控制台输出:
+<img src="/2020/09/07/Java%E9%9B%86%E5%90%88/54.jpg" width="800" height="800" align="center">
+</li>
+<li><p>min 获取集合中的最小值</p>
+<img src="/2020/09/07/Java%E9%9B%86%E5%90%88/55.jpg" width="800" height="800" align="center">
+控制台输出: 1
+</li>
+<li><p>max 获取集合中的最大值</p>
+<img src="/2020/09/07/Java%E9%9B%86%E5%90%88/56.jpg" width="800" height="800" align="center">
+控制台输出: 38</li>
+</ul>
 
       
     </div>
@@ -751,7 +784,7 @@ Collection下又分为List和Set,我们先来说一下list.
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#List"><span class="nav-number">1.</span> <span class="nav-text">List</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ArrayList"><span class="nav-number">1.1.</span> <span class="nav-text">ArrayList</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LinkedList"><span class="nav-number">1.2.</span> <span class="nav-text">LinkedList</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Vector"><span class="nav-number">1.3.</span> <span class="nav-text">Vector</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#List集合允许元素重复-元素是有序的-可以使用普通for打印-有索引值"><span class="nav-number">1.3.1.</span> <span class="nav-text">List集合允许元素重复,元素是有序的,可以使用普通for打印,有索引值</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Set"><span class="nav-number">2.</span> <span class="nav-text">Set</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HashSet"><span class="nav-number">2.1.</span> <span class="nav-text">HashSet</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LinkedHashSet"><span class="nav-number">2.2.</span> <span class="nav-text">LinkedHashSet</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TreeSet"><span class="nav-number">2.3.</span> <span class="nav-text">TreeSet</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Set集合不允许元素重复-元素无序并且没有索引"><span class="nav-number">2.3.1.</span> <span class="nav-text">Set集合不允许元素重复,元素无序并且没有索引</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Map"><span class="nav-number">3.</span> <span class="nav-text">Map</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HashMap"><span class="nav-number">3.1.</span> <span class="nav-text">HashMap</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#HashMap和TreeMap不是线程安全的-HashTable是线程安全的。"><span class="nav-number">3.1.1.</span> <span class="nav-text">HashMap和TreeMap不是线程安全的,HashTable是线程安全的。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#List集合的遍历方式"><span class="nav-number">4.</span> <span class="nav-text">List集合的遍历方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Set集合遍历的方式-没有索引不能使用for循环遍历"><span class="nav-number">5.</span> <span class="nav-text">Set集合遍历的方式(没有索引不能使用for循环遍历)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Map遍历的方式"><span class="nav-number">6.</span> <span class="nav-text">Map遍历的方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#List和Set区别"><span class="nav-number">7.</span> <span class="nav-text">List和Set区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ArrayList-Vector-LinkedList"><span class="nav-number">8.</span> <span class="nav-text">ArrayList,Vector,LinkedList</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashSet-TreeSet-LinkedHashSet"><span class="nav-number">9.</span> <span class="nav-text">HashSet,TreeSet,LinkedHashSet</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#List"><span class="nav-number">1.</span> <span class="nav-text">List</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ArrayList"><span class="nav-number">1.1.</span> <span class="nav-text">ArrayList</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LinkedList"><span class="nav-number">1.2.</span> <span class="nav-text">LinkedList</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Vector"><span class="nav-number">1.3.</span> <span class="nav-text">Vector</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#List集合允许元素重复-元素是有序的-可以使用普通for打印-有索引值"><span class="nav-number">1.3.1.</span> <span class="nav-text">List集合允许元素重复,元素是有序的,可以使用普通for打印,有索引值</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Set"><span class="nav-number">2.</span> <span class="nav-text">Set</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HashSet"><span class="nav-number">2.1.</span> <span class="nav-text">HashSet</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LinkedHashSet"><span class="nav-number">2.2.</span> <span class="nav-text">LinkedHashSet</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TreeSet"><span class="nav-number">2.3.</span> <span class="nav-text">TreeSet</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Set集合不允许元素重复-元素无序并且没有索引"><span class="nav-number">2.3.1.</span> <span class="nav-text">Set集合不允许元素重复,元素无序并且没有索引</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Map"><span class="nav-number">3.</span> <span class="nav-text">Map</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HashMap"><span class="nav-number">3.1.</span> <span class="nav-text">HashMap</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#HashMap和TreeMap不是线程安全的-HashTable是线程安全的。"><span class="nav-number">3.1.1.</span> <span class="nav-text">HashMap和TreeMap不是线程安全的,HashTable是线程安全的。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#List集合的遍历方式"><span class="nav-number">4.</span> <span class="nav-text">List集合的遍历方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Set集合遍历的方式-没有索引不能使用for循环遍历"><span class="nav-number">5.</span> <span class="nav-text">Set集合遍历的方式(没有索引不能使用for循环遍历)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Map遍历的方式"><span class="nav-number">6.</span> <span class="nav-text">Map遍历的方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#List和Set区别"><span class="nav-number">7.</span> <span class="nav-text">List和Set区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ArrayList-Vector-LinkedList"><span class="nav-number">8.</span> <span class="nav-text">ArrayList,Vector,LinkedList</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashSet-TreeSet-LinkedHashSet"><span class="nav-number">9.</span> <span class="nav-text">HashSet,TreeSet,LinkedHashSet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Collections"><span class="nav-number">10.</span> <span class="nav-text">Collections</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Collections的常用方法"><span class="nav-number">10.1.</span> <span class="nav-text">Collections的常用方法</span></a></li></ol></li></ol></div>
             
 
           </div>
