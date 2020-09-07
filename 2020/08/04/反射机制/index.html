@@ -79,17 +79,41 @@
 
 
 
-<meta name="description" content="什么是反射机制?Java的反射是指在程序运行状态中,可以任意了解一个类的成员变量和方法,对于任意一个对象可以调用他的属性和方法.这种动态获取程序信息以及动态调用对象的功能称为Java语言的反射机制。以上就是百度的原话,在我看来什么是反射呢，它其实就是将类的各个组成部分封装成了其他对象。比如说将类中的成员变量封装成了field对象,构造方法封装成constructor对象,成员方法封装成method">
+<meta name="description" content="什么是反射机制?Java反射机制是在运行状态时,对于任意一个类,都能够直到这个类的所有属性和方法;对于任意一个对象,都能够调用它的任意一个方法和属性;这种动态获取的信息以及动态调用对象的方法的功能称为Java语言的反射机制。要想剖解一个类必须先获取该类的字节码文件对象。而剖解使用的就是Class类中的方法,所以先要获取到每一个字节码文件对应的Class类型的对象。 总结:反射就是Java类中各个成">
 <meta property="og:type" content="article">
 <meta property="og:title" content="反射机制">
 <meta property="og:url" content="http://yoursite.com/2020/08/04/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/index.html">
 <meta property="og:site_name" content="毛毛的博客">
-<meta property="og:description" content="什么是反射机制?Java的反射是指在程序运行状态中,可以任意了解一个类的成员变量和方法,对于任意一个对象可以调用他的属性和方法.这种动态获取程序信息以及动态调用对象的功能称为Java语言的反射机制。以上就是百度的原话,在我看来什么是反射呢，它其实就是将类的各个组成部分封装成了其他对象。比如说将类中的成员变量封装成了field对象,构造方法封装成constructor对象,成员方法封装成method">
+<meta property="og:description" content="什么是反射机制?Java反射机制是在运行状态时,对于任意一个类,都能够直到这个类的所有属性和方法;对于任意一个对象,都能够调用它的任意一个方法和属性;这种动态获取的信息以及动态调用对象的方法的功能称为Java语言的反射机制。要想剖解一个类必须先获取该类的字节码文件对象。而剖解使用的就是Class类中的方法,所以先要获取到每一个字节码文件对应的Class类型的对象。 总结:反射就是Java类中各个成">
+<meta property="og:image" content="http://yoursite.com/2020/08/04/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/1.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/04/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/1.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/04/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/3.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/04/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/4.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/04/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/5.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/04/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/6.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/04/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/7.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/04/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/8.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/04/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/9.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/04/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/10.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/04/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/11.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/04/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/12.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/04/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/13.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/04/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/14.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/04/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/15.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/04/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/16.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/04/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/17.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/04/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/18.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/04/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/19.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/04/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/20.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/04/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/21.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/04/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/22.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/08/04/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/23.jpg">
 <meta property="article:published_time" content="2020-08-04T07:16:14.000Z">
-<meta property="article:modified_time" content="2020-08-06T06:29:39.440Z">
+<meta property="article:modified_time" content="2020-09-02T06:38:32.810Z">
 <meta property="article:author" content="毛毛">
 <meta property="article:tag" content="后端">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/08/04/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/1.jpg">
 
 
 
@@ -341,62 +365,24 @@
       
 
       
-        <h3 id="什么是反射机制"><a href="#什么是反射机制" class="headerlink" title="什么是反射机制?"></a>什么是反射机制?</h3><p>Java的反射是指在程序运行状态中,可以任意了解一个类的成员变量和方法,对于任意一个对象可以调用他的属性和方法.这种动态获取程序信息以及动态调用对象的功能称为Java语言的反射机制。以上就是百度的原话,在我看来什么是反射呢，它其实就是将类的各个组成部分封装成了其他对象。比如说将类中的成员变量封装成了field对象,构造方法封装成constructor对象,成员方法封装成method.接下来我们往下看。</p>
-<h3 id="对于反射的理解"><a href="#对于反射的理解" class="headerlink" title="对于反射的理解"></a>对于反射的理解</h3><p>既然有了反射,那’正’的是什么呢？一般来说,使用某个类的时候,我们一般都会去看看类中有哪些变量,有哪些方法,他是用来做什么的,方法参数是什么.以便与我们今后调用它。就例如:Person p=new Person(); p.run();我们线new一个类的实例,再去调用里面的方法。这就是‘正’<br>那反射就是一开始我们并不知道初始化的类对象是什么样子的,自然我们也不可以new对象实例去操作他,这时我们可以使用反射去操作这个类.<br>举一个代码例子<br>public class Phone {<br>    private int price;<br>    public int getPrice() {<br>        return price;<br>    }<br>    public void setPrice(int price) {<br>        this.price = price;<br>    }</p>
-<pre><code>public static void main(String[] args) throws Exception{
-    //正常的调用
-    Phone phone = new Phone();
-    phone.setPrice(5000);
-    System.out.println(&quot;Phone Price:&quot; + phone.getPrice());
-    //使用反射调用
-    Class clz = Class.forName(&quot;com.xxp.api.Phone&quot;);
-    Method setPriceMethod = clz.getMethod(&quot;setPrice&quot;, int.class);
-    Constructor phoneConstructor = clz.getConstructor();
-    Object phoneObj = phoneConstructor.newInstance();
-    setPriceMethod.invoke(phoneObj, 6000);
-    Method getPriceMethod = clz.getMethod(&quot;getPrice&quot;);
-    System.out.println(&quot;Phone Price:&quot; + getPriceMethod.invoke(phoneObj));
-}</code></pre><p>}<br>这个例子很好的诠释了‘正’和’反’,正就是操作之前确定类对象的结构通过new的方式去获取类对象,反射是在操作前不知道类对象是什么样子的.我们可以在程序运行过程中对类对象操作。</p>
-<h3 id="我们先来了解一下java程序在计算机中经历的阶段"><a href="#我们先来了解一下java程序在计算机中经历的阶段" class="headerlink" title="我们先来了解一下java程序在计算机中经历的阶段"></a>我们先来了解一下java程序在计算机中经历的阶段</h3><p>1.首先我们定一个类文件，例如Person.java,如下面代码<br>public class Person {</p>
-<pre><code>private int id;
-private String name;
-
-//空参构造器
-public Person() {
-}
-
-public void run(){
-    System.out.println(&quot;人会跑步&quot;);
-}</code></pre><p>}<br>以上代码可以直接运行吗,很显然不可以,我们需要通过一个命令javac编译,在编译的过程中会检查,如果代码语法没有问题,会在硬盘上形成一个字节码文件Person.class,字节码文件里放的就是这个类的一些信息,主要有成员变量,构造方法,成员方法。这个阶段我们称之为源代码阶段。(这个阶段代码还存在硬盘上)<br>2.在硬盘上形成一个字节码文件后,java中通过类加载器ClassLoader将字节码文件加载到内存中,在内存中表述这个字节码文件称之为类对象,类对象中放的是字节码中共同属性,例如成员变量,构造方法,成员方法。这三个部分java把它封装成不同的对象。成员变量封装为field对象,构造方法封装为constructor对象,成员方法封装为method对象.这个阶段我们称之为类对象阶段。<br>3.创建对象Person p=new Person(); 这个阶段new出来的对象都放在内存的堆中,这个阶段成为运行时阶段。</p>
+        <h3 id="什么是反射机制"><a href="#什么是反射机制" class="headerlink" title="什么是反射机制?"></a>什么是反射机制?</h3><p>Java反射机制是在运行状态时,对于任意一个类,都能够直到这个类的所有属性和方法;对于任意一个对象,都能够调用它的任意一个方法和属性;这种动态获取的信息以及动态调用对象的方法的功能称为Java语言的反射机制。要想剖解一个类必须先获取该类的字节码文件对象。而剖解使用的就是Class类中的方法,所以先要获取到每一个字节码文件对应的Class类型的对象。</p>
+<h4 id="总结-反射就是Java类中各个成分映射成一个个Java对象"><a href="#总结-反射就是Java类中各个成分映射成一个个Java对象" class="headerlink" title="总结:反射就是Java类中各个成分映射成一个个Java对象"></a>总结:反射就是Java类中各个成分映射成一个个Java对象</h4><h3 id="对于反射的理解"><a href="#对于反射的理解" class="headerlink" title="对于反射的理解"></a>对于反射的理解</h3><p>既然有了反射,那’正’的是什么呢？一般来说,使用某个类的时候,我们一般都会去看看类中有哪些变量,有哪些方法,他是用来做什么的,方法参数是什么.以便与我们今后调用它。就例如:Person p=new Person(); p.run();我们线new一个类的实例,再去调用里面的方法。这就是‘正’<br>那反射就是一开始我们并不知道初始化的类对象是什么样子的,自然我们也不可以new对象实例去操作他,这时我们可以使用反射去操作这个类.<br>举一个代码例子<br><img src="/2020/08/04/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/1.jpg" width="800" height="800" align="center"><br>这个例子很好的诠释了‘正’和’反’,正就是操作之前确定类对象的结构通过new的方式去获取类对象,反射是在操作前不知道类对象是什么样子的.我们可以在程序运行过程中对类对象操作。</p>
+<h3 id="我们先来了解一下java程序在计算机中经历的阶段"><a href="#我们先来了解一下java程序在计算机中经历的阶段" class="headerlink" title="我们先来了解一下java程序在计算机中经历的阶段"></a>我们先来了解一下java程序在计算机中经历的阶段</h3><p>1.首先我们定一个类文件，例如Person.java,如下面代码<br><img src="/2020/08/04/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/1.jpg" width="800" height="800" align="center"><br>以上代码可以直接运行吗,很显然不可以,我们需要通过一个命令javac编译,在编译的过程中会检查,如果代码语法没有问题,会在硬盘上形成一个字节码文件Person.class,字节码文件里放的就是这个类的一些信息,主要有成员变量,构造方法,成员方法。这个阶段我们称之为源代码阶段。(这个阶段代码还存在硬盘上)<br>2.在硬盘上形成一个字节码文件后,java中通过类加载器ClassLoader将字节码文件加载到内存中,在内存中表述这个字节码文件称之为类对象,类对象中放的是字节码中共同属性,例如成员变量,构造方法,成员方法。这三个部分java把它封装成不同的对象。成员变量封装为field对象,构造方法封装为constructor对象,成员方法封装为method对象.这个阶段我们称之为类对象阶段。<br>3.创建对象Person p=new Person(); 这个阶段new出来的对象都放在内存的堆中,这个阶段成为运行时阶段。</p>
 <h3 id="封装的好处"><a href="#封装的好处" class="headerlink" title="封装的好处"></a>封装的好处</h3><p>1.在运行过程中可以操作这些对象(例如我们平时操作字符串的时候,通过字符串.的方式会出来很多方法,这其实就用到了反射机制)<br>2.可以解藕。</p>
-<h3 id="class类对象获取方式"><a href="#class类对象获取方式" class="headerlink" title="class类对象获取方式"></a>class类对象获取方式</h3><p>1.class.forName(“类的全限定类名”)<br>2.类.class,通过类名的属性获取<br>3.对象.getClass,通过对象的getClass方法<br>   Class clazz=Class.forName(“com.company.entity.Person”);<br>      System.out.println(clazz);</p>
-<pre><code>Class clazz1= Person.class;
-System.out.println(clazz1);
+<h3 id="class类对象获取方式"><a href="#class类对象获取方式" class="headerlink" title="class类对象获取方式"></a>class类对象获取方式</h3><p>1.class.forName(“类的全限定类名”)<br>2.类.class,通过类名的属性获取<br>3.对象.getClass,通过对象的getClass方法<br><img src="/2020/08/04/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/3.jpg" width="800" height="800" align="center"><br>运行结果:<br><img src="/2020/08/04/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/4.jpg" width="800" height="800" align="center"></p>
+<h4 id="一个字节码文件在一次运行程序过程中只会加载一次-不管你通过哪种方式。"><a href="#一个字节码文件在一次运行程序过程中只会加载一次-不管你通过哪种方式。" class="headerlink" title="一个字节码文件在一次运行程序过程中只会加载一次,不管你通过哪种方式。"></a>一个字节码文件在一次运行程序过程中只会加载一次,不管你通过哪种方式。</h4><h3 id="反射的使用"><a href="#反射的使用" class="headerlink" title="反射的使用"></a>反射的使用</h3><h4 id="通过反射获取构造方法"><a href="#通过反射获取构造方法" class="headerlink" title="通过反射获取构造方法"></a>通过反射获取构造方法</h4><img src="/2020/08/04/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/5.jpg" width="800" height="800" align="center">
+测试类:
+<img src="/2020/08/04/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/6.jpg" width="800" height="800" align="center">
+结果输出:
+<img src="/2020/08/04/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/7.jpg" width="800" height="800" align="center">
 
-Person p=new Person();
-Class clazz2=p.getClass();
-System.out.println(clazz2);
-
-System.out.println(clazz==clazz1);
-System.out.println(clazz==clazz2);</code></pre><p>运行结果:<br>class com.company.entity.Person<br>class com.company.entity.Person<br>class com.company.entity.Person<br>true<br>true<br>因此我们可以知道一个字节码文件在一次运行程序过程中只会加载一次,不管你通过哪种方式。</p>
-<h3 id="class类对象的功能"><a href="#class类对象的功能" class="headerlink" title="class类对象的功能"></a>class类对象的功能</h3><p>1.获取成员变量<br>(1).Field []  getFields 获取所有public修饰的成员变量</p>
-<pre><code>private int id;
-private String name;
-
-
-  Class clazz= Person.class;
-  Field[] f=clazz.getFields();
-  for(Field field:f){
-      System.out.println(field);
-  }
-}</code></pre><p>打印结果没空.getFields()方法得到的成员变量都是public修饰的<br>(2).Field getField(String name)：得到指定名称的public修饰的变量</p>
-<p>(3).Field [] getDeclaredFirlds() 获取所有的成员变量(不考虑修饰符的限制)<br>(4).Field getDeclaredField() 获取指定名称的成员变量<br>当我们获取单个private修饰的变量时,程序会报错。这时我们只要加一行代码<br> Field o1= (Field) f2.get(“id”);<br>      o1.setAccessible(true);就可以了</p>
-<p>2.获取成员方法<br>(1)Method getMethod(String 方法名称) 空参方法<br>        Class clazz= Person.class;<br>        Method m=clazz.getMethod(“run”);<br>        Person p=new Person();<br>        m.invoke(p);<br>        结果如下:<br>        人会跑步<br>Method getMethod(String 方法名称) 有参方法<br>Person:<br>   public void run(int id){<br>        System.out.println(id+”在跑步”);<br>    }</p>
-<pre><code>Class clazz= Person.class;
-Method m=clazz.getMethod(&quot;run&quot;,int.class);
-Person p=new Person();
-m.invoke(p,1);</code></pre><p>其他方法类似</p>
-<p>3.获取构造方法<br>(1).Constructor getConstructor(.class)<br>        Class clazz= Person.class;<br>        Constructor constructor=clazz.getConstructor(int.class,String.class);<br>      System.out.println(constructor);<br>      结果如下<br>      public com.company.entity.Person(int,java.lang.String)<br>      构造方法主要用来创建对象,里面又一个newInstance方法,如下图<br>       Class clazz= Person.class;<br>       Constructor constructor=clazz.getConstructor(int.class,String.class);<br>       Object person= constructor.newInstance(23,”maomao”);<br>       System.out.println(person);<br>       结果如下:<br>       Person{id=23, name=’maomao’}<br>       注意:如果是空参构造,可以直接使用class中的newInstance方法更简便。<br>(2).Constructor getDeclaredConstructor()使用方法和上述一样</p>
+<h5 id="调用方法"><a href="#调用方法" class="headerlink" title="调用方法"></a>调用方法</h5><p>1.获取构造方法<br>1)批量的方法:<br>public Constructor[] getConstructors()：所有”公有的”构造方法<br>public Constructor[] getDeclaredConstructors()：获取所有的构造方法(包括私有、受保护、默认、公有)<br>2).获取单个的方法,并调用:<br>public Constructor getConstructor(Class… parameterTypes):获取单个的”公有的”构造方法：<br>public Constructor getDeclaredConstructor(Class… parameterTypes):获取”某个构造方法”可以是私有的，或受保护、默认、公有；<br>调用构造方法:<br>Constructor–&gt;newInstance(Object… initargs)<br>2.newInstance是 Constructor类的方法(管理构造函数的类)<br>api的解释为：<br>newInstance(Object… initargs)<br>使用此 Constructor 对象表示的构造方法来创建该构造方法的声明类的新实例，并用指定的初始化参数初始化该实例。<br>它的返回值是T类型，所以newInstance是创建了一个构造方法的声明类的新实例对象。并为之调用</p>
+<h4 id="获取成员变量并调用"><a href="#获取成员变量并调用" class="headerlink" title="获取成员变量并调用"></a>获取成员变量并调用</h4><p>student类:<br><img src="/2020/08/04/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/8.jpg" width="800" height="800" align="center"><br>测试类:<br><img src="/2020/08/04/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/9.jpg" width="800" height="800" align="center"><br>后台输出:<br><img src="/2020/08/04/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/10.jpg" width="800" height="800" align="center"><br>由此可见<br>调用字段时：需要传递两个参数：<br>Object obj = stuClass.getConstructor().newInstance();//产生Student对象–》Student stu = new Student();<br>//为字段设置值<br>f.set(obj, “刘德华”);//为Student对象中的name属性赋值–》stu.name = “刘德华”<br>第一个参数：要传入设置的对象，第二个参数：要传入实参</p>
+<h4 id="获取成员方法并调用"><a href="#获取成员方法并调用" class="headerlink" title="获取成员方法并调用"></a>获取成员方法并调用</h4><p>student类:<br><img src="/2020/08/04/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/11.jpg" width="800" height="800" align="center"><br>测试类:<br><img src="/2020/08/04/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/12.jpg" width="800" height="800" align="center"><br>控制台输出:<br><img src="/2020/08/04/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/13.jpg" width="800" height="800" align="center"><br>由此可见：<br>m = stuClass.getDeclaredMethod(“show4”, int.class);//调用制定方法（所有包括私有的），需要传入两个参数，第一个是调用的方法名称，第二个是方法的形参类型，切记是类型。<br>System.out.println(m);<br>m.setAccessible(true);//解除私有限定<br>Object result = m.invoke(obj, 20);//需要两个参数，一个是要调用的对象（获取有反射），一个是实参<br>System.out.println(“返回值：” + result);<br>控制台输出:<br><img src="/2020/08/04/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/14.jpg" width="800" height="800" align="center"> </p>
+<h4 id="反射nain方法"><a href="#反射nain方法" class="headerlink" title="反射nain方法"></a>反射nain方法</h4><p>student类:<br><img src="/2020/08/04/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/15.jpg" width="800" height="800" align="center"><br>测试类<br><img src="/2020/08/04/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/16.jpg" width="800" height="800" align="center"><br>控制台输出：<br>main方法执行了。。。</p>
+<h4 id="反射方法的其它使用之—通过反射运行配置文件内容"><a href="#反射方法的其它使用之—通过反射运行配置文件内容" class="headerlink" title="反射方法的其它使用之—通过反射运行配置文件内容"></a>反射方法的其它使用之—通过反射运行配置文件内容</h4><p>student类:<br><img src="/2020/08/04/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/17.jpg" width="800" height="800" align="center"><br>配置文件以txt文件为例子（pro.txt）<br><img src="/2020/08/04/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/18.jpg" width="800" height="800" align="center"><br>测试类:<br><img src="/2020/08/04/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/19.jpg" width="800" height="800" align="center"><br>控制台输出：<br>is show()</p>
+<p>需求：<br>当我们升级这个系统时，不要Student类，而需要新写一个Student2的类时，这时只需要更改pro.txt的文件内容就可以了。代码就一点不用改动<br>要替换的student2类：<br><img src="/2020/08/04/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/20.jpg" width="800" height="800" align="center"><br>配置文件更改为:<br><img src="/2020/08/04/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/21.jpg" width="800" height="800" align="center"><br>控制台输出：<br>is show2();</p>
+<h4 id="反射方法的其它使用之—通过反射越过泛型检查"><a href="#反射方法的其它使用之—通过反射越过泛型检查" class="headerlink" title="反射方法的其它使用之—通过反射越过泛型检查"></a>反射方法的其它使用之—通过反射越过泛型检查</h4><p>泛型用在编译期，编译过后泛型擦除(消失掉).所以是可以通过反射越过泛型检查的<br>测试类:<br><img src="/2020/08/04/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/22.jpg" width="800" height="800" align="center"><br>控制台输出:<br><img src="/2020/08/04/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/23.jpg" width="800" height="800" align="center"></p>
 <h3 id="反射的应用"><a href="#反射的应用" class="headerlink" title="反射的应用"></a>反射的应用</h3><p>JDBC操作数据库第一步加载数据库驱动,Class.forName(“com.mysql.jdbc.Driver”);这里是 MySQL 数据库，假如某一天我们想换成 Oracle数据库,你可能会修改forName()方法中的参数为 Oracle 数据库驱动名。但其实我们还可以在不修改代码的情况下实现修改，就像大多数框架那样，我们可以使用个写个配置文件,forName()方法中的参数在配置文件中动态读取，编译好的代码完全不用动，这里其实就是反射的一个应用。另外在我们写代码时，在对象后面敲一个 . ，IDE（如 Eclipse） 就会自动帮我们列出该对象有的方法，这里其实就是IDE使用了反射，通过对象找到该类对应的 Class 对象，从而就可以找到类中的属性和方法。</p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>反射可以是我们的代码更具灵活性,但是反射会更消耗资源,如果不需要动态创建对象,那么就不需要用到反射。</p>
 
@@ -522,7 +508,7 @@ m.invoke(p,1);</code></pre><p>其他方法类似</p>
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -577,7 +563,7 @@ m.invoke(p,1);</code></pre><p>其他方法类似</p>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是反射机制"><span class="nav-number">1.</span> <span class="nav-text">什么是反射机制?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对于反射的理解"><span class="nav-number">2.</span> <span class="nav-text">对于反射的理解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#我们先来了解一下java程序在计算机中经历的阶段"><span class="nav-number">3.</span> <span class="nav-text">我们先来了解一下java程序在计算机中经历的阶段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#封装的好处"><span class="nav-number">4.</span> <span class="nav-text">封装的好处</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#class类对象获取方式"><span class="nav-number">5.</span> <span class="nav-text">class类对象获取方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#class类对象的功能"><span class="nav-number">6.</span> <span class="nav-text">class类对象的功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#反射的应用"><span class="nav-number">7.</span> <span class="nav-text">反射的应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">8.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是反射机制"><span class="nav-number">1.</span> <span class="nav-text">什么是反射机制?</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#总结-反射就是Java类中各个成分映射成一个个Java对象"><span class="nav-number">1.1.</span> <span class="nav-text">总结:反射就是Java类中各个成分映射成一个个Java对象</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对于反射的理解"><span class="nav-number">2.</span> <span class="nav-text">对于反射的理解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#我们先来了解一下java程序在计算机中经历的阶段"><span class="nav-number">3.</span> <span class="nav-text">我们先来了解一下java程序在计算机中经历的阶段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#封装的好处"><span class="nav-number">4.</span> <span class="nav-text">封装的好处</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#class类对象获取方式"><span class="nav-number">5.</span> <span class="nav-text">class类对象获取方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一个字节码文件在一次运行程序过程中只会加载一次-不管你通过哪种方式。"><span class="nav-number">5.1.</span> <span class="nav-text">一个字节码文件在一次运行程序过程中只会加载一次,不管你通过哪种方式。</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#反射的使用"><span class="nav-number">6.</span> <span class="nav-text">反射的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#通过反射获取构造方法"><span class="nav-number">6.1.</span> <span class="nav-text">通过反射获取构造方法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#调用方法"><span class="nav-number">6.1.1.</span> <span class="nav-text">调用方法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#获取成员变量并调用"><span class="nav-number">6.2.</span> <span class="nav-text">获取成员变量并调用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#获取成员方法并调用"><span class="nav-number">6.3.</span> <span class="nav-text">获取成员方法并调用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#反射nain方法"><span class="nav-number">6.4.</span> <span class="nav-text">反射nain方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#反射方法的其它使用之—通过反射运行配置文件内容"><span class="nav-number">6.5.</span> <span class="nav-text">反射方法的其它使用之—通过反射运行配置文件内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#反射方法的其它使用之—通过反射越过泛型检查"><span class="nav-number">6.6.</span> <span class="nav-text">反射方法的其它使用之—通过反射越过泛型检查</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#反射的应用"><span class="nav-number">7.</span> <span class="nav-text">反射的应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">8.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
