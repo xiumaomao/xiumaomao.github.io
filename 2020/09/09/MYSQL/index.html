@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="后端," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="首先市面上那么多数据库软件,为什么学习MYSQL,我们先来看一幅图这幅图可以看出MYSQL现在还是非常流行的,并且许多公司开发都是使用MYSQL数据库,接下来我们一起学习一下MYSQL数据库。安装我就不说了,网上比比皆是。 MYSQL常见命令 show databases;显示已经创建的数据库  此时你应该会疑惑,我没有创建这4个数据库啊?其实这三个数据库是系统自动帮我们创建好的。 informa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MYSQL">
+<meta property="og:url" content="http://yoursite.com/2020/09/09/MYSQL/index.html">
+<meta property="og:site_name" content="毛毛的博客">
+<meta property="og:description" content="首先市面上那么多数据库软件,为什么学习MYSQL,我们先来看一幅图这幅图可以看出MYSQL现在还是非常流行的,并且许多公司开发都是使用MYSQL数据库,接下来我们一起学习一下MYSQL数据库。安装我就不说了,网上比比皆是。 MYSQL常见命令 show databases;显示已经创建的数据库  此时你应该会疑惑,我没有创建这4个数据库啊?其实这三个数据库是系统自动帮我们创建好的。 informa">
+<meta property="og:image" content="http://yoursite.com/2020/09/09/MYSQL/1.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/09/MYSQL/2.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/09/MYSQL/3.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/09/MYSQL/4.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/09/MYSQL/5.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/09/MYSQL/6.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/09/MYSQL/7.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/09/MYSQL/8.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/09/MYSQL/9.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/09/MYSQL/10.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/09/MYSQL/11.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/09/MYSQL/12.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/09/MYSQL/13.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/09/MYSQL/14.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/09/MYSQL/15.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/09/MYSQL/16.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/09/MYSQL/17.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/09/MYSQL/18.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/09/MYSQL/19.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/09/MYSQL/20.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/09/MYSQL/21.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/09/MYSQL/22.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/09/MYSQL/23.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/09/MYSQL/24.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/09/MYSQL/25.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/09/MYSQL/26.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/09/MYSQL/27.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/09/MYSQL/28.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/09/MYSQL/29.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/09/MYSQL/30.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/09/MYSQL/33.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/09/MYSQL/31.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/09/MYSQL/32.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/09/MYSQL/34.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/09/MYSQL/42.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/09/MYSQL/43.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/09/MYSQL/35.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/09/MYSQL/37.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/09/MYSQL/36.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/09/MYSQL/38.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/09/MYSQL/39.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/09/MYSQL/40.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/09/MYSQL/41.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/09/MYSQL/44.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/09/MYSQL/45.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/09/MYSQL/46.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/09/MYSQL/47.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/09/MYSQL/48.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/09/MYSQL/49.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/09/MYSQL/50.jpg">
+<meta property="article:published_time" content="2020-09-09T01:58:11.000Z">
+<meta property="article:modified_time" content="2020-09-09T06:55:07.132Z">
+<meta property="article:author" content="毛毛">
+<meta property="article:tag" content="后端">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/09/09/MYSQL/1.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/09/09/MYSQL/"/>
+
+
+
+
+
+  <title>MYSQL | 毛毛的博客</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">毛毛的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/09/MYSQL/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="毛毛">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/maomao.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="毛毛的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">MYSQL</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-09-09T09:58:11+08:00">
+                2020-09-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MYSQL/" itemprop="url" rel="index">
+                    <span itemprop="name">MYSQL</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>首先市面上那么多数据库软件,为什么学习MYSQL,我们先来看一幅图<br><img src="/2020/09/09/MYSQL/1.jpg" width="800" height="800" align="center"><br>这幅图可以看出MYSQL现在还是非常流行的,并且许多公司开发都是使用MYSQL数据库,接下来我们一起学习一下MYSQL数据库。安装我就不说了,网上比比皆是。</p>
+<h3 id="MYSQL常见命令"><a href="#MYSQL常见命令" class="headerlink" title="MYSQL常见命令"></a>MYSQL常见命令</h3><ul>
+<li><p>show databases;显示已经创建的数据库</p>
+<img src="/2020/09/09/MYSQL/2.jpg" width="800" height="800" align="center">
+此时你应该会疑惑,我没有创建这4个数据库啊?其实这三个数据库是系统自动帮我们创建好的。
+information_schema:保存数据库中数据的信息
+mysql:保存数据库中用户的信息
+performance_schema:保存数据库性能信息和参数
+sys:保存系统测试信息
+</li>
+<li><p>use 数据库名称:指定我们操作的数据库名称(数据库表是建立在数据库之上的,所以在操作表之前我们需要先确定操作的数据库)</p>
+</li>
+<li><p>show tables:显示该数据库下所有的表</p>
+<img src="/2020/09/09/MYSQL/3.jpg" width="800" height="800" align="center">
+</li>
+<li><p>show tables from 数据库名称:显示指定数据库下的数据库表(和上面的区别就是你不需要先指定数据库)</p>
+<img src="/2020/09/09/MYSQL/4.jpg" width="800" height="800" align="center">
+</li>
+<li><p>select database():查看自己所在的数据库</p>
+<img src="/2020/09/09/MYSQL/5.jpg" width="800" height="800" align="center">
+</li>
+<li><p>create table(。。。):创建数据库表并指定字段</p>
+<img src="/2020/09/09/MYSQL/6.jpg" width="800" height="800" align="center">
+</li>
+<li><p>desc table:查看数据库表的结构</p>
+<img src="/2020/09/09/MYSQL/7.jpg" width="800" height="800" align="center">
+</li>
+<li><p>select version():查看数据库版本</p>
+<img src="/2020/09/09/MYSQL/8.jpg" width="800" height="800" align="center">
+
+</li>
+</ul>
+<h3 id="MYSQL语法规范"><a href="#MYSQL语法规范" class="headerlink" title="MYSQL语法规范"></a>MYSQL语法规范</h3><p>1.不区分大小写,但建议关键字大写,别名,表名小写<br>2.每条命令最好用分号结尾<br>3.注释 单行注释:# 多行注释: –或者/*  */</p>
+<h3 id="DQL"><a href="#DQL" class="headerlink" title="DQL"></a>DQL</h3><h4 id="基础查询"><a href="#基础查询" class="headerlink" title="基础查询"></a>基础查询</h4><ul>
+<li><p>select 查询列表(表中字段,常量值,表达式,函数) from 表名</p>
+<img src="/2020/09/09/MYSQL/9.jpg" width="800" height="800" align="center">
+</li>
+<li><p>查询表达式</p>
+<img src="/2020/09/09/MYSQL/10.jpg" width="800" height="800" align="center">
+</li>
+<li><p>查询函数</p>
+<img src="/2020/09/09/MYSQL/11.jpg" width="800" height="800" align="center">
+</li>
+<li><p>别名(1.用as关键字2.空格)</p>
+<img src="/2020/09/09/MYSQL/12.jpg" width="800" height="800" align="center">
+</li>
+<li><p>去重distinct</p>
+<img src="/2020/09/09/MYSQL/13.jpg" width="800" height="800" align="center">
+上图查出来的id有很多重复的,我们使用distinct关键字去重复
+<img src="/2020/09/09/MYSQL/14.jpg" width="800" height="800" align="center">
+</li>
+<li><p>‘+’作用<br>在mysql中+号的作用仅仅只有运算符的作用,如果有一个是字符串,会首先把它解析成数字,如果解析成功就执行运算,如果解析失败,就将字符型数值转换成0.只要一方是null,结果肯定是null</p>
+<img src="/2020/09/09/MYSQL/15.jpg" width="800" height="800" align="center">
+<img src="/2020/09/09/MYSQL/16.jpg" width="800" height="800" align="center">
+<img src="/2020/09/09/MYSQL/17.jpg" width="800" height="800" align="center">
+<img src="/2020/09/09/MYSQL/18.jpg" width="800" height="800" align="center">
+<img src="/2020/09/09/MYSQL/19.jpg" width="800" height="800" align="center">
+
+</li>
+</ul>
+<h4 id="条件查询"><a href="#条件查询" class="headerlink" title="条件查询"></a>条件查询</h4><ul>
+<li><p>select 查询列表 from 表民 where 条件</p>
+<img src="/2020/09/09/MYSQL/20.jpg" width="800" height="800" align="center">
+</li>
+<li><p>between…and</p>
+<img src="/2020/09/09/MYSQL/21.jpg" width="800" height="800" align="center">
+
+</li>
+</ul>
+<h4 id="模糊查询like-任意多个字符-一个字符"><a href="#模糊查询like-任意多个字符-一个字符" class="headerlink" title="模糊查询like(%:任意多个字符;_一个字符)"></a>模糊查询like(%:任意多个字符;_一个字符)</h4><p>查询员工名中包含字符a的员工<br><img src="/2020/09/09/MYSQL/22.jpg" width="800" height="800" align="center"></p>
+<h4 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h4><h5 id="字符函数"><a href="#字符函数" class="headerlink" title="字符函数"></a>字符函数</h5><ul>
+<li><p>length 返回字符长度</p>
+<img src="/2020/09/09/MYSQL/23.jpg" width="800" height="800" align="center">
+</li>
+<li><p>concat:拼接字符</p>
+<img src="/2020/09/09/MYSQL/24.jpg" width="800" height="800" align="center">
+</li>
+<li><p>upper,lower(将字符转换为大小写)</p>
+<img src="/2020/09/09/MYSQL/25.jpg" width="800" height="800" align="center">
+</li>
+<li><p>substr,substring:截取字符(索引从1开始)<br>substr(‘字符’,start):表示从指定位置开始到结束</p>
+<img src="/2020/09/09/MYSQL/26.jpg" width="800" height="800" align="center">
+substr('字符',start,len):表示从指定位置开始,指定截取长度
+<img src="/2020/09/09/MYSQL/27.jpg" width="800" height="800" align="center">
+</li>
+<li><p>trim:去掉前后空格</p>
+<img src="/2020/09/09/MYSQL/28.jpg" width="800" height="800" align="center">
+</li>
+<li><p>replace:替换字符</p>
+<img src="/2020/09/09/MYSQL/29.jpg" width="800" height="800" align="center">
+
+</li>
+</ul>
+<h5 id="数学函数"><a href="#数学函数" class="headerlink" title="数学函数"></a>数学函数</h5><ul>
+<li><p>round:四舍五入</p>
+<img src="/2020/09/09/MYSQL/30.jpg" width="800" height="800" align="center">
+</li>
+<li><p>round(有参数):保留小数位</p>
+<img src="/2020/09/09/MYSQL/33.jpg" width="800" height="800" align="center">
+</li>
+<li><p>ceil:向上取整</p>
+<img src="/2020/09/09/MYSQL/31.jpg" width="800" height="800" align="center">
+</li>
+<li><p>floor:向下取整</p>
+<img src="/2020/09/09/MYSQL/32.jpg" width="800" height="800" align="center">
+</li>
+<li><p>truncate</p>
+<img src="/2020/09/09/MYSQL/34.jpg" width="800" height="800" align="center">
+</li>
+<li><p>sum:求和</p>
+<img src="/2020/09/09/MYSQL/42.jpg" width="800" height="800" align="center">
+</li>
+<li><p>count:计算个数</p>
+<img src="/2020/09/09/MYSQL/43.jpg" width="800" height="800" align="center">
+
+</li>
+</ul>
+<h5 id="日期函数"><a href="#日期函数" class="headerlink" title="日期函数"></a>日期函数</h5><ul>
+<li><p>now():获取系统当前日期+时间</p>
+<img src="/2020/09/09/MYSQL/35.jpg" width="800" height="800" align="center">
+</li>
+<li><p>curdate():获取系统当前日期(不包含时间)</p>
+<img src="/2020/09/09/MYSQL/37.jpg" width="800" height="800" align="center">
+</li>
+<li><p>curtime():获取当前时间(不包含日期)</p>
+<img src="/2020/09/09/MYSQL/36.jpg" width="800" height="800" align="center">
+</li>
+<li><p>year,month,day:获取指定日期的年,月,日</p>
+<img src="/2020/09/09/MYSQL/38.jpg" width="800" height="800" align="center">
+<img src="/2020/09/09/MYSQL/39.jpg" width="800" height="800" align="center">
+<img src="/2020/09/09/MYSQL/40.jpg" width="800" height="800" align="center">
+</li>
+<li><p>date_format:将日期转换成字符</p>
+<img src="/2020/09/09/MYSQL/41.jpg" width="800" height="800" align="center">
+
+</li>
+</ul>
+<h4 id="分组查询-group-by"><a href="#分组查询-group-by" class="headerlink" title="分组查询(group by)"></a>分组查询(group by)</h4><p>格式:select * from … where … group by … having … order by … limit<br>案例1:查询每个工种的最高工资<br><img src="/2020/09/09/MYSQL/44.jpg" width="800" height="800" align="center"><br>案例2:查询每个位置上的部门个数<br><img src="/2020/09/09/MYSQL/45.jpg" width="800" height="800" align="center"><br>案例3:查询邮箱中包含a字符的,每个部门的平均工资<br><img src="/2020/09/09/MYSQL/46.jpg" width="800" height="800" align="center"><br>案例4:查询每个部门的员工个数&gt;2<br><img src="/2020/09/09/MYSQL/47.jpg" width="800" height="800" align="center"></p>
+<h6 id="having和where过滤条件的区别就是where是在表中就可以判断-having是对分组之后的结果进行过滤。"><a href="#having和where过滤条件的区别就是where是在表中就可以判断-having是对分组之后的结果进行过滤。" class="headerlink" title="having和where过滤条件的区别就是where是在表中就可以判断,having是对分组之后的结果进行过滤。"></a>having和where过滤条件的区别就是where是在表中就可以判断,having是对分组之后的结果进行过滤。</h6><h4 id="联表查询-join"><a href="#联表查询-join" class="headerlink" title="联表查询(join)"></a>联表查询(join)</h4><img src="/2020/09/09/MYSQL/48.jpg" width="800" height="800" align="center">
+
+<ul>
+<li><p>left join(左连接):以左表为主表,可以查询出左表的所有记录,不一定和右表匹配</p>
+<img src="/2020/09/09/MYSQL/49.jpg" width="800" height="800" align="center">
+</li>
+<li><p>right join(右连接):以右表为主表,可以查询出右表的所有记录,不一定和左表匹配</p>
+<img src="/2020/09/09/MYSQL/50.jpg" width="800" height="800" align="center"></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag"># 后端</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/09/07/Java%E9%9B%86%E5%90%88/" rel="next" title="Java集合">
+                <i class="fa fa-chevron-left"></i> Java集合
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/maomao.jpg"
+                alt="毛毛" />
+            
+              <p class="site-author-name" itemprop="name">毛毛</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#MYSQL常见命令"><span class="nav-number">1.</span> <span class="nav-text">MYSQL常见命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MYSQL语法规范"><span class="nav-number">2.</span> <span class="nav-text">MYSQL语法规范</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DQL"><span class="nav-number">3.</span> <span class="nav-text">DQL</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基础查询"><span class="nav-number">3.1.</span> <span class="nav-text">基础查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#条件查询"><span class="nav-number">3.2.</span> <span class="nav-text">条件查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模糊查询like-任意多个字符-一个字符"><span class="nav-number">3.3.</span> <span class="nav-text">模糊查询like(%:任意多个字符;_一个字符)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#函数"><span class="nav-number">3.4.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#字符函数"><span class="nav-number">3.4.1.</span> <span class="nav-text">字符函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#数学函数"><span class="nav-number">3.4.2.</span> <span class="nav-text">数学函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#日期函数"><span class="nav-number">3.4.3.</span> <span class="nav-text">日期函数</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分组查询-group-by"><span class="nav-number">3.5.</span> <span class="nav-text">分组查询(group by)</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#having和where过滤条件的区别就是where是在表中就可以判断-having是对分组之后的结果进行过滤。"><span class="nav-number">3.5.0.1.</span> <span class="nav-text">having和where过滤条件的区别就是where是在表中就可以判断,having是对分组之后的结果进行过滤。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#联表查询-join"><span class="nav-number">3.6.</span> <span class="nav-text">联表查询(join)</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">毛毛</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
