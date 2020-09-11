@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="数据库," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="MYSQL优化步骤通常来说MYSQL优化一般分为以下几个步骤:1.查看show log,分析show log,分析出查询慢的语句2.按照一定的优先级,进行一个一个的排查所有慢语句3.分析top sql,进行explain调试,查看所有语句执行时间4.调整索引或语句本身 SQL执行顺序想要优化SQL,必须知道SQL的执行顺序,这样才能配合explain才能事半功倍。完整的SQL语句:SQL执行顺序:">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MYSQL_优化">
+<meta property="og:url" content="http://yoursite.com/2020/09/10/MYSQL-%E4%BC%98%E5%8C%96/index.html">
+<meta property="og:site_name" content="毛毛的博客">
+<meta property="og:description" content="MYSQL优化步骤通常来说MYSQL优化一般分为以下几个步骤:1.查看show log,分析show log,分析出查询慢的语句2.按照一定的优先级,进行一个一个的排查所有慢语句3.分析top sql,进行explain调试,查看所有语句执行时间4.调整索引或语句本身 SQL执行顺序想要优化SQL,必须知道SQL的执行顺序,这样才能配合explain才能事半功倍。完整的SQL语句:SQL执行顺序:">
+<meta property="og:image" content="http://yoursite.com/2020/09/10/MYSQL-%E4%BC%98%E5%8C%96/1.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/10/MYSQL-%E4%BC%98%E5%8C%96/2.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/10/MYSQL-%E4%BC%98%E5%8C%96/3.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/10/MYSQL-%E4%BC%98%E5%8C%96/4.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/10/MYSQL-%E4%BC%98%E5%8C%96/5.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/10/MYSQL-%E4%BC%98%E5%8C%96/6.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/10/MYSQL-%E4%BC%98%E5%8C%96/7.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/10/MYSQL-%E4%BC%98%E5%8C%96/8.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/10/MYSQL-%E4%BC%98%E5%8C%96/9.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/10/MYSQL-%E4%BC%98%E5%8C%96/10.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/10/MYSQL-%E4%BC%98%E5%8C%96/11.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/10/MYSQL-%E4%BC%98%E5%8C%96/12.jpg">
+<meta property="article:published_time" content="2020-09-10T02:22:36.000Z">
+<meta property="article:modified_time" content="2020-09-11T03:44:10.513Z">
+<meta property="article:author" content="毛毛">
+<meta property="article:tag" content="数据库">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/09/10/MYSQL-%E4%BC%98%E5%8C%96/1.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/09/10/MYSQL-优化/"/>
+
+
+
+
+
+  <title>MYSQL_优化 | 毛毛的博客</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">毛毛的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/10/MYSQL-%E4%BC%98%E5%8C%96/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="毛毛">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/maomao.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="毛毛的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">MYSQL_优化</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-09-10T10:22:36+08:00">
+                2020-09-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MYSQL/" itemprop="url" rel="index">
+                    <span itemprop="name">MYSQL</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="MYSQL优化步骤"><a href="#MYSQL优化步骤" class="headerlink" title="MYSQL优化步骤"></a>MYSQL优化步骤</h3><p>通常来说MYSQL优化一般分为以下几个步骤:<br>1.查看show log,分析show log,分析出查询慢的语句<br>2.按照一定的优先级,进行一个一个的排查所有慢语句<br>3.分析top sql,进行explain调试,查看所有语句执行时间<br>4.调整索引或语句本身</p>
+<h3 id="SQL执行顺序"><a href="#SQL执行顺序" class="headerlink" title="SQL执行顺序"></a>SQL执行顺序</h3><p>想要优化SQL,必须知道SQL的执行顺序,这样才能配合explain才能事半功倍。<br>完整的SQL语句:<br><img src="/2020/09/10/MYSQL-%E4%BC%98%E5%8C%96/1.jpg" width="800" height="800" align="center"><br>SQL执行顺序:<br><img src="/2020/09/10/MYSQL-%E4%BC%98%E5%8C%96/2.jpg" width="800" height="800" align="center"><br><img src="/2020/09/10/MYSQL-%E4%BC%98%E5%8C%96/3.jpg" width="800" height="800" align="center"></p>
+<h3 id="定位查询慢日志"><a href="#定位查询慢日志" class="headerlink" title="定位查询慢日志"></a>定位查询慢日志</h3><p>首先先打开MYSQL慢日志,通过<br><img src="/2020/09/10/MYSQL-%E4%BC%98%E5%8C%96/4.jpg" width="800" height="800" align="center"><br>我们可以看到慢日志默认是关闭的<br><img src="/2020/09/10/MYSQL-%E4%BC%98%E5%8C%96/5.jpg" width="800" height="800" align="center"><br>我们可以通过set global slow_query_log =on;命令开启慢日志<br><img src="/2020/09/10/MYSQL-%E4%BC%98%E5%8C%96/6.jpg" width="800" height="800" align="center"><br><img src="/2020/09/10/MYSQL-%E4%BC%98%E5%8C%96/7.jpg" width="800" height="800" align="center"><br>然后通过上面那个key定位到慢日志的位置<br>然后所有查询的语句超过long_query_time的语句都会被记录到慢日志中,我们为了测试首先通过set global long_query_time=0.1将超过0.1s的查询语句都记录到慢日志中。<br><img src="/2020/09/10/MYSQL-%E4%BC%98%E5%8C%96/8.jpg" width="800" height="800" align="center"><br><img src="/2020/09/10/MYSQL-%E4%BC%98%E5%8C%96/9.jpg" width="800" height="800" align="center"><br>我们测试用的10万条数据查询用了0.14s,超过0.1s,应该会被记录到慢日志中,我们通过慢日志的位置去查找,慢日志的名称默认是主机名-slow.log<br><img src="/2020/09/10/MYSQL-%E4%BC%98%E5%8C%96/10.jpg" width="800" height="800" align="center"></p>
+<h4 id="通过以上方法-我们通过定义慢日志的位置-以及设置的时间-让超过时间的SQL语句都记录在慢日志中-然后查看慢日志中的SQL语句-然后通过explain语句分析查询慢的语句进行SQL优化。"><a href="#通过以上方法-我们通过定义慢日志的位置-以及设置的时间-让超过时间的SQL语句都记录在慢日志中-然后查看慢日志中的SQL语句-然后通过explain语句分析查询慢的语句进行SQL优化。" class="headerlink" title="通过以上方法,我们通过定义慢日志的位置,以及设置的时间,让超过时间的SQL语句都记录在慢日志中,然后查看慢日志中的SQL语句,然后通过explain语句分析查询慢的语句进行SQL优化。"></a>通过以上方法,我们通过定义慢日志的位置,以及设置的时间,让超过时间的SQL语句都记录在慢日志中,然后查看慢日志中的SQL语句,然后通过explain语句分析查询慢的语句进行SQL优化。</h4><h3 id="explain模拟器分析SQL"><a href="#explain模拟器分析SQL" class="headerlink" title="explain模拟器分析SQL"></a>explain模拟器分析SQL</h3><p>explain模拟优化器执行SQL,分析查询语句或者表结构的性能瓶颈。</p>
+<h4 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h4><p>1.表的读取顺序<br>2.数据读取操作的操作类型<br>3，哪些索引可以使用<br>4.哪些索引被实际使用<br>5.表之间的引用<br>6.每张表有多少行被优化器查询</p>
+<h4 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h4><p>explain+SQL语句即可！<br>执行计划包含的信息如下:<br><img src="/2020/09/10/MYSQL-%E4%BC%98%E5%8C%96/11.jpg" width="800" height="800" align="center"></p>
+<h5 id="id"><a href="#id" class="headerlink" title="id"></a>id</h5><p>查询的序号,包含一组数字,表示查询中执行select子句或操作表的顺序<br>两种情况:<br>1.id相同,执行顺序从上往下<br>2.id不同,值越大,优先级越高,越先执行</p>
+<h4 id="select-type"><a href="#select-type" class="headerlink" title="select_type"></a>select_type</h4><p>查询类型,主要区别与简单查询,联合查询,子查询等复杂的查询</p>
+<ul>
+<li>simple:简单的select查询,查询中不包含子查询或者union</li>
+<li>primary:查询中若包含任何复杂的子部分,最外层查询被标记</li>
+<li>subquery:在select或where列表中包含了子查询</li>
+<li>derived:在from列表中包含的子查询被标记为derived(衍生),MYSQL会递归执行这些子查询,把结果放到临时表中</li>
+<li>union:如果有第二个select出现在union之后,则标记为union,如果union包含在from子句的子查询中,外层select被标记为derived</li>
+<li>union result:union的结果</li>
+</ul>
+<h4 id="table"><a href="#table" class="headerlink" title="table"></a>table</h4><p>输出行所用的表</p>
+<h4 id="type"><a href="#type" class="headerlink" title="type"></a>type</h4><p>显示联结类型,显示查询使用了何种类型,按照性能从最佳到最坏排序。</p>
+<ul>
+<li>system:表中仅有一行,这是const联结类型的一个特例</li>
+<li>const:表示通过索引一次就能找到,const用于比较promary key或者unique索引.因为只匹配一行数据,所以如果将逐渐置于where列表中,MYSQL能将该查询转换为一个常量</li>
+<li>eq_ref:唯一性索引扫描,对于每个索引键,表中只有一条数据与之匹配。常见唯一索引或者主键扫描</li>
+<li>ref:非唯一性索引扫描,返回匹配某个单独值的所有行,本质上也是一种索引访问,它返回所有匹配某个单独值的所有行,可能会找多个符合条件的行,属于查找和扫描的混合体。</li>
+<li>range:只检索给定范围的行,使用一个索引来选择行。key列显示使用了哪个索引,一般是where语句中出现了between,in等范围的查询。这种范围扫描索引比全表扫描要好,因为它开始于索引的某一个点,而结束另一个点,不用全表扫描。</li>
+<li>index:index与all的区别为index类型只遍历索引树,通常比all快,因为索引文件比数据文件小很多。</li>
+<li>all:遍历全表以找到匹配的行<h5 id="一般保证查询至少达到range级别-最好能达到ref。"><a href="#一般保证查询至少达到range级别-最好能达到ref。" class="headerlink" title="一般保证查询至少达到range级别,最好能达到ref。"></a>一般保证查询至少达到range级别,最好能达到ref。</h5></li>
+</ul>
+<h4 id="pooisble-keys"><a href="#pooisble-keys" class="headerlink" title="pooisble_keys"></a>pooisble_keys</h4><p>指出MYSQL能使用哪个索引在该表中找到行</p>
+<h4 id="key"><a href="#key" class="headerlink" title="key"></a>key</h4><p>显示MYSQL实际决定使用的索引,如果没有选择索引,键是null。查询中如果使用覆盖索引,则该索引和查询的select字段重叠</p>
+<h4 id="key-len"><a href="#key-len" class="headerlink" title="key_len"></a>key_len</h4><p>表示索引中使用的字节数,该列计算查询中使用索引的长度在不损失精度的情况下,长度越短越好。</p>
+<h4 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h4><p>显示索引的哪一列被使用了,如果有可能是一个常数,哪些列或常量被用于查询索引列上的值</p>
+<h4 id="rows"><a href="#rows" class="headerlink" title="rows"></a>rows</h4><p>根据表统计计算以及索引选用情况,大致估算出找到所需的记录所需的读取的行数</p>
+<h4 id="extra"><a href="#extra" class="headerlink" title="extra"></a>extra</h4><p>包含不适合在其他列中显示,但是十分重要的额外信息。</p>
+<ul>
+<li>Using filesort:说明MYSQL会对数据适用一个外部的索引排序,而不是按照表内的索引顺序进行读取。MYSQL中无法利用索引完成排序操作称为‘文件排序’。</li>
+<li>Using temporary:使用了临时表中保存中间结果,MYSQL在查询结果排序时使用临时表。常见于排序order by和分组查询group by</li>
+<li>Using index:表示相应的select操作使用覆盖索引,避免访问了表的数据行,如果同时出现using where,表名索引被用来执行索引键值的查找;如果没有同时出现using where,表名索引用来读取数据而非执行查询操作。</li>
+<li>impossible where:where子句的值总是false,不能用来获取任何元组</li>
+<li>select tables optimized away：在没有group by子句的情况下,基于索引优化Min、max操作或者对于MyISAM存储引擎优化count(*),不必等到执行阶段再进行计算,查询执行计划生成的阶段即完成优化。</li>
+<li>distinct：优化distinct操作,在找到第一匹配的元组后即停止找同样值的动作</li>
+</ul>
+<h3 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h3><p>MYSQL优化不考虑硬件,执行引擎的影响,其实也就是MYSQL语句的优化,其实体现在表的结构,语句和是否建立索引。那么什么是索引呢？<br>MYSQL索引其实是一种可以帮助我们高效检索数据的数据结构.MYSQL使用索引的数据结构底层是树,通过一个简单的例子我们来了解索引到底快在什么地方。<br><img src="/2020/09/10/MYSQL-%E4%BC%98%E5%8C%96/12.jpg" width="800" height="800" align="center"><br>上面一幅图模拟查询,假如我们不加索引,我们查询age=10的数据需要5次查询,因为不加索引,mysql默认会进行全表扫描,就算第四次查询到了age=10的数据他还是会往下扫描,但是当我们给age这个字段加上索引之后,变成树结构,只需要查询两次就可以了,查询效率大大增加了。</p>
+<h4 id="索引的分类"><a href="#索引的分类" class="headerlink" title="索引的分类"></a>索引的分类</h4>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag"># 数据库</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/09/09/MYSQL-%E4%BA%8B%E5%8A%A1/" rel="next" title="MYSQL-事务">
+                <i class="fa fa-chevron-left"></i> MYSQL-事务
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/maomao.jpg"
+                alt="毛毛" />
+            
+              <p class="site-author-name" itemprop="name">毛毛</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#MYSQL优化步骤"><span class="nav-number">1.</span> <span class="nav-text">MYSQL优化步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SQL执行顺序"><span class="nav-number">2.</span> <span class="nav-text">SQL执行顺序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#定位查询慢日志"><span class="nav-number">3.</span> <span class="nav-text">定位查询慢日志</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#通过以上方法-我们通过定义慢日志的位置-以及设置的时间-让超过时间的SQL语句都记录在慢日志中-然后查看慢日志中的SQL语句-然后通过explain语句分析查询慢的语句进行SQL优化。"><span class="nav-number">3.1.</span> <span class="nav-text">通过以上方法,我们通过定义慢日志的位置,以及设置的时间,让超过时间的SQL语句都记录在慢日志中,然后查看慢日志中的SQL语句,然后通过explain语句分析查询慢的语句进行SQL优化。</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#explain模拟器分析SQL"><span class="nav-number">4.</span> <span class="nav-text">explain模拟器分析SQL</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#作用"><span class="nav-number">4.1.</span> <span class="nav-text">作用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#用法"><span class="nav-number">4.2.</span> <span class="nav-text">用法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#id"><span class="nav-number">4.2.1.</span> <span class="nav-text">id</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#select-type"><span class="nav-number">4.3.</span> <span class="nav-text">select_type</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#table"><span class="nav-number">4.4.</span> <span class="nav-text">table</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#type"><span class="nav-number">4.5.</span> <span class="nav-text">type</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#一般保证查询至少达到range级别-最好能达到ref。"><span class="nav-number">4.5.1.</span> <span class="nav-text">一般保证查询至少达到range级别,最好能达到ref。</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#pooisble-keys"><span class="nav-number">4.6.</span> <span class="nav-text">pooisble_keys</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#key"><span class="nav-number">4.7.</span> <span class="nav-text">key</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#key-len"><span class="nav-number">4.8.</span> <span class="nav-text">key_len</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ref"><span class="nav-number">4.9.</span> <span class="nav-text">ref</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#rows"><span class="nav-number">4.10.</span> <span class="nav-text">rows</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#extra"><span class="nav-number">4.11.</span> <span class="nav-text">extra</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#索引"><span class="nav-number">5.</span> <span class="nav-text">索引</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#索引的分类"><span class="nav-number">5.1.</span> <span class="nav-text">索引的分类</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">毛毛</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
