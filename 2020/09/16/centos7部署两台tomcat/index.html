@@ -79,17 +79,26 @@
 
 
 
-<meta name="description" content="HashMap是我们日常开发中使用频率最高,用于存储key-value键值对的数据结构。在jdk1.8中对HashMap进行了优化，本文结合1.7和1.8的区别,探讨HashMap。 说到HashMap，我们就必须说一下hash函数。 HashMap的hash函数设计hash函数是先拿到key的HashCode,是一个32位的int值,然后让hashcode的高16位和低16位进行异或运算,如下代">
+<meta name="description" content="今天记录一下一台centos上部署两台tomcat为什么突然想在centos上搭建两台tomcat呢?我最近在学习Nginx,上面用到了Nginx负载均衡,使用两台电脑又不太现实,所以就想着在一台虚拟机上部署两台tomcat来模拟负载均衡。刚开始以为只要两个tomcat端口不一样就可以了,后来才发现没有这么简单。今天就来记录一下,也方便以后自己学习。 第一步首先我们先下载tomcat8,新建一个t">
 <meta property="og:type" content="article">
-<meta property="og:title" content="HashMap">
-<meta property="og:url" content="http://yoursite.com/2020/08/03/HashMap/index.html">
+<meta property="og:title" content="centos7部署两台tomcat">
+<meta property="og:url" content="http://yoursite.com/2020/09/16/centos7%E9%83%A8%E7%BD%B2%E4%B8%A4%E5%8F%B0tomcat/index.html">
 <meta property="og:site_name" content="毛毛的博客">
-<meta property="og:description" content="HashMap是我们日常开发中使用频率最高,用于存储key-value键值对的数据结构。在jdk1.8中对HashMap进行了优化，本文结合1.7和1.8的区别,探讨HashMap。 说到HashMap，我们就必须说一下hash函数。 HashMap的hash函数设计hash函数是先拿到key的HashCode,是一个32位的int值,然后让hashcode的高16位和低16位进行异或运算,如下代">
-<meta property="article:published_time" content="2020-08-03T06:15:35.000Z">
-<meta property="article:modified_time" content="2020-08-06T06:29:41.324Z">
+<meta property="og:description" content="今天记录一下一台centos上部署两台tomcat为什么突然想在centos上搭建两台tomcat呢?我最近在学习Nginx,上面用到了Nginx负载均衡,使用两台电脑又不太现实,所以就想着在一台虚拟机上部署两台tomcat来模拟负载均衡。刚开始以为只要两个tomcat端口不一样就可以了,后来才发现没有这么简单。今天就来记录一下,也方便以后自己学习。 第一步首先我们先下载tomcat8,新建一个t">
+<meta property="og:image" content="http://yoursite.com/2020/09/16/centos7%E9%83%A8%E7%BD%B2%E4%B8%A4%E5%8F%B0tomcat/1.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/16/centos7%E9%83%A8%E7%BD%B2%E4%B8%A4%E5%8F%B0tomcat/2.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/16/centos7%E9%83%A8%E7%BD%B2%E4%B8%A4%E5%8F%B0tomcat/3.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/16/centos7%E9%83%A8%E7%BD%B2%E4%B8%A4%E5%8F%B0tomcat/4.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/16/centos7%E9%83%A8%E7%BD%B2%E4%B8%A4%E5%8F%B0tomcat/5.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/16/centos7%E9%83%A8%E7%BD%B2%E4%B8%A4%E5%8F%B0tomcat/6.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/16/centos7%E9%83%A8%E7%BD%B2%E4%B8%A4%E5%8F%B0tomcat/7.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/09/16/centos7%E9%83%A8%E7%BD%B2%E4%B8%A4%E5%8F%B0tomcat/8.jpg">
+<meta property="article:published_time" content="2020-09-16T12:58:20.000Z">
+<meta property="article:modified_time" content="2020-09-17T01:15:12.979Z">
 <meta property="article:author" content="毛毛">
 <meta property="article:tag" content="后端">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/09/16/centos7%E9%83%A8%E7%BD%B2%E4%B8%A4%E5%8F%B0tomcat/1.jpg">
 
 
 
@@ -119,13 +128,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/08/03/HashMap/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/09/16/centos7部署两台tomcat/"/>
 
 
 
 
 
-  <title>HashMap | 毛毛的博客</title>
+  <title>centos7部署两台tomcat | 毛毛的博客</title>
   
 
 
@@ -252,7 +261,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/03/HashMap/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/16/centos7%E9%83%A8%E7%BD%B2%E4%B8%A4%E5%8F%B0tomcat/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="毛毛">
@@ -269,7 +278,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">HashMap</h1>
+          <h1 class="post-title" itemprop="name headline">centos7部署两台tomcat</h1>
         
 
         <div class="post-meta">
@@ -281,8 +290,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-03T14:15:35+08:00">
-                2020-08-03
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-09-16T20:58:20+08:00">
+                2020-09-16
               </time>
             
 
@@ -304,8 +313,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%9B%86%E5%90%88/" itemprop="url" rel="index">
-                    <span itemprop="name">集合</span>
+                  <a href="/categories/centos/" itemprop="url" rel="index">
+                    <span itemprop="name">centos</span>
                   </a>
                 </span>
 
@@ -341,20 +350,12 @@
       
 
       
-        <p>HashMap是我们日常开发中使用频率最高,用于存储key-value键值对的数据结构。在jdk1.8中对HashMap进行了优化，本文结合1.7和1.8的区别,探讨HashMap。</p>
-<p>说到HashMap，我们就必须说一下hash函数。</p>
-<h3 id="HashMap的hash函数设计"><a href="#HashMap的hash函数设计" class="headerlink" title="HashMap的hash函数设计"></a>HashMap的hash函数设计</h3><p>hash函数是先拿到key的HashCode,是一个32位的int值,然后让hashcode的高16位和低16位进行异或运算,如下代码:<br>static final int hash(Object key) {<br>        int h;<br>        return (key == null) ? 0 : (h = key.hashCode()) ^ (h &gt;&gt;&gt; 16);<br>    }</p>
-<h3 id="HashMap是什么？"><a href="#HashMap是什么？" class="headerlink" title="HashMap是什么？"></a>HashMap是什么？</h3><p>HashMap是一个存储key-value键值对的集合,实现了Map接口。HashMap最多只允许一条记录的key为null，允许多条记录的值为null。HashMap不是线程安全的,因此在同一时刻如果有多个线程对HashMap进行写入操作,会引起数据的不一致。</p>
-<h3 id="HashMap的数据结构"><a href="#HashMap的数据结构" class="headerlink" title="HashMap的数据结构"></a>HashMap的数据结构</h3><p>HashMap在1.7的时候使用数组+链表,1.8对其优化,使用数组+链表+红黑树</p>
-<h3 id="HashMap原理"><a href="#HashMap原理" class="headerlink" title="HashMap原理"></a>HashMap原理</h3><p>HashMap是一个entry数组,用来存储key-value键值对,1.7之前他的底层是数组+链表实现的,1.8之后 数组+链表+红黑树.我们使用put(key-value)存储对象到hashmap中,首先会根据key算出数组下标,然后将数据存储到对象的桶中,我们使用get方法从hashmap中取出数据.</p>
-<h3 id="HashMap容量"><a href="#HashMap容量" class="headerlink" title="HashMap容量"></a>HashMap容量</h3><p>HashMap的默认容量是16,也可以在初始化的时候指定容量,但必须是2的幂次方.其实你就算初始化的时候传入的容量不是2的幂次方,HashMap的内部也会通过tableSizeFor这个方法把传入的容量转变成最小2的幂次方数,假如你传的数是7,它内部会把它变成8.下面代码是tableSizeFor源代码:<br> static final int tableSizeFor(int cap) {<br>        int n = cap - 1;<br>        n |= n &gt;&gt;&gt; 1;<br>        n |= n &gt;&gt;&gt; 2;<br>        n |= n &gt;&gt;&gt; 4;<br>        n |= n &gt;&gt;&gt; 8;<br>        n |= n &gt;&gt;&gt; 16;<br>        return (n &lt; 0) ? 1 : (n &gt;= MAXIMUM_CAPACITY) ? MAXIMUM_CAPACITY : n + 1;<br>    为什么-1呢？如果不-1,得到的数是原来的两倍</p>
-<h3 id="为什么HashMap的容量必须是2的幂次方数。"><a href="#为什么HashMap的容量必须是2的幂次方数。" class="headerlink" title="为什么HashMap的容量必须是2的幂次方数。"></a>为什么HashMap的容量必须是2的幂次方数。</h3><p>避免hash碰撞<br>首先HashMap底层有数组,我们都知道在数组中存数据的时候,必须要计算数组的索引,在HashMap中数组下表是通过HashCode算出来的hash值与数组长度-1 进行与运算。(hash&amp;length-1),在计算机中位运算是最快的。如果我们传的是8,他的2进制数是0000 1000 -1之后 他的二进制数的0000 0111 这样的话无论存储的对象的key算出来的hash值是多少,与之进行与计算,得到的低位永远都是1。<br>例如我们指定容量是8 -1之后是7 0000 0111 并且key的hash值是1111 0011 两者进行与运算得到的值是<br>0000 0111<br>1111 1111<br>0000 0011  得到的结果低位都是1,这样就保证了每个hash桶都有可能存储数据.<br>假如我们传入的数据不是2的幂次方数10  -1是9 二进制数是0000 1001<br>0000 1001<br>1111 1111<br>0000 1001  得到的结果低位中就有0的存在,这样就导致了这个桶永远存储不到数据,这样就增大了hash碰撞。</p>
-<h3 id="HashMap默认容量为什么是16？"><a href="#HashMap默认容量为什么是16？" class="headerlink" title="HashMap默认容量为什么是16？"></a>HashMap默认容量为什么是16？</h3><p>HashMap他的扩容条件是阈值=容量*负载因子(默认0.75),我们指定默认容量是16一方面是为了给定大容量但是每次存储的数据不是很多,就会导致浪费大量的存储空间,另一方面如果给定的值太小,数据存储的太多需要我们频繁的进行扩容操作.所以相对来说16是一个合适的数字。</p>
-<h3 id="HashMap-put过程"><a href="#HashMap-put过程" class="headerlink" title="HashMap put过程"></a>HashMap put过程</h3><p>首先我们需要对key进行hashcode运算,算出hash值,再通过hashcode&amp;length-1计算出下标.然后去数组中找到数组下标对应的位置是否已经存在值,如果没有,划出一个节点将数据存储进去；如果有数据的话，调用equals方法判断内容是否相等,如果不相等就在链表上一个个去找,如果没找到就划出节点存储数据;如果找到了就代替原来的值,把新值存进去,把旧值返回。</p>
-<h3 id="HashMap扩容"><a href="#HashMap扩容" class="headerlink" title="HashMap扩容"></a>HashMap扩容</h3><p>1.扩容条件<br>当数组长度达到阈值的时候,并且你下次put数据你算出来的数组下标有数据的时候才需要扩容。<br>2.扩容步骤<br>jdk1.7中:<br>1.需要new一个新的数组,长度是原来的两倍<br>2.将原来的数组重新rehash到新数组中(因为数组长度不一样,算出来的数组下标也不一样)<br>在jdk1.8中:<br>new一个新的数组(长度为2倍)<br>扩容不需要重新rehash,只需要看高bit位是1还是0,如果是1就是原来的位置+新数组的容量;<br>如果是0,就是原来的数组索引<br>例如<br>0001 1111<br>0000 0101<br>0000 0101 得到的结果是5 这高bit位是0的情况</p>
-<p>0001 1111<br>0001 0101  得到的结果是5+16 这是高bit位是1的情况。</p>
-<h3 id="在jkd1-8中HashMap什么时候转换为红黑树？"><a href="#在jkd1-8中HashMap什么时候转换为红黑树？" class="headerlink" title="在jkd1.8中HashMap什么时候转换为红黑树？"></a>在jkd1.8中HashMap什么时候转换为红黑树？</h3><p>我们知道在jdk1.8中HashMap的数据结构进行了优化,采用数组+链表+红黑树。那么什么时候转化为红黑树呢,什么时候有转化为链表呢？<br>当链表长度&gt;8的时候,并且数组长度&gt;8的时候,会转化为红黑树;如果链表长度大于8,但数组长度小于64,会进行扩容。当我们删除红黑树的数据,使得长度小于6的时候会重新转化为链表。</p>
-<h3 id="为什么当链表长度8的时候转化为红黑树？"><a href="#为什么当链表长度8的时候转化为红黑树？" class="headerlink" title="为什么当链表长度8的时候转化为红黑树？"></a>为什么当链表长度8的时候转化为红黑树？</h3><p>链表的时间复杂度的O(n),红黑树的时间复杂度是O(logn),红黑树的查找效率高,但是红黑树的占用节点的空间是链表的两倍。因此只有链表足够多的时候我们才使用红黑树,并且链表中的节点符合泊松分布,泊松分布是一种统计学,当链表长度大于8的概率非常低,性能也很差。</p>
+        <p>今天记录一下一台centos上部署两台tomcat<br>为什么突然想在centos上搭建两台tomcat呢?我最近在学习Nginx,上面用到了Nginx负载均衡,使用两台电脑又不太现实,所以就想着在一台虚拟机上部署两台tomcat来模拟负载均衡。刚开始以为只要两个tomcat端口不一样就可以了,后来才发现没有这么简单。今天就来记录一下,也方便以后自己学习。</p>
+<h4 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h4><p>首先我们先下载tomcat8,新建一个tomcat目录,并解压到tomcat文件夹中<br><img src="/2020/09/16/centos7%E9%83%A8%E7%BD%B2%E4%B8%A4%E5%8F%B0tomcat/1.jpg" width="800" height="800" align="center"><br>如上图所示,tomcat存放路径就是/usr/local/tomcat这个文件夹中<br>解压后,进入tomcat的bin目录,执行./startup.sh命令<br><img src="/2020/09/16/centos7%E9%83%A8%E7%BD%B2%E4%B8%A4%E5%8F%B0tomcat/2.jpg" width="800" height="800" align="center"><br>然后你也可以复制第一份tomcat,我是准备了两个tomcat,先下载一个tomcat9,解压到tomcat9文件夹中<br><img src="/2020/09/16/centos7%E9%83%A8%E7%BD%B2%E4%B8%A4%E5%8F%B0tomcat/3.jpg" width="800" height="800" align="center"></p>
+<h4 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h4><p>两个tomcat准备好之后,配置环境变量,编辑/etc/profile<br><img src="/2020/09/16/centos7%E9%83%A8%E7%BD%B2%E4%B8%A4%E5%8F%B0tomcat/4.jpg" width="800" height="800" align="center"><br>这个文件配置的是JDK和两个tomcat的路径。</p>
+<h4 id="第三步"><a href="#第三步" class="headerlink" title="第三步"></a>第三步</h4><p>修改第二个tomcat的配置文件<br><img src="/2020/09/16/centos7%E9%83%A8%E7%BD%B2%E4%B8%A4%E5%8F%B0tomcat/5.jpg" width="800" height="800" align="center"><br><img src="/2020/09/16/centos7%E9%83%A8%E7%BD%B2%E4%B8%A4%E5%8F%B0tomcat/6.jpg" width="800" height="800" align="center"><br>tomcat的配置文件修改好之后,防火墙要开启80和88端口,最后到第二个tomcat的bin目录执行./startup.sh命令开启tomcat</p>
+<h4 id="第四步"><a href="#第四步" class="headerlink" title="第四步"></a>第四步</h4><p>访问<a href="http://ip地址:8080" target="_blank" rel="noopener">http://ip地址:8080</a><br><img src="/2020/09/16/centos7%E9%83%A8%E7%BD%B2%E4%B8%A4%E5%8F%B0tomcat/7.jpg" width="800" height="800" align="center"><br>访问<a href="http://ip地址:8088" target="_blank" rel="noopener">http://ip地址:8088</a><br><img src="/2020/09/16/centos7%E9%83%A8%E7%BD%B2%E4%B8%A4%E5%8F%B0tomcat/8.jpg" width="800" height="800" align="center"></p>
+<p>大功告成.至此centos7部署两个tomcat成功。</p>
 
       
     </div>
@@ -385,8 +386,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/07/31/java%E5%9F%BA%E7%A1%80/" rel="next" title="java基础">
-                <i class="fa fa-chevron-left"></i> java基础
+              <a href="/2020/09/14/Nginx/" rel="next" title="Nginx">
+                <i class="fa fa-chevron-left"></i> Nginx
               </a>
             
           </div>
@@ -394,10 +395,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/08/04/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/" rel="prev" title="反射机制">
-                反射机制 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -533,7 +530,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap的hash函数设计"><span class="nav-number">1.</span> <span class="nav-text">HashMap的hash函数设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap是什么？"><span class="nav-number">2.</span> <span class="nav-text">HashMap是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap的数据结构"><span class="nav-number">3.</span> <span class="nav-text">HashMap的数据结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap原理"><span class="nav-number">4.</span> <span class="nav-text">HashMap原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap容量"><span class="nav-number">5.</span> <span class="nav-text">HashMap容量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么HashMap的容量必须是2的幂次方数。"><span class="nav-number">6.</span> <span class="nav-text">为什么HashMap的容量必须是2的幂次方数。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap默认容量为什么是16？"><span class="nav-number">7.</span> <span class="nav-text">HashMap默认容量为什么是16？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap-put过程"><span class="nav-number">8.</span> <span class="nav-text">HashMap put过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap扩容"><span class="nav-number">9.</span> <span class="nav-text">HashMap扩容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在jkd1-8中HashMap什么时候转换为红黑树？"><span class="nav-number">10.</span> <span class="nav-text">在jkd1.8中HashMap什么时候转换为红黑树？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么当链表长度8的时候转化为红黑树？"><span class="nav-number">11.</span> <span class="nav-text">为什么当链表长度8的时候转化为红黑树？</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#第一步"><span class="nav-number">1.</span> <span class="nav-text">第一步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二步"><span class="nav-number">2.</span> <span class="nav-text">第二步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第三步"><span class="nav-number">3.</span> <span class="nav-text">第三步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第四步"><span class="nav-number">4.</span> <span class="nav-text">第四步</span></a></li></ol></div>
             
 
           </div>
