@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="后端," />
 
 
 
@@ -79,13 +79,16 @@
 
 
 
+<meta name="description" content="之前我们学习Dockerfile,会使用Dockerfile部署项目,但细心的同学应该会发现,如果用到多个服务怎么办?例如:我们现在有一个Spring Boot项目,里面用到了MySQL,Redis,Nginx等服务,那现在我们要用dockerfile部署项目,通常需要下面几步:  安装docker 使用docker安装Redis 使用docker安装MySQL 使用docker安装Nginx 打">
 <meta property="og:type" content="article">
 <meta property="og:title" content="docker-compose">
 <meta property="og:url" content="http://yoursite.com/2020/09/27/docker-compose/index.html">
 <meta property="og:site_name" content="毛毛的博客">
+<meta property="og:description" content="之前我们学习Dockerfile,会使用Dockerfile部署项目,但细心的同学应该会发现,如果用到多个服务怎么办?例如:我们现在有一个Spring Boot项目,里面用到了MySQL,Redis,Nginx等服务,那现在我们要用dockerfile部署项目,通常需要下面几步:  安装docker 使用docker安装Redis 使用docker安装MySQL 使用docker安装Nginx 打">
 <meta property="article:published_time" content="2020-09-27T01:33:11.000Z">
-<meta property="article:modified_time" content="2020-09-27T01:33:11.624Z">
+<meta property="article:modified_time" content="2020-09-27T03:18:06.482Z">
 <meta property="article:author" content="毛毛">
+<meta property="article:tag" content="后端">
 <meta name="twitter:card" content="summary">
 
 
@@ -289,6 +292,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Docker/" itemprop="url" rel="index">
+                    <span itemprop="name">Docker</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -316,7 +341,16 @@
       
 
       
-        
+        <p>之前我们学习Dockerfile,会使用Dockerfile部署项目,但细心的同学应该会发现,如果用到多个服务怎么办?例如:我们现在有一个Spring Boot项目,里面用到了MySQL,Redis,Nginx等服务,那现在我们要用dockerfile部署项目,通常需要下面几步:</p>
+<ul>
+<li>安装docker</li>
+<li>使用docker安装Redis</li>
+<li>使用docker安装MySQL</li>
+<li>使用docker安装Nginx</li>
+<li>打jar包,编写dockerfile<br>安装好以上服务之后,我们还需要一一启动,然后在运行项目才能访问.虽然说docker有一次打包到处运行,节省存储空间和资源,应用隔离等优点,但是仔细看上面的部署步骤,即便我们使用了docker,也还是要在docker中安装其他服务,现在虽然只有几个,但是如果后面再添加ES,Mongo等等越来越多的服务,好像并没有提高很多效率,下面就进入我们的重点:docker-compose</li>
+</ul>
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>docker-compose是用于定义和运行多容器的Docker应用程序的工具,是docker的服务编排工具,主要用于构建基于Docker的复杂应用,docker-compose通过一个配置文件来管理多个docker容器,适合组合使用多个容器进行开发的场景;docker-compose,可以使用yml或者yaml文件配置应用程序的服务。然后通过一个命令可以从配置中创建和启动所有服务。</p>
+
       
     </div>
     
@@ -330,6 +364,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag"># 后端</a>
+          
+        </div>
       
 
       
@@ -400,8 +440,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -465,6 +514,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
