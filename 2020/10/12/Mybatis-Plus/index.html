@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="后端," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="简介MyBatis-Plus简称MP)是一个MyBatis的增强工具,国产的开源框架,基于MyBatis,在MyBatis的基础上只做增强不做改变,为简化开发,提高效率而生。 特性 无侵入:只做增强不做改变,引入它不会对现有工程产生影响 损耗小:启动即会自动注入基本 CURD，性能基本无损耗，直接面向对象操作 强大的 CRUD 操作：内置通用 Mapper、通用 Service，仅仅通过少量配置即">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mybatis Plus">
+<meta property="og:url" content="http://yoursite.com/2020/10/12/Mybatis-Plus/index.html">
+<meta property="og:site_name" content="毛毛的博客">
+<meta property="og:description" content="简介MyBatis-Plus简称MP)是一个MyBatis的增强工具,国产的开源框架,基于MyBatis,在MyBatis的基础上只做增强不做改变,为简化开发,提高效率而生。 特性 无侵入:只做增强不做改变,引入它不会对现有工程产生影响 损耗小:启动即会自动注入基本 CURD，性能基本无损耗，直接面向对象操作 强大的 CRUD 操作：内置通用 Mapper、通用 Service，仅仅通过少量配置即">
+<meta property="og:image" content="http://yoursite.com/2020/10/12/Mybatis-Plus/1.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/10/12/Mybatis-Plus/2.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/10/12/Mybatis-Plus/5.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/10/12/Mybatis-Plus/3.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/10/12/Mybatis-Plus/4.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/10/12/Mybatis-Plus/6.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/10/12/Mybatis-Plus/7.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/10/12/Mybatis-Plus/8.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/10/12/Mybatis-Plus/9.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/10/12/Mybatis-Plus/10.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/10/12/Mybatis-Plus/11.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/10/12/Mybatis-Plus/18.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/10/12/Mybatis-Plus/19.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/10/12/Mybatis-Plus/12.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/10/12/Mybatis-Plus/13.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/10/12/Mybatis-Plus/14.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/10/12/Mybatis-Plus/15.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/10/12/Mybatis-Plus/16.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/10/12/Mybatis-Plus/17.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/10/12/Mybatis-Plus/20.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/10/12/Mybatis-Plus/13.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/10/12/Mybatis-Plus/21.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/10/12/Mybatis-Plus/22.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/10/12/Mybatis-Plus/23.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/10/12/Mybatis-Plus/24.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/10/12/Mybatis-Plus/25.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/10/12/Mybatis-Plus/26.jpg">
+<meta property="article:published_time" content="2020-10-12T02:13:52.000Z">
+<meta property="article:modified_time" content="2020-10-12T07:36:03.482Z">
+<meta property="article:author" content="毛毛">
+<meta property="article:tag" content="后端">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/10/12/Mybatis-Plus/1.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/10/12/Mybatis-Plus/"/>
+
+
+
+
+
+  <title>Mybatis Plus | 毛毛的博客</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">毛毛的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/12/Mybatis-Plus/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="毛毛">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/maomao.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="毛毛的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Mybatis Plus</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-10-12T10:13:52+08:00">
+                2020-10-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Mybatis-Plus/" itemprop="url" rel="index">
+                    <span itemprop="name">Mybatis Plus</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>MyBatis-Plus简称MP)是一个MyBatis的增强工具,国产的开源框架,基于MyBatis,在MyBatis的基础上只做增强不做改变,为简化开发,提高效率而生。</p>
+<h3 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h3><ul>
+<li>无侵入:只做增强不做改变,引入它不会对现有工程产生影响</li>
+<li>损耗小:启动即会自动注入基本 CURD，性能基本无损耗，直接面向对象操作</li>
+<li>强大的 CRUD 操作：内置通用 Mapper、通用 Service，仅仅通过少量配置即可实现单表大部分 CRUD 操作，更有强大的条件构造器，满足各类使用需求</li>
+<li>支持 Lambda 形式调用：通过 Lambda 表达式，方便的编写各类查询条件，无需再担心字段写错</li>
+<li>支持主键自动生成：支持多达 4 种主键策略（内含分布式唯一 ID 生成器 - Sequence），可自由配置，完美解决主键问题</li>
+<li>支持 ActiveRecord 模式：支持 ActiveRecord 形式调用，实体类只需继承 Model 类即可进行强大的 CRUD 操作</li>
+<li>支持自定义全局通用操作：支持全局通用方法注入（ Write once, use anywhere ）</li>
+<li>内置代码生成器：采用代码或者 Maven 插件可快速生成 Mapper 、 Model 、 Service 、 Controller 层代码，支持模板引擎，更有超多自定义配置等您来使用</li>
+<li>内置分页插件：基于 MyBatis 物理分页，开发者无需关心具体操作，配置好插件之后，写分页等同于普通 List 查询</li>
+<li>分页插件支持多种数据库：支持 MySQL、MariaDB、Oracle、DB2、H2、HSQL、SQLite、Postgre、SQLServer 等多种数据库</li>
+<li>内置性能分析插件：可输出 Sql 语句以及其执行时间，建议开发测试时启用该功能，能快速揪出慢查询</li>
+<li>内置全局拦截插件：提供全表 delete 、 update 操作智能分析阻断，也可自定义拦截规则，预防误操作</li>
+</ul>
+<h3 id="框架结构"><a href="#框架结构" class="headerlink" title="框架结构"></a>框架结构</h3><img src="/2020/10/12/Mybatis-Plus/1.jpg" width="800" height="800" align="center">
+
+<h3 id="Mybatis-Plus快速上手"><a href="#Mybatis-Plus快速上手" class="headerlink" title="Mybatis Plus快速上手"></a>Mybatis Plus快速上手</h3><ul>
+<li><p>新建项目,pom.xml</p>
+<img src="/2020/10/12/Mybatis-Plus/2.jpg" width="800" height="800" align="center">
+</li>
+<li><p>配置文件(application.yml)</p>
+<img src="/2020/10/12/Mybatis-Plus/5.jpg" width="800" height="800" align="center">
+</li>
+<li><p>实体类user</p>
+<img src="/2020/10/12/Mybatis-Plus/3.jpg" width="800" height="800" align="center">
+</li>
+<li><p>启动类(扫描mapper)</p>
+<img src="/2020/10/12/Mybatis-Plus/4.jpg" width="800" height="800" align="center">
+</li>
+<li><p>创建mapper接口</p>
+<img src="/2020/10/12/Mybatis-Plus/6.jpg" width="800" height="800" align="center">
+</li>
+<li><p>测试类</p>
+<img src="/2020/10/12/Mybatis-Plus/7.jpg" width="800" height="800" align="center">
+我们只定义一个接口实现BaseMapper,我们就可以调用这么多方法
+<img src="/2020/10/12/Mybatis-Plus/8.jpg" width="800" height="800" align="center">
+<img src="/2020/10/12/Mybatis-Plus/9.jpg" width="800" height="800" align="center">
+
+</li>
+</ul>
+<h3 id="常用注解"><a href="#常用注解" class="headerlink" title="常用注解"></a>常用注解</h3><h4 id="TableName-映射数据库的表名"><a href="#TableName-映射数据库的表名" class="headerlink" title="@TableName:映射数据库的表名"></a>@TableName:映射数据库的表名</h4><p>刚才不知道有没有一个疑问,为什么他会去查user这张表呢?因为我们的实体类是user,所以mybatis plus自动会根据实体类去数据库查询,那这时候我们把实体类名称换掉一个数据库不存在的,就会报错。那么怎么办呢?我们就可以使用@TableName这个注解,和数据库对应<br><img src="/2020/10/12/Mybatis-Plus/10.jpg" width="800" height="800" align="center"><br>这就表示我们查询user1这张表的数据就去查询user这张表。</p>
+<h4 id="TableId-设置主键映射-主键要使用包装类型"><a href="#TableId-设置主键映射-主键要使用包装类型" class="headerlink" title="@TableId:设置主键映射(主键要使用包装类型)"></a>@TableId:设置主键映射(主键要使用包装类型)</h4><p>value:映射主键字段名<br>type:设置主键类型,主键的生成策略,默认雪花算法实现<br><img src="/2020/10/12/Mybatis-Plus/11.jpg" width="800" height="800" align="center"></p>
+<h5 id="AUTO-数据库自增"><a href="#AUTO-数据库自增" class="headerlink" title="AUTO:数据库自增"></a>AUTO:数据库自增</h5><img src="/2020/10/12/Mybatis-Plus/18.jpg" width="800" height="800" align="center">
+测试数据库结果
+<img src="/2020/10/12/Mybatis-Plus/19.jpg" width="800" height="800" align="center">
+他会根据数据库中最后一行记录实现id自增长
+
+<h5 id="NONE-雪花算法实现-默认"><a href="#NONE-雪花算法实现-默认" class="headerlink" title="NONE:雪花算法实现(默认)"></a>NONE:雪花算法实现(默认)</h5><img src="/2020/10/12/Mybatis-Plus/12.jpg" width="800" height="800" align="center">
+测试
+<img src="/2020/10/12/Mybatis-Plus/13.jpg" width="800" height="800" align="center">
+结果
+<img src="/2020/10/12/Mybatis-Plus/14.jpg" width="800" height="800" align="center">
+使用雪花算法的时候,使用Integer类型的id,不能够存储,这时候我们需要将Integer转为Long类型
+<img src="/2020/10/12/Mybatis-Plus/15.jpg" width="800" height="800" align="center">
+结果
+<img src="/2020/10/12/Mybatis-Plus/16.jpg" width="800" height="800" align="center">
+数据库中
+<img src="/2020/10/12/Mybatis-Plus/17.jpg" width="800" height="800" align="center">
+
+<h5 id="INPUT-需要开发者手动赋值"><a href="#INPUT-需要开发者手动赋值" class="headerlink" title="INPUT:需要开发者手动赋值"></a>INPUT:需要开发者手动赋值</h5><img src="/2020/10/12/Mybatis-Plus/20.jpg" width="800" height="800" align="center">
+测试:我们不手动赋值,他也会根据数据库中最后一个字段自增
+<img src="/2020/10/12/Mybatis-Plus/13.jpg" width="800" height="800" align="center">
+结果
+<img src="/2020/10/12/Mybatis-Plus/21.jpg" width="800" height="800" align="center">
+
+<h5 id="ASSIGN-ID-Mybatis-Plus分配id-可以使用Long-Integer-String类型"><a href="#ASSIGN-ID-Mybatis-Plus分配id-可以使用Long-Integer-String类型" class="headerlink" title="ASSIGN_ID:Mybatis Plus分配id,可以使用Long,Integer,String类型"></a>ASSIGN_ID:Mybatis Plus分配id,可以使用Long,Integer,String类型</h5><p>自动赋值,雪花算法<br><img src="/2020/10/12/Mybatis-Plus/22.jpg" width="800" height="800" align="center"><br>测试<br><img src="/2020/10/12/Mybatis-Plus/23.jpg" width="800" height="800" align="center"></p>
+<h5 id="ASSIGN-UUID-分配UUID-主键类型必须是String"><a href="#ASSIGN-UUID-分配UUID-主键类型必须是String" class="headerlink" title="ASSIGN_UUID:分配UUID,主键类型必须是String"></a>ASSIGN_UUID:分配UUID,主键类型必须是String</h5><img src="/2020/10/12/Mybatis-Plus/24.jpg" width="800" height="800" align="center">
+测试结果
+<img src="/2020/10/12/Mybatis-Plus/25.jpg" width="800" height="800" align="center">
+
+<h4 id="TableField-映射非主键字段"><a href="#TableField-映射非主键字段" class="headerlink" title="@TableField:映射非主键字段"></a>@TableField:映射非主键字段</h4><p>value:映射字段名<br>exist:表示是否为数据库字段<br><img src="/2020/10/12/Mybatis-Plus/26.jpg" width="800" height="800" align="center"><br>表示的是用name来映射数据库中的username字段</p>
+<h4 id="Version-标记乐观锁-通过version字段来保证数据的安全性-当修改数据的时候-会以version作为条件-当条件成立的时候才会修改成功。"><a href="#Version-标记乐观锁-通过version字段来保证数据的安全性-当修改数据的时候-会以version作为条件-当条件成立的时候才会修改成功。" class="headerlink" title="@Version:标记乐观锁,通过version字段来保证数据的安全性,当修改数据的时候,会以version作为条件,当条件成立的时候才会修改成功。"></a>@Version:标记乐观锁,通过version字段来保证数据的安全性,当修改数据的时候,会以version作为条件,当条件成立的时候才会修改成功。</h4>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag"># 后端</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/09/27/docker-compose/" rel="next" title="docker-compose">
+                <i class="fa fa-chevron-left"></i> docker-compose
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/maomao.jpg"
+                alt="毛毛" />
+            
+              <p class="site-author-name" itemprop="name">毛毛</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特性"><span class="nav-number">2.</span> <span class="nav-text">特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#框架结构"><span class="nav-number">3.</span> <span class="nav-text">框架结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mybatis-Plus快速上手"><span class="nav-number">4.</span> <span class="nav-text">Mybatis Plus快速上手</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用注解"><span class="nav-number">5.</span> <span class="nav-text">常用注解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#TableName-映射数据库的表名"><span class="nav-number">5.1.</span> <span class="nav-text">@TableName:映射数据库的表名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TableId-设置主键映射-主键要使用包装类型"><span class="nav-number">5.2.</span> <span class="nav-text">@TableId:设置主键映射(主键要使用包装类型)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#AUTO-数据库自增"><span class="nav-number">5.2.1.</span> <span class="nav-text">AUTO:数据库自增</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#NONE-雪花算法实现-默认"><span class="nav-number">5.2.2.</span> <span class="nav-text">NONE:雪花算法实现(默认)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#INPUT-需要开发者手动赋值"><span class="nav-number">5.2.3.</span> <span class="nav-text">INPUT:需要开发者手动赋值</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ASSIGN-ID-Mybatis-Plus分配id-可以使用Long-Integer-String类型"><span class="nav-number">5.2.4.</span> <span class="nav-text">ASSIGN_ID:Mybatis Plus分配id,可以使用Long,Integer,String类型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ASSIGN-UUID-分配UUID-主键类型必须是String"><span class="nav-number">5.2.5.</span> <span class="nav-text">ASSIGN_UUID:分配UUID,主键类型必须是String</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TableField-映射非主键字段"><span class="nav-number">5.3.</span> <span class="nav-text">@TableField:映射非主键字段</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Version-标记乐观锁-通过version字段来保证数据的安全性-当修改数据的时候-会以version作为条件-当条件成立的时候才会修改成功。"><span class="nav-number">5.4.</span> <span class="nav-text">@Version:标记乐观锁,通过version字段来保证数据的安全性,当修改数据的时候,会以version作为条件,当条件成立的时候才会修改成功。</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">毛毛</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
